@@ -1,14 +1,82 @@
 <!doctype html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="utf-8">
     <title>GinfinAI</title>
+    <link rel="icon" type="image/x-icon" href="/images/Ginfinai_small.png">
+    <link rel="stylesheet" href="index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="copyright" content="Copyright 2024. Made by GinfinAI">
 </head>
 <body>
-    <h2>What is GinfinAI</h2>
+    <div class="header_logo">
+        <img class="logo" src="/images/Ginfinai_small_nobg.png"></img>
+    </div>
+    
+    <ul id="menu" class="topnav">
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="#wiebenik">Wie ben ik?</a></li>
+        <li><a href="#doen">Wat kan voor u doen?</a></li>
+        <li class="right"><a href="#contact">Contact</a></li>
+    </ul>
+    
+    <div>
+        <h2 id="home" style="text-align: center;"> Home </h2>
+    </div>
+    <div>
+        <h2 id="wiebenik" style="text-align: center;"> Wie ben ik? </h2>
+    </div>
+    <div>
+        <h2 id="doen" style="text-align: center;"> Wat kan ik voor u doen? </h2>
+    </div>
+    <div id="contact" class="contact">
+        <div class="contact_el">
+            <img class="contact_logo" src="/images/Ginfinai_small_nobg.png"></img>
+        </div>
+        <div class="contact_el">
+            <div class="menu_contact"><a href="#home">Home</a></div>
+            <div class="menu_contact"><a href="#wiebenik">Wie ben ik?</a></div>
+            <div class="menu_contact"><a href="#doen">Wat kan voor u doen?</a></div>
+            <div class="menu_contact"><a href="#contact">Contact</a></div>
+        </div>
+        <div class="contact_el contact_item">
+            <p>info@ginfinai.be</p>
+            <p>+32 498 42 01 78</p>
+            <p>
+                Notestraat 64, 1742 Ternat
+            </p>
+            <p>
+                BTW BE1012.619.721
+            </p>
+        </div>
+        <div class="contact_el">
+            <div class="slogan">
+                <p>Web & AI to infinity and always!</p>
+            </div>
+            <div class="contact_button">
+                <button type="button"><a href="mailto:info@ginfinai.be">Neem contacteer op!</a></button>
+            </div>
+        </div>
+    </div>
     <p>
     </p>
 
 </body>
+<script>
+    // JavaScript to add active class to the clicked menu item
+    const menuItems = document.querySelectorAll('#menu a');
+
+    menuItems.forEach(item => {
+        item.addEventListener('click', function(event) {
+            // Prevent default action (navigation) for now
+            event.preventDefault();
+
+            // Remove the active class from all menu items
+            menuItems.forEach(link => link.classList.remove('active'));
+
+            // Add the active class to the clicked item
+            this.classList.add('active');
+        });
+    });
+</script>
 </html>

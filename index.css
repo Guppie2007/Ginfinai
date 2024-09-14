@@ -1,0 +1,125 @@
+/*Homepage CSS style*/
+
+body {
+    margin: 0;
+}
+
+.header::after {
+    content: "";
+    display: table;
+    clear: both;
+    background-color: #807AD0;
+}
+
+.column_logo {
+    float: left;
+    width: 25%;
+}
+
+.column_nav {
+    float: left;
+    width: 75%;
+}
+
+.header_logo {
+    text-align: center;
+    background-color: #807ad09a;
+}
+
+.logo {
+    width: 30%;
+}
+
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+}
+  
+ul.topnav li {float: left;}
+  
+ul.topnav li a {
+    display: block;
+    color: #807AD0;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+ul.topnav li a:hover:not(.active) {background-color: lightgrey;}
+  
+ul.topnav li a.active {
+    background-color: #807AD0;
+    color: white;
+}
+  
+ul.topnav li.right {float: right;}
+  
+.contact {
+    display: flex;
+    background-color: #807ad09a;
+}
+
+.contact_logo {
+    width:100%;
+}
+
+.contact a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.menu_contact {
+    text-align: center;
+    margin-bottom: 12%;
+}
+
+.contact_item {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.contact_el {
+    flex: 1;
+    padding: 20px;
+}
+
+.slogan {
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-size: 30px;
+}
+
+.contact_button {
+    text-align: center;
+}
+
+button {
+    background-color: #807AD0;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #807ad09a;
+}
+
+@media screen and (max-width: 600px) {
+    ul.topnav li.right, 
+    ul.topnav li {float: none;}
+    .contact {
+        flex-direction: column;
+    }
+    .column {
+        width: 100%;
+      }
+}

@@ -2,6 +2,7 @@
 
 body {
     margin: 0;
+    padding: 0;
 }
 
 .header::after {
@@ -38,7 +39,7 @@ ul.topnav {
     background-color: white;
 }
   
-ul.topnav li {float: left;}
+ul.topnav li {float:left;}
   
 ul.topnav li a {
     display: block;
@@ -46,6 +47,8 @@ ul.topnav li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
 }
   
 ul.topnav li a:hover:not(.active) {background-color: lightgrey;}
@@ -111,6 +114,71 @@ button {
 
 button:hover {
     background-color: #807ad09a;
+}
+
+section {
+    padding: 50px;
+    text-align: center;
+    margin: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+.section1 {
+    background-color: white;
+}
+
+.section2 {
+    background-color: #807ad09a;
+    color: white;
+}
+
+.wave-divider1 {
+    position: relative;
+    width: 100%;
+    max-height: 320px;
+    overflow: hidden;
+    background-color: #807ad09a;
+}
+
+.wave-divider2 {
+    position: relative;
+    width: 100%;
+    max-height: 320px;
+    overflow: hidden;
+}
+
+.wave-divider1 svg {
+    display: block;
+    width: 100%;
+    max-height: 100%;
+    line-height: 0;
+}
+
+.wave-divider2 svg {
+    display: block;
+    width: 100%;
+    max-height: 100%;
+    line-height: 0;
+}
+
+.bouncing-text {
+    position: relative;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #807AD0;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0); /* Starting position */
+    }
+    50% {
+        transform: translateY(-20px); /* Move text up */
+    }
 }
 
 @media screen and (max-width: 600px) {

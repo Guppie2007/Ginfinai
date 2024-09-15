@@ -48,7 +48,6 @@ ul.topnav li a {
     padding: 14px 16px;
     text-decoration: none;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
 }
   
 ul.topnav li a:hover:not(.active) {background-color: lightgrey;}
@@ -60,6 +59,39 @@ ul.topnav li a.active {
   
 ul.topnav li.right {float: right;}
   
+.person {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.person_foto {
+    flex: 1;
+    width: 100%;
+}
+
+.person_info {
+    width: 100%;
+    flex: 1;
+    text-align: left;
+}
+
+.person_img {
+    width: 70%;
+}
+
+.diensten {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.dienst {
+    flex: 1;
+}
+
 .contact {
     display: flex;
     background-color: #807ad09a;
@@ -184,10 +216,16 @@ section {
 @media screen and (max-width: 600px) {
     ul.topnav li.right, 
     ul.topnav li {float: none;}
+    .person {
+        flex-direction: column;
+    }
+    .person {
+        flex-direction: column;
+    }
     .contact {
         flex-direction: column;
     }
     .column {
         width: 100%;
-      }
+    }
 }

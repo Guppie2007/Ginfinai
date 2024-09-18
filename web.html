@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+    <title>GinfinAI</title>
+    <link rel="icon" type="image/x-icon" href="/images/Ginfinai_small_nobg.png">
+    <link rel="stylesheet" href="index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="copyright" content="Copyright 2024. Made by GinfinAI">
+</head>
+<body>
+    <div class="header_logo">
+        <a href="index.html#home"><img class="logo" src="/images/Ginfinai_small_nobg.png"></img></a>
+    </div>
+    
+    <ul id="menu" class="topnav">
+        <li><a class="active" href="index.html#home">Home</a></li>
+        <li><a href="index.html#doen">Wat kan ik voor u doen?</a></li>
+        <li><a href="index.html#stappen">Stappen</a></li>
+        <li><a href="index.html#wiebenik">Wie ben ik?</a></li>
+        <li class="right"><a href="index.html#contact">Contact</a></li>
+    </ul>
+    
+    <div id="home">
+        <div class="bouncing-text"> Web & AI to infinity and always! </div>
+    </div>
+
+    <div id="contact" class="contact">
+        <div class="contact_el">
+            <img class="contact_logo" src="/images/Ginfinai_small_nobg.png"></img>
+        </div>
+        <div class="contact_el">
+            <div class="menu_contact"><a href="index.html#home">Home</a></div>
+            <div class="menu_contact"><a href="index.html#doen">Wat kan ik voor u doen?</a></div>
+            <div class="menu_contact"><a href="index.html#stappen">Stappen</a></div>
+            <div class="menu_contact"><a href="index.html#wiebenik">Wie ben ik?</a></div>
+        </div>
+        <div class="contact_el contact_item">
+            <p>info@ginfinai.be</p>
+            <p>+32 498 42 01 78</p>
+            <p>
+                Notestraat 64, 1742 Ternat
+            </p>
+            <p>
+                BTW BE1012.619.721
+            </p>
+        </div>
+        <div class="contact_el">
+            <div class="slogan">
+                <p>Web & AI to infinity and always!</p>
+            </div>
+            <div class="contact_button">
+                <a href="mailto:info@ginfinai.be" class="button">Neem contact op!</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    // JavaScript to add active class to the clicked menu item and smooth scroll
+    const menuItems = document.querySelectorAll('#menu a');
+
+    menuItems.forEach(item => {
+        item.addEventListener('click', function(event) {
+            const targetHref = this.getAttribute('href');
+
+            // Only prevent default behavior for links that are on the current page (e.g., #section)
+            if (targetHref.startsWith('#')) {
+                event.preventDefault(); // Prevent default scroll for in-page anchors
+
+                // Remove the active class from all menu items
+                menuItems.forEach(link => link.classList.remove('active'));
+
+                // Add the active class to the clicked item
+                this.classList.add('active');
+
+                // Smooth scroll to the anchor
+                const targetSection = document.querySelector(targetHref);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
+</script>
+</html>

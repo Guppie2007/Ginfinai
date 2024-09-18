@@ -83,13 +83,28 @@ ul.topnav li.right {float: right;}
 
 .diensten {
     display: flex;
-    flex-direction: row;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-wrap: wrap;
     gap: 10px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .dienst {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #807ad09a;
+    color: white;
+    border-radius: 10px;
     flex: 1;
+    box-sizing: border-box;
+}
+
+.info_button {
+    max-width: 100%;
 }
 
 .contact {
@@ -135,21 +150,25 @@ ul.topnav li.right {float: right;}
     text-align: center;
 }
 
-button {
+.button {
     background-color: #807AD0;
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    white-space: nowrap;
+    min-width: 120px;
 }
 
-button:hover {
+.button:hover {
     background-color: #807ad09a;
 }
 
 section {
-    padding: 50px;
+    padding: 30px;
     text-align: center;
     margin: 0;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -196,12 +215,16 @@ section {
 
 .bouncing-text {
     position: relative;
-    margin-top: 30px;
+    margin-top: 20px;
     text-align: center;
     font-size: 30px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: #807AD0;
     animation: bounce 2s ease-in-out infinite;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 @keyframes bounce {

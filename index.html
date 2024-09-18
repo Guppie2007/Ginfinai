@@ -9,9 +9,9 @@
     <meta name="copyright" content="Copyright 2024. Made by GinfinAI">
 </head>
 <body>
-    <div class="header_logo">
-        <img class="logo" src="/images/Ginfinai_small_nobg.png"></img>
-    </div>
+    <section id="home" class="header_logo">
+        <a href="index.html#home"><img class="logo" src="/images/Ginfinai_small_nobg.png"></img></a>
+    </section>
     
     <ul id="menu" class="topnav">
         <li><a class="active" href="#home">Home</a></li>
@@ -21,7 +21,7 @@
         <li class="right"><a href="#contact">Contact</a></li>
     </ul>
     
-    <div id="home">
+    <div>
         <div class="bouncing-text"> Web & AI to infinity and always! </div>
     </div>
     <section id="doen" class="section1">
@@ -29,12 +29,25 @@
         <div class="diensten">
             <div class="dienst">
                 <h3>Webdesign</h3>
+                <p>Uit eigen ervaring weet ik dat de wereld der technologie voortvarend evolueert, daarom is het tegenwoordig zeer belangrijk om ook digitaal op te vallen.</p>
+                <p>Laat GinfinAI nu jouw partner zijn om jou of jouw onderneming hierin vooruit te helpen.</p>
+                <div class="info_button">
+                    <a href="web.html" class="button">Meer info</a>
+                </div>
             </div>
             <div class="dienst">
                 <h3>Web update</h3>
+                <p>Hebt u al een website, maar voldoet hij niet meer aan de huidige trends?</p>
+                <p>GinfinAI kan u helpen bij het moderniseren of verbeteren van uw bestaande website.</p>
+                <p></p>
+                <p></p>
             </div>
             <div class="dienst">
                 <h3>AI applicaties</h3>
+                <p>Hebt u een toepassing waarvan u denkt dat deze kan verbeterd of uitgebreid worden aan de hand van AI, of bent u benieuwd wat AI kan doen voor uw bedrijf, GinfinAI kan u nieuwe ideeën of inzichten brengen.</p>
+                <div class="info_button">
+                    <a href="mailto:info@ginfinai.be" class="button">Neem contact op!</a>
+                </div>
             </div>
         </div>
     </section>
@@ -70,9 +83,9 @@
         </div>
         <div class="contact_el">
             <div class="menu_contact"><a href="#home">Home</a></div>
-            <div class="menu_contact"><a href="#wiebenik">Wie ben ik?</a></div>
             <div class="menu_contact"><a href="#doen">Wat kan ik voor u doen?</a></div>
-            <div class="menu_contact"><a href="#contact">Contact</a></div>
+            <div class="menu_contact"><a href="#stappen">Stappen</a></div>
+            <div class="menu_contact"><a href="#wiebenik">Wie ben ik?</a></div>
         </div>
         <div class="contact_el contact_item">
             <p>info@ginfinai.be</p>
@@ -89,27 +102,36 @@
                 <p>Web & AI to infinity and always!</p>
             </div>
             <div class="contact_button">
-                <button type="button"><a href="mailto:info@ginfinai.be">Neem contact op!</a></button>
+                <a href="mailto:info@ginfinai.be" class="button">Neem contact op!</a>
             </div>
         </div>
     </div>
 
 </body>
 <script>
-    // JavaScript to add active class to the clicked menu item
+    // JavaScript to add active class to the clicked menu item and smooth scroll
     const menuItems = document.querySelectorAll('#menu a');
 
     menuItems.forEach(item => {
         item.addEventListener('click', function(event) {
-            // Prevent default action (navigation) for now
-            event.preventDefault();
+            event.preventDefault(); // Voorkom de standaard scroll
 
-            // Remove the active class from all menu items
+            // Verwijder de actieve class van alle menu-items
             menuItems.forEach(link => link.classList.remove('active'));
 
-            // Add the active class to the clicked item
+            // Voeg de actieve class toe aan het aangeklikte item
             this.classList.add('active');
+
+            // Scroll smooth naar het anker
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+
+            // Scroll naar het doel (met smooth behavior)
+            targetSection.scrollIntoView({
+                behavior: 'smooth'
+            });
         });
     });
+
 </script>
 </html>

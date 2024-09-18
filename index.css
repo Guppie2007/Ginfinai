@@ -160,7 +160,7 @@ ul.topnav li.right {float: right;}
     text-decoration: none;
     display: inline-block;
     white-space: nowrap;
-    min-width: 120px;
+    min-width: 140px;
 }
 
 .button:hover {
@@ -250,5 +250,8 @@ html {
     }
     .column {
         width: 100%;
+    }
+    .button {
+        white-space: normal; /* Allows wrapping when the screen is very small */
     }
 }

@@ -86,7 +86,9 @@ ul.topnav li.right {float: right;}
     justify-content: space-around;
     align-items: stretch;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 50px;
+    margin-left: 70px;
+    margin-right: 70px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -98,6 +100,7 @@ ul.topnav li.right {float: right;}
     box-sizing: border-box;
     background-color: #807ad09a;
     color: white;
+    border: 3px solid #807AD0;
     border-radius: 10px;
     flex: 1;
     box-sizing: border-box;
@@ -216,6 +219,7 @@ section {
 .bouncing-text {
     position: relative;
     margin-top: 20px;
+    width: 100%;
     text-align: center;
     font-size: 30px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;

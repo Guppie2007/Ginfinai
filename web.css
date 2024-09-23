@@ -1,0 +1,26 @@
+/*Web page CSS style*/
+
+.web-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin: 70px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+.web-type {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #807ad09a;
+    color: white;
+    border: 3px solid #807AD0;
+    border-radius: 10px;
+    flex: 1;
+    box-sizing: border-box;
+}

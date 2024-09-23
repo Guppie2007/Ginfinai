@@ -142,6 +142,10 @@ ul.topnav li.right {float: right;}
     padding: 20px;
 }
 
+.whatsapp {
+    width: 30%;
+}
+
 .slogan {
     color: white;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;

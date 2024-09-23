@@ -7,7 +7,20 @@
     <link rel="stylesheet" href="index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="copyright" content="Copyright 2024. Made by GinfinAI">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+    <!-- Fontawesome  CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.0/lazysizes.min.js" ></script>
 </head>
+<script async src='https://d2mpatx37cqexb.cloudfront.net/delightchat-whatsapp-widget/embeds/embed.min.js'></script>
+        <script>
+          var wa_btnSetting = {"btnColor":"#16BE45","ctaText":"","cornerRadius":40,"marginBottom":20,"marginLeft":20,"marginRight":20,"btnPosition":"right","whatsAppNumber":"32498420178","welcomeMessage":"Hallo!\nHoe kan ik u helpen?","zIndex":999999,"btnColorScheme":"light"};
+          var wa_widgetSetting = {"title":"GinfinAI","subTitle":"Antwoord normaal gezien binnen de dag","headerBackgroundColor":"#807ad0","headerColorScheme":"light","greetingText":"Hallo! \nHoe kan ik u helpen?","ctaText":"Stuur een bericht","btnColor":"#807AD0","cornerRadius":40,"welcomeMessage":"Hello","btnColorScheme":"light","brandImage":"/images/Ginfinai_small_nobg.png","darkHeaderColorScheme":{"title":"#333333","subTitle":"#4F4F4F"}};  
+          window.onload = () => {
+            _waEmbed(wa_btnSetting, wa_widgetSetting);
+          };
+        </script>
 <body>
     <section id="home" class="header_logo">
         <a href="index.html#home"><img class="logo" src="/images/Ginfinai_small_nobg.png"></img></a>
@@ -41,10 +54,15 @@
                 <p>GinfinAI kan u helpen bij het moderniseren of verbeteren van uw bestaande website.</p>
                 <p></p>
                 <p></p>
+                <div class="info_button">
+                    <a href="web.html" class="button">Meer info</a>
+                </div>
             </div>
             <div class="dienst">
                 <h3>AI applicaties</h3>
                 <p>Hebt u een toepassing waarvan u denkt dat deze kan verbeterd of uitgebreid worden aan de hand van AI, of bent u benieuwd wat AI kan doen voor uw bedrijf, GinfinAI kan u nieuwe ideeën of inzichten brengen.</p>
+                <p></p>
+                <p></p>
                 <div class="info_button">
                     <a href="mailto:info@ginfinai.be" class="button">Neem contact op!</a>
                 </div>
@@ -80,6 +98,7 @@
     <div id="contact" class="contact">
         <div class="contact_el">
             <img class="contact_logo" src="/images/Ginfinai_small_nobg.png"></img>
+            <a aria-label="Chat on WhatsApp" href="https://wa.me/+32498420178"><img class="whatsapp" alt="Chat on WhatsApp" src="/images/whatsapp.png" /></a>
         </div>
         <div class="contact_el">
             <div class="menu_contact"><a href="#home">Home</a></div>
@@ -106,7 +125,6 @@
             </div>
         </div>
     </div>
-
 </body>
 <script>
     // JavaScript to add active class to the clicked menu item and smooth scroll

@@ -10,6 +10,42 @@
 
         gtag('config', 'G-2DP92KLE3B');
     </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": {
+              "name": {
+                "@id": "http://xmlns.com/foaf/0.1/name",
+                "@language": "en"
+              },
+              "age": {
+                "@id": "http://xmlns.com/foaf/0.1/age",
+                "@type": "http://www.w3.org/2001/XMLSchema#integer"
+              },
+              "worksFor": "http://schema.org/worksFor",
+              "knowsAbout": "http://schema.org/knowsAbout",
+              "jobTitle": "http://schema.org/jobTitle",
+              "skills": "http://schema.org/skills",
+              "knows": {
+                "@id": "http://xmlns.com/foaf/0.1/knows",
+                "@type": "@id"
+              }
+            },
+            "@id": "https://ginfinai.be/#me",
+            "@type": "http://schema.org/Person",
+            "name": "Gerben Ceuppens",
+            "age": 23,
+            "worksFor": {
+              "@id":"https://aisquare.be/",
+              "@type": "http://schema.org/Organization",
+              "name": "AI Square"
+            },
+            "knowsAbout": "GraphRAG",
+            "jobTitle": "Student MSc Computer Science Engineering",
+            "skills": "Basic knowledge of wine",
+            "knows": [ "https://ianvankets.be/#me", "https://juliettevis.be/#me" ]
+          }
+    </script>
     
     <meta charset="utf-8">
     <title>GinfinAI</title>
@@ -98,7 +134,7 @@
             <div class="person_foto">
                 <img class="person_img" src="/images/20211225_154059.jpg"></img>
             </div>
-            <div class="person_info">
+            <div id="me" class="person_info">
                 <p>Ik ben Gerben Ceuppens, 23 jaar, getogen te Ternat en ook masterstudent Burgerlijk Ingenieur Computerwetenschappen aan de Universiteit Gent.</p>
                 <p>Tijdens deze studies specialiseer ik me in Artificiële Intelligentie. Ook al studeer ik op dit moment nog, dit hield me niet tegen om reeds mijn verkregen kennis te gebruiken in de praktijk.</p>
                 <p>Dit is ook de reden voor het ontstaan van GinfinAI. Het laat me toe om mijn kennis met anderen te delen en zo ook andere mensen en ondernemers te helpen.</p>

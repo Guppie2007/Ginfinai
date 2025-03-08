@@ -11,6 +11,53 @@
         gtag('config', 'G-2DP92KLE3B');
     </script>
     
+    <script type="application/ld+json" id="me">
+        {
+            "@context": {
+              "name": {
+                "@id": "http://xmlns.com/foaf/0.1/name",
+                "@language": "en"
+              },
+              "age": {
+                "@id": "http://xmlns.com/foaf/0.1/age",
+                "@type": "http://www.w3.org/2001/XMLSchema#integer"
+              },
+              "worksFor": "http://schema.org/worksFor",
+              "knowsAbout": "http://schema.org/knowsAbout",
+              "jobTitle": "http://schema.org/jobTitle",
+              "knows": {
+                "@id": "http://xmlns.com/foaf/0.1/knows",
+                "@type": "@id"
+              },
+              "attendee": {
+                "@id": "http://schema.org/attendee",
+                "@type": "@id"
+              },
+              "startDate": {
+                "@id": "http://schema.org/startDate",
+                "@type": "http://www.w3.org/2001/XMLSchema#date"
+              }
+            },
+            "@id": "https://ginfinai.be/#me",
+            "@type": "http://schema.org/Person",
+            "name": "Gerben Ceuppens",
+            "age": 23,
+            "worksFor": {
+              "@id":"https://aisquare.be/",
+              "@type": "http://schema.org/Organization",
+              "name": "AI Square"
+            },
+            "knowsAbout": "GraphRAG",
+            "jobTitle": "Student MSc Computer Science Engineering",
+            "attendee": {
+              "@id": "https://pietercolpaert.be/teaching/kg/#2024-2025",
+              "@type": "http://schema.org/CourseInstance",
+              "startDate": "2025-02-14"
+            },
+            "knows": [ "https://www.robsyc.xyz#me", "https://sandervandamme.com#me" ]
+        }
+    </script>
+
     <meta charset="utf-8">
     <title>GinfinAI</title>
     <link rel="icon" type="image/x-icon" href="/images/Ginfinai_small_nobg.png">

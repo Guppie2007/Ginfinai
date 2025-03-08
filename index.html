@@ -11,7 +11,7 @@
         gtag('config', 'G-2DP92KLE3B');
     </script>
 
-    <script type="application/ld+json">
+    <script type="application/ld+json" id="me">
         {
             "@context": {
               "name": {
@@ -25,10 +25,17 @@
               "worksFor": "http://schema.org/worksFor",
               "knowsAbout": "http://schema.org/knowsAbout",
               "jobTitle": "http://schema.org/jobTitle",
-              "skills": "http://schema.org/skills",
               "knows": {
                 "@id": "http://xmlns.com/foaf/0.1/knows",
                 "@type": "@id"
+              },
+              "attendee": {
+                "@id": "http://schema.org/attendee",
+                "@type": "@id"
+              },
+              "startDate": {
+                "@id": "http://schema.org/startDate",
+                "@type": "http://www.w3.org/2001/XMLSchema#date"
               }
             },
             "@id": "https://ginfinai.be/#me",
@@ -42,9 +49,13 @@
             },
             "knowsAbout": "GraphRAG",
             "jobTitle": "Student MSc Computer Science Engineering",
-            "skills": "Basic knowledge of wine",
+            "attendee": {
+              "@id": "https://pietercolpaert.be/teaching/kg/#2024-2025",
+              "@type": "http://schema.org/CourseInstance",
+              "startDate": "2025-02-14"
+            },
             "knows": [ "https://www.robsyc.xyz#me", "https://sandervandamme.com#me" ]
-          }
+        }
     </script>
     
     <meta charset="utf-8">
@@ -135,7 +146,7 @@
             <div class="person_foto">
                 <img class="person_img" src="/images/20211225_154059.jpg"></img>
             </div>
-            <div id="me" class="person_info">
+            <div class="person_info">
                 <p>Ik ben Gerben Ceuppens, 23 jaar, getogen te Ternat en ook masterstudent Burgerlijk Ingenieur Computerwetenschappen aan de Universiteit Gent.</p>
                 <p>Tijdens deze studies specialiseer ik me in Artificiële Intelligentie. Ook al studeer ik op dit moment nog, dit hield me niet tegen om reeds mijn verkregen kennis te gebruiken in de praktijk.</p>
                 <p>Dit is ook de reden voor het ontstaan van GinfinAI. Het laat me toe om mijn kennis met anderen te delen en zo ook andere mensen en ondernemers te helpen.</p>

@@ -40,5 +40,5 @@
     "@type": "http://schema.org/CourseInstance",
     "startDate": "2025-02-14"
   },
-  "knows": [ "https://users.ugent.be/~eadleers/#me", "https://sandervandamme.com#me" ]
+  "knows": [ "https://www.robsyc.xyz#me", "https://lynnvkerckhove.github.io/graphPub/docs/LynnVK.ttl#me" ]
 }

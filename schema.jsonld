@@ -40,5 +40,5 @@
     "@type": "http://schema.org/CourseInstance",
     "startDate": "2025-02-14"
   },
-  "knows": [ "https://sandervandamme.com#me", "https://lynnvkerckhove.github.io/graphPub/docs/LynnVK.ttl#me" ]
+  "knows": [ "https://bavop.github.io/rep/#me", "https://lynnvkerckhove.github.io/graphPub/docs/LynnVK.ttl#me" ]
 }

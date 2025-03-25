@@ -1,0 +1,48 @@
+@prefix : <http://example.org/ontology#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# People
+:Gerben a :Person ;
+    :hasProfile <https://ginfinai.be/#me> ;
+    :hasFullName "Gerben Ceuppens" .
+
+:NoOne a :Person ;
+    :hasFullName "No one" .
+
+:JohnDoe a :Person ;
+    :hasFullName "John Doe" .
+
+# Locations
+:Ternat a :Location ;
+    rdfs:label "Ternat, Belgium" .
+
+:Città di Castello a :Location ;
+    rdfs:label "Città di Castello, Italy" .
+
+:Paris a :Location ;
+    rdfs:label "Paris, France" .
+
+# Photos
+:Photo1 a :Photo ;
+    :hasTitle "Selfie" ;
+    :takenBy :Gerben ;
+    :depictsPerson :Gerben ;
+    :takenAt :Ternat ;
+    :hasDescription "Selfie of myself." ;
+    :hasImage <https://ginfinai.be/images/me.jpg> .
+
+:Photo2 a :Photo ;
+    :hasTitle "Vineyard in Umbria" ;
+    :takenBy :Gerben ;
+    :depictsPerson :NoOne ;
+    :takenAt :Città di Castello ;
+    :hasDescription "A photo of a vineyard in Città di Castello in Umbria, in the center of Italy." .
+    :hasImage <https://ginfinai.be/images/vineyard.jpg> .
+    
+:Photo2 a :Photo ;
+    :hasTitle "Eiffel Tower in Paris" ;
+    :takenBy :Gerben ;
+    :depictsPerson :JohnDoe ;
+    :takenAt :Paris ;
+    :hasDescription "A photo of a person in front of the Paris Eiffel Tower." .
+    :hasImage <https://ginfinai.be/images/paris.png> .

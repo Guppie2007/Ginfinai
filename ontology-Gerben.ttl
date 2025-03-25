@@ -1,0 +1,64 @@
+@prefix : <http://example.org/ontology#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+# Ontology Definition
+:Photo a rdfs:Class ;
+    rdfs:label "Photo" ;
+    rdfs:subClassOf foaf:Image .  # A photo is a type of image
+
+:Person a rdfs:Class ;
+    rdfs:label "Person" ;
+    rdfs:subClassOf foaf:Person .  # A person is a subclass of FOAF Person
+
+:Location a rdfs:Class ;
+    rdfs:label "Location" .  
+
+# Properties
+:hasTitle a rdf:Property ;
+    rdfs:label "has title" ;
+    rdfs:domain :Photo ;
+    rdfs:range xsd:string .
+
+:takenBy a rdf:Property ;
+    rdfs:label "taken by" ;
+    rdfs:domain :Photo ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf foaf:maker .  # The photographer is the "maker" in FOAF
+
+:depictsPerson a rdf:Property ;
+    rdfs:label "depicts person" ;
+    rdfs:domain :Photo ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf foaf:depicts .  # A photo depicting a person links to FOAF
+
+:takenAt a rdf:Property ;
+    rdfs:label "taken at" ;
+    rdfs:domain :Photo ;
+    rdfs:range :Location .
+
+:hasDescription a rdf:Property ;
+    rdfs:label "has description" ;
+    rdfs:domain :Photo ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf dc:description .  # Links to Dublin Core metadata description
+
+:hasImage a rdf:Property ;
+    rdfs:label "has image" ;
+    rdfs:domain :Photo ;
+    rdfs:range xsd:anyURI ;
+    rdfs:subPropertyOf foaf:depiction .  # Links an image file to FOAF depiction
+
+:hasFullName a rdf:Property ;
+    rdfs:label "has full name" ;
+    rdfs:domain :Person ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf foaf:name .  # Full name corresponds to FOAF name
+
+:hasProfile a rdf:Property ;
+    rdfs:label "has profile" ;
+    rdfs:domain :Person ;
+    rdfs:range xsd:anyURI ;
+    rdfs:subPropertyOf foaf:homepage .  # Profile can be a homepage in FOAF

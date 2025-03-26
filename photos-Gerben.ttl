@@ -14,13 +14,13 @@
 
 # Locations
 :Ternat a :Location ;
-    rdfs:label "Ternat, Belgium" .
+    :hasLocationName "Ternat, Belgium" .
 
-:Città di Castello a :Location ;
-    rdfs:label "Città di Castello, Italy" .
+:Città_di_Castello a :Location ;
+    :hasLocationName "Città di Castello, Italy" .
 
 :Paris a :Location ;
-    rdfs:label "Paris, France" .
+    :hasLocationName "Paris, France" .
 
 # Photos
 :Photo1 a :Photo ;
@@ -35,14 +35,14 @@
     :hasTitle "Vineyard in Umbria" ;
     :takenBy :Gerben ;
     :depictsPerson :NoOne ;
-    :takenAt :Città di Castello ;
-    :hasDescription "A photo of a vineyard in Città di Castello in Umbria, in the center of Italy." .
+    :takenAt :Città_di_Castello ;
+    :hasDescription "A photo of a vineyard in Città di Castello in Umbria, in the center of Italy." ;
     :hasImage <https://ginfinai.be/images/vineyard.jpg> .
     
-:Photo2 a :Photo ;
+:Photo3 a :Photo ;
     :hasTitle "Eiffel Tower in Paris" ;
     :takenBy :Gerben ;
     :depictsPerson :JohnDoe ;
     :takenAt :Paris ;
-    :hasDescription "A photo of a person in front of the Paris Eiffel Tower." .
+    :hasDescription "A photo of a person in front of the Paris Eiffel Tower." ;
     :hasImage <https://ginfinai.be/images/paris.png> .

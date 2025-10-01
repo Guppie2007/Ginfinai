@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --primary: #807AD0;
+}
+
+.text-primary{ color: var(--primary); }
+.bg-primary{ background-color: var(--primary); }
+.border-primary{ border-color: var(--primary); }
+
+.animate-bounce{
+  animation: bounceY 2s ease-in-out infinite;
+}
+
+@keyframes bounceY{
+  0%,100%{ transform: translateY(0); }
+  50%{ transform: translateY(-20px); }
+}
+
+/* Small responsive tweaks to keep layout similar to original */
+img{ display:block; }
+
+/* Typography tweaks */
+body { @apply antialiased text-gray-800; }
+
+/* Utility: center main container by default */
+.site-container { max-width: 78rem; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }

@@ -1,1 +1,18 @@
 Ginfinai website
+
+Next.js + Tailwind migration
+
+To run the new Next.js site locally:
+
+1. Move your existing `images/` folder into `public/images` (or create a `public` folder and copy `images` into it).
+2. Install dependencies:
+
+	npm install
+
+3. Start development server:
+
+	npm run dev
+
+Notes:
+- The project uses Tailwind CSS. The global styles are in `styles/globals.css`.
+- Analytics and the WhatsApp widget from the original HTML are not automatically injected; add them into `pages/_document.js` or in a component if needed.

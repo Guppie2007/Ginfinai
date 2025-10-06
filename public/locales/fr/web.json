@@ -1,0 +1,15 @@
+{
+  "title": "Solutions Web sur mesure",
+  "subtitle": "Choisissez si vous souhaitez gérer votre site vous-même ou que nous nous occupions de tout afin que vous puissiez vous concentrer sur votre activité principale.",
+  "self_managed": {
+    "title": "Site en gestion propre",
+    "description": "Souhaitez-vous pouvoir gérer et mettre à jour votre site vous-même ? Utilisez un CMS comme WordPress ou similaire."
+  },
+  "managed": {
+    "title": "Site géré par nous",
+    "description": "Nous construisons sur mesure et pouvons héberger et maintenir votre site pour que vous puissiez vous concentrer sur votre activité."
+  },
+  "questions_title": "Des questions?",
+  "questions_text": "N'hésitez pas à me contacter pour une discussion sans engagement sur vos besoins web.",
+  "contact_button": "Envoyez-moi un message →"
+}

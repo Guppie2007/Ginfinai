@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "title": "GinfinAI | Moderne Web & AI oplossingen",
+    "description": "GinfinAI: Moderne webdesign en AI applicaties om uw bedrijf te laten schitteren in het digitale tijdperk.",
+    "keywords": "GinfinAI, webdesign, AI applicaties, moderne websites, digitale oplossingen, artificiële intelligentie, webontwikkeling"
+  },
+  "hero": {
+    "animation1": "Web & AI to Infinity and Beyond!",
+    "animation2": "Bouwen aan de toekomst met Code en AI.",
+    "animation3": "Jouw digitale transformatie begint hier.",
+    "description": "Ik design moderne websites en AI applicaties die jouw bedrijf laten schitteren in het digitale tijdperk.",
+    "cta1": "Ontdek mijn diensten",
+    "cta2": "Neem contact op"
+  },
+  "services": {
+    "title": "Wat kan ik voor u doen?",
+    "webdesign": {
+      "title": "Webdesign",
+      "description": "Moderne, responsive websites die uw merk vertegenwoordigen.",
+      "button": "Meer info"
+    },
+    "update": {
+      "title": "Web Update",
+      "description": "Update en moderniseer uw huidige site.",
+      "button": "Meer info"
+    },
+    "ai": {
+      "title": "AI Applicaties",
+      "description": "Bouw AI-gestuurde functies die echte waarde toevoegen.",
+      "button": "Contacteer mij"
+    }
+  },
+  "about": {
+    "title": "Wie ben ik?",
+    "description1": "Ik ben <span class='font-semibold text-white'>Gerben Ceuppens</span>, 23 jaar, getogen te Ternat en afgestudeerd Burgerlijk Ingenieur Computerwetenschappen aan de Universiteit Gent.",
+    "description2": "Tijdens mijn studies specialiseerde ik me in <span class='text-purple-400 font-medium'>Artificiële Intelligentie</span>. Zelfs wanneer ik nog studeerd, was ik gretig om mijn kennis in de praktijk te brengen.",
+    "description3": "Dit leidde tot <span class='font-semibold text-white'>GinfinAI</span>, waarmee ik mijn expertise kan delen en ondernemers kan helpen.",
+    "description4": "Momenteel werk ik als AI Engineer bij <span class='font-semibold text-white'>AI Square</span>, wie mij eveneens begeleidde bij mijn thesis over GraphRAG.",
+    "cta": "Laat ons praten over jouw project"
+  }
+}

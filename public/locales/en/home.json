@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "title": "GinfinAI | Modern Web & AI Solutions",
+    "description": "GinfinAI: Modern web design and AI applications to elevate your business in the digital age.",
+    "keywords": "GinfinAI, web design, AI applications, modern websites, digital solutions, artificial intelligence, web development"
+  },
+  "hero": {
+    "animation1": "Web & AI to Infinity and Beyond!",
+    "animation2": "Building the Future with Code and AI.",
+    "animation3": "Your Digital Transformation Starts Here.",
+    "description": "I design modern websites and AI applications that help your business shine in the digital age.",
+    "cta1": "Discover my services",
+    "cta2": "Contact me"
+  },
+  "services": {
+    "title": "What can I do for you?",
+    "webdesign": {
+      "title": "Web Design",
+      "description": "Modern, responsive websites that represent your brand.",
+      "button": "More info"
+    },
+    "update": {
+      "title": "Web Update",
+      "description": "Update and modernize your current site.",
+      "button": "More info"
+    },
+    "ai": {
+      "title": "AI Applications",
+      "description": "Build AI-driven features that add real value.",
+      "button": "Contact me"
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "description1": "I'm <span class='font-semibold text-white'>Gerben Ceuppens</span>, 24 years old, from Ternat and a master's graduate in Computer Science Engineering at Ghent University.",
+    "description2": "During my studies, I specialised in <span class='text-purple-400 font-medium'>Artificial Intelligence</span>. Even when I was still studying, I was eager to put my gained knowledge into practice.",
+    "description3": "This led to <span class='font-semibold text-white'>GinfinAI</span>, with which I can share my expertise and help entrepreneurs.",
+    "description4": "Currently, I work as an AI Engineer at <span class='font-semibold text-white'>AI Square</span>, who supervised me during my Master's dissertation on GraphRAG.",
+    "cta": "Let's talk about your project"
+  }
+}

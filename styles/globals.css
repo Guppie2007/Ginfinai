@@ -22,8 +22,103 @@
 /* Small responsive tweaks to keep layout similar to original */
 img{ display:block; }
 
-/* Typography tweaks */
-body { @apply antialiased text-gray-800; }
+body {
+  font-family: 'Inter', sans-serif;
+  @apply text-gray-200 bg-gray-900;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-semibold text-white;
+}
+
+.prose-lg p {
+  @apply text-gray-200;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+.neon-text {
+  text-shadow: 0 0 5px #a855f7;
+}
 
 /* Utility: center main container by default */
 .site-container { max-width: 78rem; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
+
+@keyframes gradientRotate {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+.animate-gradient-rotate {
+  background-size: 200% 200%;
+  animation: gradientRotate 4s linear infinite;
+}
+
+@keyframes blob {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+.animate-blob {
+  animation: blob 8s infinite;
+}
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+.neon-text {
+  text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px rgba(168, 85, 247, 0.3);
+}
+
+/* Global neon button style */
+.neon-button {
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.702);
+  transition: all 0.3s ease;
+}
+
+.neon-button:hover {
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.9);
+}
+
+/* Underline animation for links */
+.underline-animation {
+  position: relative;
+  display: inline-block;
+}
+
+.underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #a855f7;
+  transition: width 0.3s ease;
+}
+
+.underline-animation:hover::after {
+  width: 100%;
+}
+
+/* Transition standard */
+.transition-standard {
+  transition: all 0.3s ease-in-out;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+.animate-scanline {
+  animation: scanline 2s linear infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+a:hover {
+  animation: pulse 0.5s ease;
+}

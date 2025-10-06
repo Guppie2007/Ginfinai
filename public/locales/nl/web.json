@@ -1,0 +1,15 @@
+{
+  "title": "Web oplossingen op maat",
+  "subtitle": "Kies of u uw website zelf wilt beheren of dat ik alles voor u regel, zodat u zich op uw core business kunt focussen.",
+  "self_managed": {
+    "title": "Website in eigen beheer",
+    "description": "Wilt u de mogelijkheid om uw website achteraf zelf te beheren en te updaten? Ik kan een CMS zoals WordPress of Wix gebruiken om uw website te bouwen."
+  },
+  "managed": {
+    "title": "Website in mijn beheer",
+    "description": "Ik bouw op maat en kunnen uw site hosten en onderhouden zodat u zich op uw core business kan focussen."
+  },
+  "questions_title": "Nog vragen?",
+  "questions_text": "Neem gerust contact met mij op voor een vrijblijvend gesprek over uw webbehoeften.",
+  "contact_button": "Stuur mij een bericht →"
+}

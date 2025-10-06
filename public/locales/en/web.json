@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "title": "GinfinAI - Web Solutions",
+    "description": "GinfinAI: Modern web solutions tailored to your needs"
+  },
+  "title": "Tailored Web Solutions",
+  "subtitle": "Choose whether you want to manage your site yourself or have me handle everything so you can focus on your core business.",
+  "self_managed": {
+    "title": "Self-managed website",
+    "description": "Want the ability to manage and update your site yourself? I can use a CMS like Wordpress or Wix to build your website."
+  },
+  "managed": {
+    "title": "Managed website",
+    "description": "I build custom sites and can host and maintain your site so you can focus on your business."
+  },
+  "questions_title": "Any questions?",
+  "questions_text": "Feel free to contact me for a no-obligation discussion about your web needs.",
+  "contact_button": "Send me a message →"
+}

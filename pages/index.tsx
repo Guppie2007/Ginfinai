@@ -52,8 +52,8 @@ export default function Home() {
       <Head>
         <title>{t('home:meta.title')}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content={t('home:meta.description')} />
-        <meta name="keywords" content={t('home:meta.keywords')} />
+        <meta name="description" content={t('home:meta.description') as string} />
+        <meta name="keywords" content={t('home:meta.keywords') as string} />
         <meta name="author" content="Gerben Ceuppens" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

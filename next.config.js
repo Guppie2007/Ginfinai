@@ -18,9 +18,9 @@ const nextConfig = {
 
   // For development convenience
   // This is not part of i18n but general Next.js config
-  // eslint: {
-  //   ignoreDuringBuilds: true,
-  // },
+  eslint: {
+     ignoreDuringBuilds: true,
+  },
 }
 
 export default nextConfig

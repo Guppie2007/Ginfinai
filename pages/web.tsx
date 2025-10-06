@@ -18,20 +18,22 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
 const Web: NextPage = () => {
   const { t } = useTranslation('web')
+
   return (
     <>
       <Head>
-        <title>{t('meta.title')}</title>
-        <meta name="description" content={t('meta.description')} />
+        <title>{t('meta.title', 'GinfinAI Web Solutions')}</title>
+        <meta name="description" content={t('meta.description', 'Professional web solutions by GinfinAI')} />
       </Head>
 
       {/* Main container with padding-top to account for fixed header */}
-      <div className="pt-24"> {/* Added padding to prevent content from being hidden behind header */}
-        {/* Hero Section with cyberpunk styling */}
+      <div className="pt-24">
+
+        {/* Hero Section */}
         <section className="relative py-12 bg-gray-900">
           <ParticlesBackground />
           <InfinityOrbit />
-                    
+
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
@@ -40,7 +42,7 @@ const Web: NextPage = () => {
               transition={{ duration: 0.6 }}
               className="text-3xl md:text-4xl font-bold text-white mb-6 neon-text"
             >
-              {t('title')}
+              {t('title', 'Web Solutions')}
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -49,7 +51,7 @@ const Web: NextPage = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto"
             >
-              {t('subtitle')}
+              {t('subtitle', 'High-quality websites tailored to your needs.')}
             </motion.p>
           </div>
 
@@ -61,18 +63,18 @@ const Web: NextPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="p-8 from-gray-900 via-purple-900 to-blue-900 backdrop-blur-sm rounded-2xl shadow-lg border border-purple-500/30 hover:border-purple-400/50 transition-all"
+              className="p-8 bg-gray-800/50 backdrop-blur-sm rounded-2xl shadow-lg border border-purple-500/30 hover:border-purple-400/50 transition-all"
             >
-                <h3 className="text-xl font-semibold text-white text-center mb-4 neon-text">
-                {t('self_managed.title')}
+              <h3 className="text-xl font-semibold text-white text-center mb-4 neon-text">
+                {t('self_managed.title', 'Self-Managed Website')}
               </h3>
-                <p className="text-gray-300 text-center mb-6">{t('self_managed.description')}</p>
+              <p className="text-gray-300 text-center mb-6">{t('self_managed.description', '')}</p>
               <div className="text-center">
                 <a
                   href="mailto:info@ginfinai.be?subject=Website in eigen beheer"
                   className="px-6 py-3 bg-purple-600 text-white font-bold rounded-lg shadow-md hover:shadow-purple-500/50 transition-all transform hover:-translate-y-1 neon-button-cta"
                 >
-                  {t('contact_button')}
+                  {t('contact_button', 'Contact Us')}
                 </a>
               </div>
             </motion.div>
@@ -85,14 +87,16 @@ const Web: NextPage = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="p-8 bg-gray-800/50 backdrop-blur-sm rounded-2xl shadow-lg border border-purple-500/30 hover:border-purple-400/50 transition-all"
             >
-                <h3 className="text-xl font-semibold text-white text-center mb-4 neon-text">{t('managed.title')}</h3>
-                <p className="text-gray-300 text-center mb-6">{t('managed.description')}</p>
+              <h3 className="text-xl font-semibold text-white text-center mb-4 neon-text">
+                {t('managed.title', 'Managed Website')}
+              </h3>
+              <p className="text-gray-300 text-center mb-6">{t('managed.description', '')}</p>
               <div className="text-center">
                 <a
                   href="mailto:info@ginfinai.be?subject=Website in ons beheer"
                   className="px-6 py-3 bg-purple-600 text-white font-bold rounded-lg shadow-md hover:shadow-purple-500/50 transition-all transform hover:-translate-y-1 neon-button-cta"
                 >
-                  {t('contact_button')}
+                  {t('contact_button', 'Contact Us')}
                 </a>
               </div>
             </motion.div>
@@ -107,7 +111,7 @@ const Web: NextPage = () => {
               transition={{ duration: 0.6 }}
               className="text-2xl font-semibold text-white mb-4 neon-text"
             >
-              {t('questions_title')}
+              {t('questions_title', 'Questions?')}
             </motion.h3>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -116,7 +120,7 @@ const Web: NextPage = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-gray-300 text-lg mb-6 max-w-2xl mx-auto"
             >
-              {t('questions_text')}
+              {t('questions_text', 'Reach out if you have any questions about our web solutions.')}
             </motion.p>
             <motion.a
               initial={{ opacity: 0, y: 20 }}
@@ -126,13 +130,13 @@ const Web: NextPage = () => {
               href="mailto:info@ginfinai.be?subject=Vraag over web oplossingen"
               className="inline-block px-8 py-3 bg-purple-600 text-white font-bold rounded-lg shadow-md hover:shadow-purple-500/50 transition-all transform hover:-translate-y-1 neon-button-cta"
             >
-              {t('contact_button')}
+              {t('contact_button', 'Contact Us')}
             </motion.a>
           </div>
         </section>
       </div>
 
-      {/* Global styles for consistent button styling */}
+      {/* Global styles */}
       <style jsx global>{`
         .neon-text {
           text-shadow: 0 0 6px rgba(168, 85, 247, 0.8);
@@ -145,10 +149,6 @@ const Web: NextPage = () => {
           letter-spacing: 0.5px;
           position: relative;
           overflow: hidden;
-        }
-
-        .neon-button-cta:hover::before {
-          left: 100%;
         }
 
         @media (min-width: 768px) {

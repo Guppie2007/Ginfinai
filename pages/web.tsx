@@ -23,12 +23,10 @@ const Web: NextPage = () => {
     <>
       <Head>
         <title>{String(t('meta.title', 'GinfinAI - Web Solutions'))}</title>
-        <meta name="description" content={t('meta.description', 'Professional web solutions by GinfinAI')} />
+        <meta name="description" content={String(t('meta.description', 'Professional web solutions by GinfinAI'))} />
       </Head>
 
-      {/* Main container with padding-top to account for fixed header */}
       <div className="pt-24">
-
         {/* Hero Section */}
         <section className="relative py-12 bg-gray-900">
           <ParticlesBackground />
@@ -42,7 +40,7 @@ const Web: NextPage = () => {
               transition={{ duration: 0.6 }}
               className="text-3xl md:text-4xl font-bold text-white mb-6 neon-text"
             >
-              {t('title', 'Web Solutions')}
+              {String(t('title', 'Web Solutions'))}
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -51,7 +49,7 @@ const Web: NextPage = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto"
             >
-              {t('subtitle', 'High-quality websites tailored to your needs.')}
+              {String(t('subtitle', 'High-quality websites tailored to your needs.'))}
             </motion.p>
           </div>
 
@@ -66,15 +64,17 @@ const Web: NextPage = () => {
               className="p-8 bg-gray-800/50 backdrop-blur-sm rounded-2xl shadow-lg border border-purple-500/30 hover:border-purple-400/50 transition-all"
             >
               <h3 className="text-xl font-semibold text-white text-center mb-4 neon-text">
-                {t('self_managed.title', 'Self-Managed Website')}
+                {String(t('self_managed.title', 'Self-Managed Website'))}
               </h3>
-              <p className="text-gray-300 text-center mb-6">{t('self_managed.description', '')}</p>
+              <p className="text-gray-300 text-center mb-6">
+                {String(t('self_managed.description', ''))}
+              </p>
               <div className="text-center">
                 <a
                   href="mailto:info@ginfinai.be?subject=Website in eigen beheer"
                   className="px-6 py-3 bg-purple-600 text-white font-bold rounded-lg shadow-md hover:shadow-purple-500/50 transition-all transform hover:-translate-y-1 neon-button-cta"
                 >
-                  {t('contact_button', 'Contact Us')}
+                  {String(t('contact_button', 'Contact Us'))}
                 </a>
               </div>
             </motion.div>
@@ -88,15 +88,17 @@ const Web: NextPage = () => {
               className="p-8 bg-gray-800/50 backdrop-blur-sm rounded-2xl shadow-lg border border-purple-500/30 hover:border-purple-400/50 transition-all"
             >
               <h3 className="text-xl font-semibold text-white text-center mb-4 neon-text">
-                {t('managed.title', 'Managed Website')}
+                {String(t('managed.title', 'Managed Website'))}
               </h3>
-              <p className="text-gray-300 text-center mb-6">{t('managed.description', '')}</p>
+              <p className="text-gray-300 text-center mb-6">
+                {String(t('managed.description', ''))}
+              </p>
               <div className="text-center">
                 <a
                   href="mailto:info@ginfinai.be?subject=Website in ons beheer"
                   className="px-6 py-3 bg-purple-600 text-white font-bold rounded-lg shadow-md hover:shadow-purple-500/50 transition-all transform hover:-translate-y-1 neon-button-cta"
                 >
-                  {t('contact_button', 'Contact Us')}
+                  {String(t('contact_button', 'Contact Us'))}
                 </a>
               </div>
             </motion.div>
@@ -111,7 +113,7 @@ const Web: NextPage = () => {
               transition={{ duration: 0.6 }}
               className="text-2xl font-semibold text-white mb-4 neon-text"
             >
-              {t('questions_title', 'Questions?')}
+              {String(t('questions_title', 'Questions?'))}
             </motion.h3>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -120,7 +122,7 @@ const Web: NextPage = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-gray-300 text-lg mb-6 max-w-2xl mx-auto"
             >
-              {t('questions_text', 'Reach out if you have any questions about our web solutions.')}
+              {String(t('questions_text', 'Reach out if you have any questions about our web solutions.'))}
             </motion.p>
             <motion.a
               initial={{ opacity: 0, y: 20 }}
@@ -130,7 +132,7 @@ const Web: NextPage = () => {
               href="mailto:info@ginfinai.be?subject=Vraag over web oplossingen"
               className="inline-block px-8 py-3 bg-purple-600 text-white font-bold rounded-lg shadow-md hover:shadow-purple-500/50 transition-all transform hover:-translate-y-1 neon-button-cta"
             >
-              {t('contact_button', 'Contact Us')}
+              {String(t('contact_button', 'Contact Us'))}
             </motion.a>
           </div>
         </section>

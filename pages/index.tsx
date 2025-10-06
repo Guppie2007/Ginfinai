@@ -25,25 +25,25 @@ export default function Home() {
 
   const services = [
     {
-      title: t('home:services.webdesign.title', 'Webdesign'),
-      text: t('home:services.webdesign.description', ''),
+      title: String(t('home:services.webdesign.title', 'Webdesign')),
+      text: String(t('home:services.webdesign.description', '')),
       icon: '/icons/webdesign.svg',
       link: '/web',
-      button: t('home:services.webdesign.button', 'Learn More'),
+      button: String(t('home:services.webdesign.button', 'Learn More')),
     },
     {
-      title: t('home:services.update.title', 'Update'),
-      text: t('home:services.update.description', ''),
+      title: String(t('home:services.update.title', 'Update')),
+      text: String(t('home:services.update.description', '')),
       icon: '/icons/update.svg',
       link: '/web',
-      button: t('home:services.update.button', 'Learn More'),
+      button: String(t('home:services.update.button', 'Learn More')),
     },
     {
-      title: t('home:services.ai.title', 'AI'),
-      text: t('home:services.ai.description', ''),
+      title: String(t('home:services.ai.title', 'AI')),
+      text: String(t('home:services.ai.description', '')),
       icon: '/icons/ai.svg',
       link: 'mailto:info@ginfinai.be',
-      button: t('home:services.ai.button', 'Contact'),
+      button: String(t('home:services.ai.button', 'Contact')),
     },
   ]
 
@@ -76,11 +76,11 @@ export default function Home() {
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white drop-shadow-lg font-inter neon-text">
             <TypeAnimation
               sequence={[
-                t('home:hero.animation1', 'Welcome'),
+                String(t('home:hero.animation1', 'Welcome')),
                 1000,
-                t('home:hero.animation2', 'To GinfinAI'),
+                String(t('home:hero.animation2', 'To GinfinAI')),
                 1000,
-                t('home:hero.animation3', 'Your AI Partner'),
+                String(t('home:hero.animation3', 'Your AI Partner')),
                 1000,
               ]}
               speed={70}
@@ -89,7 +89,7 @@ export default function Home() {
           </h1>
 
           <p className="mt-6 text-lg md:text-xl text-gray-300 font-inter">
-            {t('home:hero.description', 'We create amazing AI-powered experiences.')}
+            {String(t('home:hero.description', 'We create amazing AI-powered experiences.'))}
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
@@ -99,7 +99,7 @@ export default function Home() {
               href="#doen"
               className="px-8 py-3 bg-purple-600 text-white font-bold rounded-lg shadow-lg hover:shadow-purple-500/50 transition-all transform hover:-translate-y-1 neon-button-cta"
             >
-              {t('home:hero.cta1', 'Get Started')} →
+              {String(t('home:hero.cta1', 'Get Started'))} →
             </motion.a>
 
             <motion.a
@@ -108,7 +108,7 @@ export default function Home() {
               href="mailto:info@ginfinai.be"
               className="px-8 py-3 border-2 border-purple-500 text-purple-300 font-bold rounded-lg hover:bg-purple-600 hover:text-white transition-all transform hover:-translate-y-1 neon-button-secondary"
             >
-              {t('home:hero.cta2', 'Contact')} →
+              {String(t('home:hero.cta2', 'Contact'))} →
             </motion.a>
           </div>
         </motion.div>
@@ -123,7 +123,7 @@ export default function Home() {
           transition={{ duration: 0.6 }}
           className="text-center text-3xl md:text-4xl font-bold text-white mb-12 font-inter neon-text"
         >
-          {t('home:services.title', 'Our Services')}
+          {String(t('home:services.title', 'Our Services'))}
         </motion.h2>
 
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 px-4 sm:px-6 lg:px-8">
@@ -166,7 +166,7 @@ export default function Home() {
           transition={{ duration: 0.8 }}
           className="text-3xl md:text-4xl text-center font-bold mb-10 text-white font-inter neon-text"
         >
-          {t('home:about.title', 'About Me')}
+          {String(t('home:about.title', 'About Me'))}
         </motion.h2>
 
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-10 items-center px-4 sm:px-6 lg:px-8">
@@ -190,17 +190,17 @@ export default function Home() {
             transition={{ duration: 0.7 }}
             className="md:w-2/3 text-gray-300 leading-relaxed prose prose-lg space-y-4 font-inter"
           >
-            <p dangerouslySetInnerHTML={{ __html: t('home:about.description1', '') }}></p>
-            <p dangerouslySetInnerHTML={{ __html: t('home:about.description2', '') }}></p>
-            <p dangerouslySetInnerHTML={{ __html: t('home:about.description3', '') }}></p>
-            <p dangerouslySetInnerHTML={{ __html: t('home:about.description4', '') }}></p>
+            <p dangerouslySetInnerHTML={{ __html: String(t('home:about.description1', '')) }}></p>
+            <p dangerouslySetInnerHTML={{ __html: String(t('home:about.description2', '')) }}></p>
+            <p dangerouslySetInnerHTML={{ __html: String(t('home:about.description3', '')) }}></p>
+            <p dangerouslySetInnerHTML={{ __html: String(t('home:about.description4', '')) }}></p>
 
             <div className="mt-6 text-center">
               <a
                 href="mailto:info@ginfinai.be"
                 className="inline-block px-8 py-3 bg-purple-600 text-white font-bold rounded-lg shadow-md hover:shadow-purple-500/50 transition-all transform hover:-translate-y-1 neon-button-cta"
               >
-                {t('home:about.cta', 'Contact Me')} →
+                {String(t('home:about.cta', 'Contact Me'))} →
               </a>
             </div>
           </motion.div>

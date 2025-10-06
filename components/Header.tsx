@@ -91,7 +91,11 @@ const Header: FC = () => {
                         : 'text-purple-300 hover:bg-purple-500/10'
                     )}
                   >
-                    {lang === 'nl' ? 'Nederlands' : lang === 'en' ? 'English' : 'Français'}
+                    {lang === 'nl'
+                      ? 'Nederlands'
+                      : lang === 'en'
+                      ? 'English'
+                      : 'Français'}
                   </button>
                 ))}
               </div>
@@ -109,7 +113,7 @@ const Header: FC = () => {
               locale={currentLanguage}
               className="text-purple-300 hover:text-white transition-colors neon-text relative group"
             >
-              <span className="text-lg font-medium">{t('home', 'Home')}</span>
+              <span className="text-lg font-medium">{String(t('home', 'Home'))}</span>
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-500 transition-all group-hover:w-full"></span>
             </Link>
             <Link
@@ -117,7 +121,7 @@ const Header: FC = () => {
               locale={currentLanguage}
               className="text-purple-300 hover:text-white transition-colors neon-text relative group"
             >
-              <span className="text-lg font-medium">{t('services', 'Services')}</span>
+              <span className="text-lg font-medium">{String(t('services', 'Services'))}</span>
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-500 transition-all group-hover:w-full"></span>
             </Link>
           </nav>
@@ -148,14 +152,14 @@ const Header: FC = () => {
               locale={currentLanguage}
               className="text-purple-300 hover:text-white transition-colors neon-text relative group"
             >
-              <span className="text-lg font-medium">{t('about', 'About')}</span>
+              <span className="text-lg font-medium">{String(t('about', 'About'))}</span>
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-500 transition-all group-hover:w-full"></span>
             </Link>
             <a
               href="mailto:info@ginfinai.be"
               className="px-5 py-2.5 border-2 border-purple-500 text-purple-300 hover:bg-purple-500/20 hover:text-white transition-colors rounded-lg neon-text text-lg font-medium hover:shadow-purple-500/30"
             >
-              {t('contact', 'Contact')}
+              {String(t('contact', 'Contact'))}
             </a>
           </nav>
 
@@ -192,7 +196,7 @@ const Header: FC = () => {
                     className="text-purple-300 hover:text-white w-full text-center py-3 border-b border-purple-500/30 neon-text text-xl font-medium"
                     onClick={() => setOpen(false)}
                   >
-                    {t(key, key.charAt(0).toUpperCase() + key.slice(1))}
+                    {String(t(key, key.charAt(0).toUpperCase() + key.slice(1)))}
                   </Link>
                 ))}
                 <a
@@ -200,7 +204,7 @@ const Header: FC = () => {
                   className="text-purple-300 hover:text-white w-full text-center py-3 bg-purple-500/10 rounded-lg border border-purple-500 neon-text text-xl font-medium mt-2"
                   onClick={() => setOpen(false)}
                 >
-                  {t('contact', 'Contact')}
+                  {String(t('contact', 'Contact'))}
                 </a>
               </nav>
             </div>

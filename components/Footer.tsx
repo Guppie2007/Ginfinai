@@ -20,7 +20,7 @@ const Footer: FC = () => {
                 className="w-20 h-auto neon-filter"
               />
             </div>
-            <p className="text-purple-300 neon-text-sm">{t('tagline', 'Innovative AI solutions')}</p>
+            <p className="text-purple-300 neon-text-sm">{String(t('tagline', 'Innovative AI solutions'))}</p>
 
             {/* Social Links */}
             <div className="flex gap-4 pt-4">
@@ -47,14 +47,14 @@ const Footer: FC = () => {
                 href="mailto:info@ginfinai.be"
                 className="px-3 py-2 border border-purple-500 rounded-lg text-purple-300 hover:bg-purple-500/20 transition-colors neon-text-sm text-base"
               >
-                {t('email', 'info@ginfinai.be')}
+                {String(t('email', 'info@ginfinai.be'))}
               </a>
             </div>
           </div>
 
           {/* Navigation Section */}
           <div>
-            <h4 className="text-white font-semibold mb-4 text-lg neon-text">{t('menu_title', 'Menu')}</h4>
+            <h4 className="text-white font-semibold mb-4 text-lg neon-text">{String(t('menu_title', 'Menu'))}</h4>
             <ul className="space-y-2">
               {[
                 { key: 'home', href: '#home' },
@@ -66,7 +66,7 @@ const Footer: FC = () => {
                     href={link.href}
                     className="text-purple-300 hover:text-white transition-colors neon-text-sm text-base relative group"
                   >
-                    <span>{t(link.key, link.key.charAt(0).toUpperCase() + link.key.slice(1))}</span>
+                    <span>{String(t(link.key, link.key.charAt(0).toUpperCase() + link.key.slice(1)))}</span>
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-500 transition-all group-hover:w-1/2"></span>
                   </Link>
                 </li>
@@ -76,7 +76,7 @@ const Footer: FC = () => {
 
           {/* Contact Section */}
           <div>
-            <h4 className="text-white font-semibold mb-4 text-lg neon-text">{t('contact_title', 'Contact')}</h4>
+            <h4 className="text-white font-semibold mb-4 text-lg neon-text">{String(t('contact_title', 'Contact'))}</h4>
             <ul className="space-y-2 text-purple-300 neon-text-sm">
               <li>
                 <a href="mailto:info@ginfinai.be" className="hover:text-white transition-colors">info@ginfinai.be</a>
@@ -91,12 +91,12 @@ const Footer: FC = () => {
 
           {/* CTA Section */}
           <div className="flex flex-col justify-between">
-            <h4 className="text-white font-semibold mb-4 text-lg neon-text">{t('cta_title', 'Get in Touch')}</h4>
+            <h4 className="text-white font-semibold mb-4 text-lg neon-text">{String(t('cta_title', 'Get in Touch'))}</h4>
             <a
               href="mailto:info@ginfinai.be"
               className="px-6 py-3 bg-purple-600 text-white font-bold rounded-lg shadow-md hover:shadow-purple-500/50 transition-all transform hover:-translate-y-1 neon-button-cta text-center mt-auto"
             >
-              {t('cta_button', 'Contact Us')}
+              {String(t('cta_button', 'Contact Us'))}
             </a>
           </div>
         </div>
@@ -109,10 +109,10 @@ const Footer: FC = () => {
             </p>
             <div className="flex gap-6">
               <Link href="/privacy" className="text-purple-300 hover:text-white transition-colors neon-text-sm text-sm">
-                {t('privacy', 'Privacy')}
+                {String(t('privacy', 'Privacy'))}
               </Link>
               <Link href="/terms" className="text-purple-300 hover:text-white transition-colors neon-text-sm text-sm">
-                {t('terms', 'Terms')}
+                {String(t('terms', 'Terms'))}
               </Link>
             </div>
           </div>

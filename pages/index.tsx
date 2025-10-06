@@ -50,10 +50,10 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>{t('home:meta.title', 'GinfinAI')}</title>
+        <title>{String(t('meta.title', 'GinfinAI'))}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content={t('home:meta.description', '')} />
-        <meta name="keywords" content={t('home:meta.keywords', '')} />
+        <meta name="description" content={String(t('meta.description', ''))} />
+        <meta name="keywords" content={String(t('meta.keywords', ''))} />
         <meta name="author" content="Gerben Ceuppens" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

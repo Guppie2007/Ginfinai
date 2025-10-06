@@ -22,7 +22,7 @@ const Web: NextPage = () => {
   return (
     <>
       <Head>
-        <title>{t('meta.title', 'GinfinAI Web Solutions')}</title>
+        <title>{String(t('meta.title', 'GinfinAI - Web Solutions'))}</title>
         <meta name="description" content={t('meta.description', 'Professional web solutions by GinfinAI')} />
       </Head>
 

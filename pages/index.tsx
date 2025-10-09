@@ -170,7 +170,7 @@ export default function Home() {
         </motion.h2>
 
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-10 items-center px-4 sm:px-6 lg:px-8">
-          <div className="relative w-60 h-60 group">
+          <div className="relative w-60 h-80 group">
             <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-purple-500 to-blue-500 p-[2px] group-hover:from-purple-600 group-hover:to-blue-600 transition-all duration-1000 animate-gradient-rotate">
               <div className="rounded-lg bg-gray-900 w-full h-full relative z-20 p-1">
                 <FuturisticNodes className="absolute inset-0 z-10 opacity-70" />

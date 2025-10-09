@@ -1,6 +1,7 @@
 'use client'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import ParticlesBackground from '../components/ParticlesBackground'
@@ -62,6 +63,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 pt-24">
+        <SpeedInsights />
         <ParticlesBackground />
         <InfinityOrbit />
         <div className="absolute w-[500px] h-[500px] bg-purple-500/10 rounded-full mix-blend-screen filter blur-3xl opacity-50 animate-blob top-[-150px] left-[-150px]"></div>

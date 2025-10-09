@@ -175,7 +175,7 @@ export default function Home() {
               <div className="rounded-lg bg-gray-900 w-full h-full relative z-20 p-1">
                 <FuturisticNodes className="absolute inset-0 z-10 opacity-70" />
                 <img
-                  src="/images/me.jpg"
+                  src="/images/me_2025.jpg"
                   alt="Gerben Ceuppens"
                   className="relative rounded-md w-full h-full object-cover shadow-2xl border-2 border-transparent group-hover:border-purple-400 transition-all duration-500 z-20 transform group-hover:scale-105 group-hover:rotate-1"
                 />
@@ -206,8 +206,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
-      <Footer />
     </>
   )
 }

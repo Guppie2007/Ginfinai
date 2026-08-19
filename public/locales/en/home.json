@@ -32,10 +32,10 @@
   },
   "about": {
     "title": "About Me",
-    "description1": "I'm <span class='font-semibold text-white'>Gerben Ceuppens</span>, 24 years old, from Ternat and a master's graduate in Computer Science Engineering at Ghent University.",
+    "description1": "I'm <span class='font-semibold text-white'>Gerben Ceuppens</span>, 25 years old, from Ternat and a master's graduate in Computer Science Engineering at Ghent University.",
     "description2": "During my studies, I specialised in <span class='text-purple-400 font-medium'>Artificial Intelligence</span>. Even when I was still studying, I was eager to put my gained knowledge into practice.",
     "description3": "This led to <span class='font-semibold text-white'>GinfinAI</span>, with which I can share my expertise and help entrepreneurs.",
-    "description4": "Currently, I work as an AI Engineer at <span class='font-semibold text-white'>AI Square</span>, who supervised me during my Master's dissertation on GraphRAG.",
+    "description4": "Currently, I work as an AI Engineer at <span class='font-semibold text-white'>Growing pAI</span>, where I can also expand and apply my knowledge.",
     "cta": "Let's talk about your project"
   }
 }

@@ -32,10 +32,10 @@
   },
   "about": {
     "title": "À propos de moi",
-    "description1": "Je m'appelle <span class='font-semibold text-white'>Gerben Ceuppens</span>, j'ai 23 ans, je viens de Ternat et je suis diplômé en master d'ingénierie informatique à l'Université de Gand.",
+    "description1": "Je m'appelle <span class='font-semibold text-white'>Gerben Ceuppens</span>, j'ai 25 ans, je viens de Ternat et je suis diplômé en master d'ingénierie informatique à l'Université de Gand.",
     "description2": "Pendant mes études, je me suis spécialisé dans <span class='text-purple-400 font-medium'>l'intelligence artificielle</span>. Même lorsque j'étais encore étudiant, j'avais hâte de mettre en pratique mes connaissances acquises",
     "description3": "Cela a conduit à <span class='font-semibold text-white'>GinfinAI</span>, avec lequel je peux partager mon expertise et aider les entrepreneurs.",
-    "description4": "Actuellement, je travaille en tant qu'ingénieur IA chez <span class='font-semibold text-white'>AI Square</span>, qui m'a encadré lors de mon mémoire de Master sur GraphRAG.",
+    "description4": "Actuellement, je travaille en tant qu'ingénieur IA chez <span class='font-semibold text-white'>Growing pAI</span>, où je peux également développer et appliquer mes connaissances.",
     "cta": "Parlons de votre projet"
   }
 }

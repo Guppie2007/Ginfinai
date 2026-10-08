@@ -8,18 +8,11 @@ const nextI18NextConfig = require('./next-i18next.config.cjs')
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   i18n: nextI18NextConfig.i18n,
 
-  // images configuration
-  images: {
-    // domains: [],
-  },
-
-  // For development convenience
-  // This is not part of i18n but general Next.js config
-  eslint: {
-     ignoreDuringBuilds: true,
+  // De aparte webpagina is opgegaan in de homepage (sectie Diensten)
+  async redirects() {
+    return [{ source: '/web', destination: '/#diensten', permanent: false }]
   },
 }
 

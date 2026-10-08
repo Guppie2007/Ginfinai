@@ -1,0 +1,13 @@
+{
+  "meta": { "title": "Déclaration de confidentialité · GinfinAI", "description": "Comment GinfinAI traite les données que vous transmettez via ce site." },
+  "eyebrow": "Confidentialité",
+  "title": "Déclaration de confidentialité",
+  "updated": "Dernière mise à jour : octobre 2026",
+  "sections": [
+    { "h": "Qui est responsable ?", "p": ["GinfinAI, Gerben Ceuppens, Notestraat 64, 1742 Ternat, TVA BE1012.619.721. Vos questions sur la confidentialité : info@ginfinai.be."] },
+    { "h": "Quelles données et pourquoi", "p": ["Formulaire de contact : votre nom, adresse e-mail, message et, si vous les complétez, entreprise, téléphone, sujet et budget. Je les utilise uniquement pour répondre à votre demande et, le cas échéant, établir un devis.", "Base légale : mesures prises à votre demande avant un éventuel contrat (art. 6.1.b RGPD)."] },
+    { "h": "Combien de temps", "p": ["Les messages qui n'aboutissent pas à une mission sont supprimés au plus tard 12 mois après le dernier contact. Si vous devenez client, je conserve les données aussi longtemps que la loi l'exige, par exemple pour la comptabilité."] },
+    { "h": "Qui traite des données pour moi", "p": ["Vercel (hébergement du site) et Resend (envoi du formulaire vers ma boîte mail). Des clauses contractuelles types s'appliquent aux transferts hors UE.", "Statistiques du site : [À DÉCIDER · Google Analytics nécessite un consentement préalable via une bannière cookies ; une alternative sans cookies comme Vercel Web Analytics non]."] },
+    { "h": "Vos droits", "p": ["Vous pouvez toujours consulter, rectifier ou supprimer vos données, et vous opposer à leur utilisation. Écrivez à info@ginfinai.be ; vous recevrez une réponse dans le mois.", "Si vous n'êtes pas satisfait, vous pouvez introduire une plainte auprès de l'Autorité de protection des données (www.autoriteprotectiondonnees.be)."] }
+  ]
+}

@@ -1,213 +1,248 @@
-'use client'
 import Head from 'next/head'
-import { motion } from 'framer-motion'
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import ParticlesBackground from '../components/ParticlesBackground'
-import InfinityOrbit from '../components/InfinityOrbit'
-import FuturisticNodes from '../components/FuturisticNodes'
-import Parallax from 'react-parallax-tilt'
-import { TypeAnimation } from 'react-type-animation'
+import { useRef, useState } from 'react'
+import type { GetStaticProps } from 'next'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import { GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import LogoMark from '../components/LogoMark'
+import Services from '../components/Services'
+import ContactForm from '../components/ContactForm'
+import BernChat, { BernHandle } from '../components/BernChat'
+import ProgressRail from '../components/ProgressRail'
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale || 'nl', ['common', 'home', 'header', 'footer'])),
-    },
-  }
-}
+export const getStaticProps: GetStaticProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale || 'nl', ['common', 'home'])),
+  },
+})
+
+type WorkItem = { tag: string; title: string; desc: string; result: string; image: string }
+type Step = { title: string; text: string }
+
+const OG_LOCALE: Record<string, string> = { nl: 'nl_BE', en: 'en_GB', fr: 'fr_BE' }
+const SITE = process.env.NEXT_PUBLIC_SITE_URL || 'https://ginfinai.be'
 
 export default function Home() {
-  const { t } = useTranslation(['common', 'home'])
+  const { t } = useTranslation('home')
+  const { locale = 'nl', defaultLocale = 'nl' } = useRouter()
+  const [selected, setSelected] = useState('w0')
+  const [open, setOpen] = useState<string | null>('w0')
+  const [subject, setSubject] = useState(0)
+  const bern = useRef<BernHandle>(null)
+  const railWrap = useRef<HTMLDivElement>(null)
 
-  const services = [
-    {
-      title: String(t('home:services.webdesign.title', 'Webdesign')),
-      text: String(t('home:services.webdesign.description', '')),
-      icon: '/icons/webdesign.svg',
-      link: '/web',
-      button: String(t('home:services.webdesign.button', 'Learn More')),
-    },
-    {
-      title: String(t('home:services.update.title', 'Update')),
-      text: String(t('home:services.update.description', '')),
-      icon: '/icons/update.svg',
-      link: '/web',
-      button: String(t('home:services.update.button', 'Learn More')),
-    },
-    {
-      title: String(t('home:services.ai.title', 'AI')),
-      text: String(t('home:services.ai.description', '')),
-      icon: '/icons/ai.svg',
-      link: 'mailto:info@ginfinai.be',
-      button: String(t('home:services.ai.button', 'Contact')),
-    },
-  ]
+  const facts = t('facts', { returnObjects: true }) as unknown as string[]
+  const work = t('work.items', { returnObjects: true }) as unknown as WorkItem[]
+  const steps = t('approach.steps', { returnObjects: true }) as unknown as Step[]
+  const url = SITE + (locale === defaultLocale ? '/' : `/${locale}`)
+
+  const select = (id: string) => {
+    setSelected(id)
+    setOpen((o) => (o === id ? null : id))
+  }
 
   return (
     <>
       <Head>
-        <title>{String(t('meta.title', 'GinfinAI'))}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content={String(t('meta.description', ''))} />
-        <meta name="keywords" content={String(t('meta.keywords', ''))} />
-        <meta name="author" content="Gerben Ceuppens" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>{t('meta.title')}</title>
+        <meta name="description" content={t('meta.description')} />
+        <link rel="canonical" href={url} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={url} />
+        <meta property="og:title" content={t('meta.title')} />
+        <meta property="og:description" content={t('meta.description')} />
+        <meta property="og:image" content={`${SITE}/brand/og-image.png`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:locale" content={OG_LOCALE[locale] || 'nl_BE'} />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      <Header />
-
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 pt-24">
-        <SpeedInsights />
-        <ParticlesBackground />
-        <InfinityOrbit />
-        <div className="absolute w-[500px] h-[500px] bg-purple-500/10 rounded-full mix-blend-screen filter blur-3xl opacity-50 animate-blob top-[-150px] left-[-150px]"></div>
-        <div className="absolute w-[400px] h-[400px] bg-blue-500/10 rounded-full mix-blend-screen filter blur-2xl opacity-40 animate-blob animation-delay-2000 top-[200px] right-[-100px]"></div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8"
-        >
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white drop-shadow-lg font-inter neon-text">
-            <TypeAnimation
-              sequence={[
-                String(t('home:hero.animation1', 'Welcome')),
-                1000,
-                String(t('home:hero.animation2', 'To GinfinAI')),
-                1000,
-                String(t('home:hero.animation3', 'Your AI Partner')),
-                1000,
-              ]}
-              speed={70}
-              repeat={Infinity}
-            />
-          </h1>
-
-          <p className="mt-6 text-lg md:text-xl text-gray-300 font-inter">
-            {String(t('home:hero.description', 'We create amazing AI-powered experiences.'))}
-          </p>
-
-          <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="#doen"
-              className="px-8 py-3 bg-purple-600 text-white font-bold rounded-lg shadow-lg hover:shadow-purple-500/50 transition-all transform hover:-translate-y-1 neon-button-cta"
+      {/* Hero */}
+      <section id="top" className="dotgrid bg-ink text-white">
+        <div className="mx-auto flex max-w-page flex-wrap items-center gap-12 px-6 pb-14 pt-[72px]">
+          <div className="flex min-w-0 flex-[1_1_520px] flex-col gap-6">
+            <div className="eyebrow text-ondark-2">{t('hero.eyebrow')}</div>
+            <h1 className="m-0 text-[clamp(40px,4.6vw,64px)] font-semibold leading-[1.05] tracking-[-0.025em]">
+              {t('hero.title1')}
+              <br />
+              <span className="text-brand-accent">
+                {t('hero.title2')}
+                <br />
+                {t('hero.title3')}
+              </span>
+            </h1>
+            <p className="m-0 max-w-[560px] text-[19px] leading-relaxed text-ondark">{t('hero.lead')}</p>
+            <div className="flex flex-wrap gap-3 pt-1">
+              <a href="#contact" className="btn-primary">
+                {t('hero.ctaMessage')}
+              </a>
+              <a href="https://wa.me/32498420178" className="btn-ghost-dark">
+                {t('hero.ctaWhatsapp')}
+              </a>
+            </div>
+            <button
+              type="button"
+              onClick={() => bern.current?.open()}
+              className="inline-flex min-h-[44px] cursor-pointer items-center gap-2.5 self-start border-0 bg-transparent p-0 text-left text-[15px] text-brand-light hover:text-white"
             >
-              {String(t('home:hero.cta1', 'Get Started'))} →
-            </motion.a>
-
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="mailto:info@ginfinai.be"
-              className="px-8 py-3 border-2 border-purple-500 text-purple-300 font-bold rounded-lg hover:bg-purple-600 hover:text-white transition-all transform hover:-translate-y-1 neon-button-secondary"
-            >
-              {String(t('home:hero.cta2', 'Contact'))} →
-            </motion.a>
+              <img src="/brand/bern-avatar.png" alt="" width={32} height={32} className="h-8 w-8" />
+              {t('hero.askBern')}
+            </button>
           </div>
-        </motion.div>
-      </section>
-
-      {/* Services Section */}
-      <section id="doen" className="py-24 bg-gray-900">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center text-3xl md:text-4xl font-bold text-white mb-12 font-inter neon-text"
-        >
-          {String(t('home:services.title', 'Our Services'))}
-        </motion.h2>
-
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 px-4 sm:px-6 lg:px-8">
-          {services.map((service, idx) => (
-            <Parallax key={idx} tiltMaxAngleX={5} tiltMaxAngleY={5} scale={1.02}>
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.2 }}
-                className="p-8 bg-gray-800/50 backdrop-blur-sm rounded-2xl shadow-lg border border-purple-500/30 hover:border-purple-400/50 transition-all"
-              >
-                <div className="p-1 border-2 border-purple-500 rounded-lg mb-4 w-fit mx-auto">
-                  <img src={service.icon} alt={service.title} className="w-12 h-12 object-contain" />
-                </div>
-                <h3 className="text-xl font-semibold text-white text-center mb-4 neon-text">
-                  {service.title}
-                </h3>
-                <p className="text-gray-300 text-center mb-6">{service.text}</p>
-                <div className="text-center">
-                  <a
-                    href={service.link}
-                    className="px-6 py-3 bg-purple-600 text-white font-bold rounded-lg shadow-md hover:shadow-purple-500/50 transition-all transform hover:-translate-y-1 neon-button-cta"
-                  >
-                    {service.button} →
-                  </a>
-                </div>
-              </motion.div>
-            </Parallax>
-          ))}
+          <div className="flex min-w-0 flex-[1_1_420px] justify-center">
+            <LogoMark
+              onPick={(g) => {
+                const id = g === 'web' ? 'w0' : 'a0'
+                setSelected(id)
+                setOpen(id)
+              }}
+            />
+          </div>
+        </div>
+        <div className="border-t border-ink-line">
+          <ul className="m-0 mx-auto flex max-w-page list-none flex-wrap gap-x-10 gap-y-3 px-6 py-5 text-sm text-ondark-2">
+            {facts.map((f) => (
+              <li key={f}>{f}</li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="wiebenik" className="py-24 bg-gray-900 text-gray-100 relative overflow-hidden">
-        <motion.h2
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-3xl md:text-4xl text-center font-bold mb-10 text-white font-inter neon-text"
-        >
-          {String(t('home:about.title', 'About Me'))}
-        </motion.h2>
+      <div ref={railWrap} id="inhoud" className="relative">
+        <ProgressRail wrap={railWrap} />
 
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-10 items-center px-4 sm:px-6 lg:px-8">
-          <div className="relative w-60 h-80 group">
-            <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-purple-500 to-blue-500 p-[2px] group-hover:from-purple-600 group-hover:to-blue-600 transition-all duration-1000 animate-gradient-rotate">
-              <div className="rounded-lg bg-gray-900 w-full h-full relative z-20 p-1">
-                <FuturisticNodes className="absolute inset-0 z-10 opacity-70" />
-                <img
-                  src="/images/me_2025.jpg"
-                  alt="Gerben Ceuppens"
-                  className="relative rounded-md w-full h-full object-cover shadow-2xl border-2 border-transparent group-hover:border-purple-400 transition-all duration-500 z-20 transform group-hover:scale-105 group-hover:rotate-1"
-                />
+        {/* 01 Diensten */}
+        <section id="diensten" className="rp mx-auto flex max-w-page flex-col gap-10 px-6 pb-[72px] pt-24">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div className="flex max-w-[640px] flex-col gap-2.5">
+              <div data-rail className="eyebrow text-brand">
+                {t('services.eyebrow')}
+              </div>
+              <h2 className="h2">{t('services.title')}</h2>
+            </div>
+            <p className="m-0 max-w-[380px] text-base leading-relaxed text-muted">{t('services.intro')}</p>
+          </div>
+          <Services selected={selected} open={open} onSelect={select} onAsk={setSubject} />
+        </section>
+
+        {/* 02 Werk */}
+        <section id="werk" className="bg-lavender">
+          <div className="rp mx-auto flex max-w-page flex-col gap-10 px-6 py-24">
+            <div className="flex max-w-[640px] flex-col gap-2.5">
+              <div data-rail className="eyebrow text-brand">
+                {t('work.eyebrow')}
+              </div>
+              <h2 className="h2">{t('work.title')}</h2>
+            </div>
+            <div className="flex flex-wrap gap-6">
+              {work.map((w) => (
+                <article key={w.title} className="flex min-w-0 flex-[1_1_480px] flex-col gap-[18px] rounded-[20px] border border-line bg-white p-5">
+                  {/* TODO: echte screenshot (next/image) zodra beschikbaar */}
+                  <div className="flex aspect-video items-center justify-center rounded-xl bg-selected text-sm text-[#5A5478]">{w.image}</div>
+                  <div className="flex flex-col gap-2 px-1 pb-1">
+                    <div className="text-[13px] font-semibold uppercase text-brand">{w.tag}</div>
+                    <h3 className="m-0 text-2xl font-semibold">{w.title}</h3>
+                    <p className="m-0 text-base leading-relaxed text-muted">{w.desc}</p>
+                    <p className="m-0 text-[15px] text-[#2C2550]">{w.result}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 03 Aanpak */}
+        <section id="aanpak" className="rp mx-auto flex max-w-page flex-col gap-10 px-6 py-24">
+          <div className="flex max-w-[640px] flex-col gap-2.5">
+            <div data-rail className="eyebrow text-brand">
+              {t('approach.eyebrow')}
+            </div>
+            <h2 className="h2">{t('approach.title')}</h2>
+          </div>
+          <div className="relative">
+            <div
+              aria-hidden="true"
+              className="absolute left-4 top-[13px] hidden h-1.5 rounded-[3px] bg-brand nav:block"
+              style={{ right: 'calc((100% - 64px) / 3 - 16px)' }}
+            />
+            <ol className="relative m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-8 p-0">
+              {steps.map((s, i) => {
+                const last = i === steps.length - 1
+                return (
+                  <li key={s.title} className="flex flex-col gap-3.5">
+                    <span
+                      aria-hidden="true"
+                      className={
+                        'box-border h-8 w-8 rounded-full border-[7px] ' + (last ? 'border-brand-deep bg-brand-light' : 'border-brand bg-white')
+                      }
+                    />
+                    <span className="eyebrow text-brand">{t('approach.step', { n: i + 1 })}</span>
+                    <h3 className="m-0 text-[22px] font-semibold">{s.title}</h3>
+                    <p className="m-0 max-w-[340px] text-base leading-relaxed text-muted">{s.text}</p>
+                  </li>
+                )
+              })}
+            </ol>
+          </div>
+        </section>
+
+        {/* 04 Over mij */}
+        <section id="over" className="bg-ink text-white">
+          <div className="rp mx-auto flex max-w-page flex-wrap items-center gap-14 px-6 py-24">
+            <img
+              src="/images/me_2025.jpg"
+              alt={t('about.photoAlt')}
+              width={380}
+              height={475}
+              loading="lazy"
+              className="aspect-[4/5] w-[380px] min-w-0 max-w-full flex-[0_1_380px] rounded-3xl object-cover"
+            />
+            <div className="flex min-w-0 flex-[1_1_480px] flex-col gap-5">
+              <div data-rail className="eyebrow text-brand-accent">
+                {t('about.eyebrow')}
+              </div>
+              <h2 className="h2">{t('about.title')}</h2>
+              <p className="m-0 max-w-[640px] text-lg leading-[1.65] text-ondark">{t('about.p1')}</p>
+              <p className="m-0 text-lg leading-[1.65] text-ondark">{t('about.p2')}</p>
+              <div className="flex max-w-[560px] items-center gap-3.5 rounded-2xl bg-ink-3 px-[18px] py-4">
+                <img src="/brand/bern-avatar.png" alt="" width={48} height={48} loading="lazy" className="h-12 w-12 flex-shrink-0" />
+                <p className="m-0 text-[15px] leading-normal text-ondark" dangerouslySetInnerHTML={{ __html: t('about.bern') }} />
               </div>
             </div>
           </div>
+        </section>
 
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="md:w-2/3 text-gray-300 leading-relaxed prose prose-lg space-y-4 font-inter"
-          >
-            <p dangerouslySetInnerHTML={{ __html: String(t('home:about.description1', '')) }}></p>
-            <p dangerouslySetInnerHTML={{ __html: String(t('home:about.description2', '')) }}></p>
-            <p dangerouslySetInnerHTML={{ __html: String(t('home:about.description3', '')) }}></p>
-            <p dangerouslySetInnerHTML={{ __html: String(t('home:about.description4', '')) }}></p>
-
-            <div className="mt-6 text-center">
-              <a
-                href="mailto:info@ginfinai.be"
-                className="inline-block px-8 py-3 bg-purple-600 text-white font-bold rounded-lg shadow-md hover:shadow-purple-500/50 transition-all transform hover:-translate-y-1 neon-button-cta"
-              >
-                {String(t('home:about.cta', 'Contact Me'))} →
-              </a>
+        {/* 05 Contact */}
+        <section id="contact" className="rp mx-auto flex max-w-page flex-wrap gap-12 px-6 py-24">
+          <div className="flex min-w-0 flex-[1_1_380px] flex-col gap-5">
+            <div data-rail className="eyebrow text-brand">
+              {t('contact.eyebrow')}
             </div>
-          </motion.div>
-        </div>
-      </section>
+            <h2 className="h2">{t('contact.title')}</h2>
+            <p className="m-0 text-[17px] leading-relaxed text-muted">{t('contact.intro')}</p>
+            <div className="flex flex-col border-t border-line">
+              <a href="mailto:info@ginfinai.be" className="flex flex-col gap-1 border-b border-line py-4 text-ink no-underline hover:text-brand">
+                <span className="text-[13px] text-muted">{t('contact.emailLabel')}</span>
+                <span className="text-[17px]">info@ginfinai.be</span>
+              </a>
+              <a href="https://wa.me/32498420178" className="flex flex-col gap-1 border-b border-line py-4 text-ink no-underline hover:text-brand">
+                <span className="text-[13px] text-muted">{t('contact.phoneLabel')}</span>
+                <span className="text-[17px]">+32 498 42 01 78</span>
+              </a>
+              <div className="flex flex-col gap-1 border-b border-line py-4">
+                <span className="text-[13px] text-muted">{t('contact.regionLabel')}</span>
+                <span className="text-[17px]">{t('contact.region')}</span>
+              </div>
+            </div>
+          </div>
+          <div className="relative min-w-0 flex-[1_1_560px] rounded-3xl bg-lavender p-8 max-[480px]:p-5">
+            <ContactForm subject={subject} onSubject={setSubject} />
+          </div>
+        </section>
+      </div>
+
+      <BernChat ref={bern} />
     </>
   )
 }

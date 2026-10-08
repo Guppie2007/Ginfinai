@@ -1,0 +1,13 @@
+{
+  "meta": { "title": "Privacy statement · GinfinAI", "description": "How GinfinAI handles the information you share through this website." },
+  "eyebrow": "Privacy",
+  "title": "Privacy statement",
+  "updated": "Last updated: October 2026",
+  "sections": [
+    { "h": "Who is responsible?", "p": ["GinfinAI, Gerben Ceuppens, Notestraat 64, 1742 Ternat, Belgium, VAT BE1012.619.721. Send privacy questions to info@ginfinai.be."] },
+    { "h": "What data and why", "p": ["Contact form: your name, email address, message and, if you fill them in, company, phone number, subject and budget. I only use them to reply to your request and, where relevant, prepare a quote.", "Legal basis: steps taken at your request before a possible contract (Art. 6(1)(b) GDPR)."] },
+    { "h": "How long", "p": ["Messages that don't lead to an assignment are deleted no later than 12 months after the last contact. If you become a client, I keep the data as long as the law requires, for example for accounting."] },
+    { "h": "Who processes data for me", "p": ["Vercel (website hosting) and Resend (delivering the form to my mailbox). Standard contractual clauses apply to transfers outside the EU.", "Website analytics: [TO BE DECIDED · Google Analytics requires prior consent via a cookie banner; a cookieless alternative such as Vercel Web Analytics does not]."] },
+    { "h": "Your rights", "p": ["You can always access, correct or delete your data, and object to its use. Email info@ginfinai.be; you will get a reply within one month.", "If you are not satisfied, you can lodge a complaint with the Belgian Data Protection Authority (www.dataprotectionauthority.be)."] }
+  ]
+}

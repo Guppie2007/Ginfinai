@@ -1,246 +1,129 @@
-'use client'
 import Link from 'next/link'
-import { useState, useEffect, type FC } from 'react'
-import clsx from 'clsx'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 
-const Header: FC = () => {
-  const [open, setOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const [languageOpen, setLanguageOpen] = useState(false)
+const LOCALES = ['nl', 'en', 'fr'] as const
+
+export default function Header() {
+  const { t } = useTranslation('common')
   const router = useRouter()
-  const { t } = useTranslation('header')
+  const [open, setOpen] = useState(false)
+  const current = router.locale || 'nl'
 
-  const currentLanguage = router.locale || 'nl'
-  const validLocales = ['nl', 'en', 'fr']
-
-  const changeLanguage = (lang: string) => {
-    if (!validLocales.includes(lang)) return
-    const { pathname, asPath, query } = router
-    router.push({ pathname, query }, asPath, { locale: lang, scroll: false })
-    setLanguageOpen(false)
-  }
-
+  // Menu sluiten bij navigatie en met Escape
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout
-    const handleScroll = () => {
-      clearTimeout(timeoutId)
-      timeoutId = setTimeout(() => {
-        setScrolled(window.scrollY > 20)
-      }, 50)
-    }
-    window.addEventListener('scroll', handleScroll)
+    const close = () => setOpen(false)
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
+    router.events.on('hashChangeStart', close)
+    router.events.on('routeChangeStart', close)
+    window.addEventListener('keydown', onKey)
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-      clearTimeout(timeoutId)
+      router.events.off('hashChangeStart', close)
+      router.events.off('routeChangeStart', close)
+      window.removeEventListener('keydown', onKey)
     }
-  }, [])
+  }, [router.events])
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (!event.target || !(event.target as HTMLElement).closest('.language-selector')) {
-        setLanguageOpen(false)
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside as EventListener)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside as EventListener)
-    }
-  }, [])
+  const links = [
+    { href: '/#diensten', label: t('nav.services') },
+    { href: '/#werk', label: t('nav.work') },
+    { href: '/#aanpak', label: t('nav.approach') },
+    { href: '/#over', label: t('nav.about') },
+  ]
 
   return (
-    <header
-      className={clsx(
-        'fixed w-full z-50 transition-all duration-500',
-        scrolled
-          ? 'bg-gray-900/95 backdrop-blur-sm border-b border-purple-500/30 shadow-lg'
-          : 'bg-transparent border-transparent'
-      )}
-    >
-      {/* Language dropdown */}
-      <div className="absolute top-4 right-4 z-50 language-selector">
-        <div className="relative">
-          <button
-            onClick={() => setLanguageOpen(!languageOpen)}
-            className="flex items-center gap-1 px-3 py-1.5 bg-gray-800/80 border border-purple-500/50 rounded-lg text-purple-300 hover:bg-purple-500/20 transition-colors text-sm"
-          >
-            {currentLanguage.toUpperCase()}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
+    <header className="sticky top-0 z-20 border-b border-ink-line bg-ink">
+      <a
+        href="#inhoud"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-30 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-ink"
+      >
+        {t('skip')}
+      </a>
+      <div className="mx-auto flex max-w-page items-center justify-between gap-6 px-6 py-3.5">
+        <Link href="/" aria-label={t('nav.home')} className="flex items-center">
+          <img
+            src="/brand/ginfinai-logo-horizontaal-op-donker.svg"
+            alt="GinfinAI"
+            width={176}
+            height={40}
+            className="block h-10 w-auto"
+          />
+        </Link>
 
-          {languageOpen && (
-            <div className="absolute right-0 mt-2 w-28 bg-gray-800/90 backdrop-blur-sm rounded-lg shadow-lg border border-purple-500/30 z-50">
-              <div className="py-1">
-                {validLocales.map((lang) => (
-                  <button
-                    key={lang}
-                    onClick={() => changeLanguage(lang)}
-                    className={clsx(
-                      'block w-full text-left px-4 py-2 text-sm',
-                      currentLanguage === lang
-                        ? 'text-white bg-purple-500/20'
-                        : 'text-purple-300 hover:bg-purple-500/10'
-                    )}
-                  >
-                    {lang === 'nl'
-                      ? 'Nederlands'
-                      : lang === 'en'
-                      ? 'English'
-                      : 'Français'}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-3 items-center py-4">
-          {/* Left nav */}
-          <nav className="hidden md:flex gap-8 justify-self-start">
-            <Link
-              href="/#home"
-              locale={currentLanguage}
-              className="text-purple-300 hover:text-white transition-colors neon-text relative group"
-            >
-              <span className="text-lg font-medium">{String(t('home', 'Home'))}</span>
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-500 transition-all group-hover:w-full"></span>
+        <nav aria-label={t('nav.main')} className="hidden items-center gap-7 text-[15px] nav:flex">
+          {links.map((l) => (
+            <Link key={l.href} href={l.href} className="text-ondark no-underline hover:text-white">
+              {l.label}
             </Link>
-            <Link
-              href="/#doen"
-              locale={currentLanguage}
-              className="text-purple-300 hover:text-white transition-colors neon-text relative group"
-            >
-              <span className="text-lg font-medium">{String(t('services', 'Services'))}</span>
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-500 transition-all group-hover:w-full"></span>
-            </Link>
-          </nav>
+          ))}
+        </nav>
 
-          {/* Center logo */}
-          <div className="flex justify-center">
-            <div className="relative group">
-              <div
-                className={clsx(
-                  'absolute -inset-2 bg-purple-500 rounded-full blur-lg opacity-0 transition-opacity duration-300',
-                  scrolled ? 'group-hover:opacity-50' : 'opacity-30'
-                )}
-              ></div>
-              <Link href="/" locale={currentLanguage} className="block p-1 border-2 border-purple-500 rounded-lg transition-all hover:scale-105">
-                <img
-                  src="/images/Ginfinai_small_nobg.png"
-                  alt="GinfinAI Logo"
-                  className="h-20 w-auto object-contain neon-filter"
-                />
+        <div className="flex items-center gap-2.5">
+          <div role="group" aria-label={t('nav.language')} className="mr-1.5 hidden gap-0.5 text-[13px] nav:flex">
+            {LOCALES.map((l) => (
+              <Link
+                key={l}
+                href={router.asPath}
+                locale={l}
+                scroll={false}
+                lang={l}
+                aria-current={l === current ? 'true' : undefined}
+                className={
+                  'px-2 py-3 no-underline ' +
+                  (l === current ? 'font-semibold text-white' : 'text-ondark-2 hover:text-white')
+                }
+              >
+                {l.toUpperCase()}
               </Link>
-            </div>
+            ))}
           </div>
-
-          {/* Right nav */}
-          <nav className="hidden md:flex gap-8 items-center justify-self-end">
-            <Link
-              href="/#wiebenik"
-              locale={currentLanguage}
-              className="text-purple-300 hover:text-white transition-colors neon-text relative group"
-            >
-              <span className="text-lg font-medium">{String(t('about', 'About'))}</span>
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-500 transition-all group-hover:w-full"></span>
-            </Link>
-            <a
-              href="mailto:info@ginfinai.be"
-              className="px-5 py-2.5 border-2 border-purple-500 text-purple-300 hover:bg-purple-500/20 hover:text-white transition-colors rounded-lg neon-text text-lg font-medium hover:shadow-purple-500/30"
-            >
-              {String(t('contact', 'Contact'))}
-            </a>
-          </nav>
-
-          {/* Mobile menu */}
-          <button
-            className="md:hidden absolute right-4 p-2 border border-purple-500 rounded-lg text-purple-300 hover:bg-purple-500/20 transition-colors"
-            onClick={() => setOpen(!open)}
-            aria-label="Toggle menu"
+          <Link
+            href="/#contact"
+            className="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full bg-brand px-[18px] text-[15px] font-medium text-white no-underline hover:bg-brand-deep hover:text-white"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d={open ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
-              />
+            <span className="hidden nav:inline">{t('nav.cta')}</span>
+            <span className="nav:hidden">{t('nav.ctaShort')}</span>
+          </Link>
+          <button
+            type="button"
+            onClick={() => setOpen((o) => !o)}
+            aria-expanded={open}
+            aria-controls="mobiel-menu"
+            aria-label={open ? t('nav.menuClose') : t('nav.menuOpen')}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[#3A3170] bg-transparent text-white nav:hidden"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+              {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
             </svg>
           </button>
         </div>
-
-        {open && (
-          <>
-            <div
-              className="fixed inset-0 bg-gray-900/80 backdrop-blur-sm z-40 md:hidden"
-              onClick={() => setOpen(false)}
-            ></div>
-            <div className="fixed inset-x-0 top-16 z-50 md:hidden border-t border-purple-500/30 bg-gray-900/95 backdrop-blur-sm animate-fadeIn">
-              <nav className="flex flex-col gap-4 items-center py-4 px-4">
-                {['home', 'services', 'about'].map((key) => (
-                  <Link
-                    key={key}
-                    href={`#${key === 'services' ? 'doen' : key}`}
-                    locale={currentLanguage}
-                    className="text-purple-300 hover:text-white w-full text-center py-3 border-b border-purple-500/30 neon-text text-xl font-medium"
-                    onClick={() => setOpen(false)}
-                  >
-                    {String(t(key, key.charAt(0).toUpperCase() + key.slice(1)))}
-                  </Link>
-                ))}
-                <a
-                  href="mailto:info@ginfinai.be"
-                  className="text-purple-300 hover:text-white w-full text-center py-3 bg-purple-500/10 rounded-lg border border-purple-500 neon-text text-xl font-medium mt-2"
-                  onClick={() => setOpen(false)}
-                >
-                  {String(t('contact', 'Contact'))}
-                </a>
-              </nav>
-            </div>
-          </>
-        )}
       </div>
 
-      <style jsx>{`
-        .neon-text {
-          text-shadow: 0 0 6px rgba(168, 85, 247, 0.8);
-          font-size: 1.1rem;
-        }
-        .neon-filter {
-          filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.8));
-        }
-        @media (min-width: 768px) {
-          .neon-text {
-            font-size: 1.2rem;
-          }
-        }
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out;
-        }
-      `}</style>
+      {open && (
+        <nav id="mobiel-menu" aria-label={t('nav.mobile')} className="flex flex-col gap-1 border-t border-ink-line px-6 pb-5 pt-2 nav:hidden">
+          {[...links, { href: '/#contact', label: t('nav.contact') }].map((l) => (
+            <Link key={l.href} href={l.href} onClick={() => setOpen(false)} className="py-3 text-[17px] text-white no-underline">
+              {l.label}
+            </Link>
+          ))}
+          <div className="mt-2 flex gap-1 border-t border-ink-line pt-3 text-[15px]">
+            {LOCALES.map((l) => (
+              <Link
+                key={l}
+                href={router.asPath}
+                locale={l}
+                scroll={false}
+                lang={l}
+                aria-current={l === current ? 'true' : undefined}
+                className={'px-3 py-3 no-underline ' + (l === current ? 'font-semibold text-white' : 'text-ondark-2')}
+              >
+                {l.toUpperCase()}
+              </Link>
+            ))}
+          </div>
+        </nav>
+      )}
     </header>
   )
 }
-
-export default Header

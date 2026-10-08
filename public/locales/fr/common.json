@@ -1,8 +1,52 @@
 {
   "siteName": "GinfinAI",
-  "contact": "Contact",
-  "home": "Accueil",
-  "services": "Services",
-  "about": "À propos",
-  "contact_button": "Contact"
+  "skip": "Aller au contenu",
+  "nav": {
+    "home": "GinfinAI, retour à l'accueil",
+    "main": "Menu principal",
+    "mobile": "Menu mobile",
+    "services": "Services",
+    "work": "Réalisations",
+    "approach": "Méthode",
+    "about": "À propos",
+    "contact": "Contact",
+    "cta": "Envoyer un message",
+    "ctaShort": "Contact",
+    "menuOpen": "Ouvrir le menu",
+    "menuClose": "Fermer le menu",
+    "language": "Choisir la langue"
+  },
+  "footer": {
+    "tagline": "Sites web et IA pour les entreprises du Brabant flamand et de Bruxelles.",
+    "services": "Services",
+    "servicesList": ["Nouveau site web", "Refonte de site", "Applications IA", "Maintenance et hébergement"],
+    "contact": "Contact",
+    "address": "Notestraat 64, 1742 Ternat",
+    "legal": "© {{year}} GinfinAI · Gerben Ceuppens · TVA BE1012.619.721",
+    "privacy": "Confidentialité"
+  },
+  "bern": {
+    "open": "Ouvrir le chat avec Bern",
+    "close": "Fermer le chat",
+    "dialog": "Chat avec Bern",
+    "name": "Bern",
+    "role": "Assistant IA de GinfinAI",
+    "welcome": "Bonjour ! Je suis Bern. Comment puis-je vous aider ? Choisissez une question ci-dessous, ou transmettez directement votre question à Gerben.",
+    "questions": [
+      {
+        "q": "Combien coûte un site web ?",
+        "a": "Un nouveau site sur mesure commence à partir de 1 850 €, la refonte d'un site existant à partir de 950 €. Toujours un prix fixe, convenu à l'avance."
+      },
+      {
+        "q": "Que peut faire l'IA pour mon entreprise ?",
+        "a": "Par exemple une recherche intelligente dans vos propres documents, ou un assistant qui prépare vos devis. Gerben commence toujours par un entretien de faisabilité gratuit."
+      },
+      {
+        "q": "Quand mon site sera-t-il prêt ?",
+        "a": "Un nouveau site est généralement prêt en 3 à 5 semaines. Vous voyez des résultats intermédiaires."
+      }
+    ],
+    "forward": "Transmettre ma question à Gerben",
+    "whatsapp": "Ouvrir WhatsApp"
+  }
 }

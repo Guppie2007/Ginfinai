@@ -1,8 +1,52 @@
 {
   "siteName": "GinfinAI",
-  "contact": "Contact",
-  "home": "Home",
-  "services": "Services",
-  "about": "About",
-  "contact_button": "Contact"
+  "skip": "Skip to content",
+  "nav": {
+    "home": "GinfinAI, go to the homepage",
+    "main": "Main menu",
+    "mobile": "Mobile menu",
+    "services": "Services",
+    "work": "Work",
+    "approach": "Approach",
+    "about": "About",
+    "contact": "Contact",
+    "cta": "Send a message",
+    "ctaShort": "Contact",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "language": "Choose language"
+  },
+  "footer": {
+    "tagline": "Websites and AI for businesses in Flemish Brabant and Brussels.",
+    "services": "Services",
+    "servicesList": ["New website", "Website redesign", "AI applications", "Maintenance and hosting"],
+    "contact": "Contact",
+    "address": "Notestraat 64, 1742 Ternat, Belgium",
+    "legal": "© {{year}} GinfinAI · Gerben Ceuppens · VAT BE1012.619.721",
+    "privacy": "Privacy"
+  },
+  "bern": {
+    "open": "Open chat with Bern",
+    "close": "Close chat",
+    "dialog": "Chat with Bern",
+    "name": "Bern",
+    "role": "GinfinAI's AI assistant",
+    "welcome": "Hi! I'm Bern. How can I help? Pick a question below, or send your question straight to Gerben.",
+    "questions": [
+      {
+        "q": "How much does a website cost?",
+        "a": "A new custom website starts from € 1,850; redesigning an existing site from € 950. Always a fixed price, agreed up front."
+      },
+      {
+        "q": "What can AI do for my business?",
+        "a": "For example, smart search across your own documents, or an assistant that drafts your quotes. Gerben always starts with a free feasibility call."
+      },
+      {
+        "q": "How soon will my site be ready?",
+        "a": "A new website usually takes 3 to 5 weeks. You see progress along the way."
+      }
+    ],
+    "forward": "Send my question to Gerben",
+    "whatsapp": "Open WhatsApp"
+  }
 }

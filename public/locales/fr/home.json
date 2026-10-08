@@ -1,41 +1,190 @@
 {
   "meta": {
-    "title": "GinfinAI | Solutions Web & IA Modernes",
-    "description": "GinfinAI : Conception web moderne et applications d'IA pour faire briller votre entreprise à l'ère numérique.",
-    "keywords": "GinfinAI, conception web, applications IA, sites web modernes, solutions numériques, intelligence artificielle, développement web"
+    "title": "GinfinAI · Site web et IA, un seul ingénieur, prix fixe",
+    "description": "Gerben Ceuppens crée des sites web et des applications d'IA pour les PME et indépendants du Brabant flamand et de Bruxelles. Prix fixe, un seul interlocuteur, le code vous appartient."
   },
   "hero": {
-    "animation1": "Web & IA à l'infini et au-delà!",
-    "animation2": "Construire l'avenir avec le code et l'IA.",
-    "animation3": "Votre transformation numérique commence ici.",
-    "description": "Je conçois des sites web modernes et des applications d'IA qui font briller votre entreprise à l'ère numérique.",
-    "cta1": "Découvrez mes services",
-    "cta2": "Contactez-moi"
+    "eyebrow": "Ingénieur web et IA indépendant · Ternat",
+    "title1": "Site web et IA.",
+    "title2": "Un seul ingénieur,",
+    "title3": "prix fixe.",
+    "lead": "Je crée des sites web et des applications d'IA pour les PME et indépendants du Brabant flamand. Pas d'agence avec cinq intermédiaires : vous parlez à l'ingénieur qui réalise le projet.",
+    "ctaMessage": "Envoyer un message",
+    "ctaWhatsapp": "WhatsApp",
+    "askBern": "Ou posez d'abord la question à Bern, mon assistant IA →"
   },
+  "mark": {
+    "label": "Symbole GinfinAI : web et IA, réunis en un seul interlocuteur",
+    "web": "WEB",
+    "ai": "IA",
+    "capDefault": "UN SEUL INTERLOCUTEUR",
+    "capWeb": "SITES WEB · VOIR LES SERVICES ↓",
+    "capAi": "APPLICATIONS IA · VOIR LES SERVICES ↓",
+    "webLink": "Voir les services web",
+    "aiLink": "Voir les services IA",
+    "hintBefore": "Cliquez ou touchez",
+    "hintOr": "ou",
+    "hintAfter": "pour voir les services",
+    "pause": "Mettre l'animation en pause",
+    "resume": "Reprendre l'animation"
+  },
+  "facts": [
+    "Ingénieur civil en informatique (UGent)",
+    "Prix fixe, convenu à l'avance",
+    "Le code et tous les accès vous appartiennent",
+    "Néerlandais, anglais, français"
+  ],
   "services": {
-    "title": "Que puis-je faire pour vous?",
-    "webdesign": {
-      "title": "Conception Web",
-      "description": "Sites web modernes et réactifs qui représentent votre marque.",
-      "button": "Plus d'infos"
-    },
-    "update": {
-      "title": "Mise à jour Web",
-      "description": "Mettez à jour et modernisez votre site actuel.",
-      "button": "Plus d'infos"
-    },
-    "ai": {
-      "title": "Applications IA",
-      "description": "Construisez des fonctionnalités basées sur l'IA qui ajoutent une réelle valeur.",
-      "button": "Contactez-moi"
-    }
+    "eyebrow": "01 · Services",
+    "title": "Des sites qui fonctionnent, une IA qui fait gagner du temps",
+    "intro": "Chaque prix est un prix fixe. Nous définissons ensemble le périmètre à l'avance, sans surprise après coup.",
+    "webTitle": "Web",
+    "webIntro": "Des sites sur mesure, conçus pour charger vite et être trouvés.",
+    "aiTitle": "IA",
+    "aiIntro": "À partir de 2 400 € · d'abord un entretien de faisabilité gratuit.",
+    "selected": "Service choisi",
+    "lead": "Délai {{lead}}",
+    "cta": "Envoyer un message",
+    "web": [
+      {
+        "id": "w0",
+        "subject": 0,
+        "title": "Nouveau site web",
+        "price": "dès 1 850 €",
+        "panelPrice": "dès 1 850 €",
+        "lead": "3 à 5 semaines",
+        "desc": "Un site à l'image de votre marque, conçu pour charger vite et être trouvé.",
+        "points": ["Design sur mesure", "Multilingue NL / EN / FR", "Bases SEO et mesure d'audience", "Vous gérez vous-même les textes"]
+      },
+      {
+        "id": "w1",
+        "subject": 1,
+        "title": "Refonte de site",
+        "price": "dès 950 €",
+        "panelPrice": "dès 950 €",
+        "lead": "2 à 3 semaines",
+        "desc": "Moderniser et accélérer votre site sans perdre votre place dans Google.",
+        "points": ["Audit de vitesse et SEO", "Nouveau design", "Migration sans perte de positions"]
+      },
+      {
+        "id": "w2",
+        "subject": 3,
+        "title": "Maintenance et hébergement",
+        "price": "dès 45 € / mois",
+        "panelPrice": "dès 45 € / mois",
+        "lead": "en continu",
+        "desc": "Sauvegardes, mises à jour et un interlocuteur fixe pour les modifications.",
+        "points": ["Sauvegardes quotidiennes", "Mises à jour de sécurité", "Modifications de texte sous 2 jours ouvrables"]
+      }
+    ],
+    "ai": [
+      {
+        "id": "a0",
+        "subject": 2,
+        "title": "Recherche intelligente",
+        "price": "sur devis",
+        "panelPrice": "dès 2 400 €",
+        "lead": "4 à 6 semaines",
+        "desc": "Clients et collaborateurs trouvent immédiatement la bonne réponse dans vos propres documents et votre site.",
+        "points": ["Fonctionne sur vos propres documents", "Réponses avec sources", "Vos données restent les vôtres"]
+      },
+      {
+        "id": "a1",
+        "subject": 2,
+        "title": "Assistant devis",
+        "price": "sur devis",
+        "panelPrice": "dès 2 400 €",
+        "lead": "4 à 6 semaines",
+        "desc": "Un assistant qui prépare vos devis à partir de dossiers précédents. Vous vérifiez et envoyez.",
+        "points": ["Apprend de vos devis précédents", "Vous gardez le contrôle", "Connexion possible à vos outils"]
+      },
+      {
+        "id": "a2",
+        "subject": 2,
+        "title": "IA sur mesure",
+        "price": "sur devis",
+        "panelPrice": "dès 2 400 €",
+        "lead": "après l'entretien de faisabilité",
+        "desc": "Une application pour votre propre processus. D'abord un court entretien de faisabilité, puis un prototype fonctionnel.",
+        "points": ["Entretien de faisabilité gratuit", "D'abord un prototype fonctionnel", "Ensuite seulement, la suite du développement"]
+      }
+    ]
+  },
+  "work": {
+    "eyebrow": "02 · Réalisations",
+    "title": "Projets récents",
+    "items": [
+      {
+        "tag": "Application web",
+        "title": "Système de réservation pour un manège",
+        "desc": "Les cavaliers réservent eux-mêmes la piste via un lien que le manège partage avec ses clients. Fini les appels et les doubles réservations.",
+        "result": "[RÉSULTAT, p. ex. réservations par mois]",
+        "image": "[CAPTURE · système de réservation]"
+      },
+      {
+        "tag": "[Site web ou IA]",
+        "title": "[Nom du projet, avec l'accord du client]",
+        "desc": "[Deux phrases : quel était le problème, qu'est-ce qui a été réalisé.]",
+        "result": "[RÉSULTAT]",
+        "image": "[CAPTURE · projet 2]"
+      }
+    ]
+  },
+  "approach": {
+    "eyebrow": "03 · Méthode",
+    "title": "Du premier entretien à la livraison",
+    "step": "Étape {{n}}",
+    "steps": [
+      { "title": "Entretien gratuit", "text": "Nous discutons de ce que vous voulez atteindre. Si quelqu'un d'autre peut mieux vous aider, je vous le dis." },
+      { "title": "Prix fixe et planning", "text": "Vous recevez un devis clair avec périmètre, prix et date de livraison. Ensuite seulement, je commence." },
+      { "title": "Réalisation et livraison", "text": "Vous voyez des résultats intermédiaires. À la livraison, le code, le domaine et tous les accès vous appartiennent." }
+    ]
   },
   "about": {
-    "title": "À propos de moi",
-    "description1": "Je m'appelle <span class='font-semibold text-white'>Gerben Ceuppens</span>, j'ai 25 ans, je viens de Ternat et je suis diplômé en master d'ingénierie informatique à l'Université de Gand.",
-    "description2": "Pendant mes études, je me suis spécialisé dans <span class='text-purple-400 font-medium'>l'intelligence artificielle</span>. Même lorsque j'étais encore étudiant, j'avais hâte de mettre en pratique mes connaissances acquises",
-    "description3": "Cela a conduit à <span class='font-semibold text-white'>GinfinAI</span>, avec lequel je peux partager mon expertise et aider les entrepreneurs.",
-    "description4": "Actuellement, je travaille en tant qu'ingénieur IA chez <span class='font-semibold text-white'>Growing pAI</span>, où je peux également développer et appliquer mes connaissances.",
-    "cta": "Parlons de votre projet"
+    "eyebrow": "04 · À propos",
+    "title": "Je suis Gerben Ceuppens",
+    "photoAlt": "Gerben Ceuppens",
+    "p1": "Ingénieur civil en informatique (UGent), spécialisé en intelligence artificielle. En journée, je travaille comme AI Engineer chez Growing pAI. Avec GinfinAI, je mets cette expérience au service des entrepreneurs de la région : un site qui vous amène des clients, ou une application d'IA qui vous fait gagner des heures chaque semaine.",
+    "p2": "Un seul interlocuteur, des accords clairs et un code qui vous appartient ensuite.",
+    "bern": "Gerben vient de <em>ger</em> (lance) et <em>bern</em> (ours). C'est pourquoi mon assistant IA s'appelle Bern."
+  },
+  "contact": {
+    "eyebrow": "05 · Contact",
+    "title": "Dites-moi brièvement ce que vous cherchez",
+    "intro": "Chaque demande m'arrive directement. Vous recevez une estimation honnête dans la journée, même pour un petit projet.",
+    "emailLabel": "E-mail",
+    "phoneLabel": "Téléphone et WhatsApp",
+    "regionLabel": "Région",
+    "region": "Ternat · rendez-vous sur place dans le Brabant flamand et à Bruxelles",
+    "fields": {
+      "name": "Nom",
+      "email": "E-mail",
+      "emailHint": "nom@entreprise.be",
+      "company": "Entreprise",
+      "phone": "Téléphone",
+      "subject": "De quoi s'agit-il ?",
+      "budget": "Budget indicatif",
+      "message": "Votre message",
+      "messageHint": "Que voulez-vous atteindre, et pour quand ?",
+      "required": "obligatoire",
+      "optional": "facultatif"
+    },
+    "subjects": ["Nouveau site", "Refonte", "Application IA", "Maintenance", "Autre chose"],
+    "budgets": ["< 1 500 €", "1 500 – 3 000 €", "3 000 € +", "Je ne sais pas encore"],
+    "errors": {
+      "name": "Indiquez votre nom, pour que je sache à qui répondre.",
+      "email": "Indiquez une adresse e-mail comme nom@entreprise.be.",
+      "message": "Décrivez brièvement ce que vous cherchez, une phrase suffit.",
+      "summary": "Encore {{count}} champ(s) à vérifier avant que je puisse envoyer votre message.",
+      "send": "Votre message n'a pas été envoyé. Un problème est survenu de mon côté. Réessayez ou écrivez directement à info@ginfinai.be.",
+      "mailFallback": "Ouvrir votre messagerie avec ce message"
+    },
+    "privacy": "J'utilise vos données uniquement pour répondre à cette demande.",
+    "privacyLink": "Plus d'infos dans la déclaration de confidentialité",
+    "submit": "Envoyer un message",
+    "sending": "Envoi en cours…",
+    "sentTitle": "Merci, votre message a été envoyé",
+    "sentText": "Gerben vous répond dans la journée.",
+    "again": "Envoyer un autre message"
   }
 }

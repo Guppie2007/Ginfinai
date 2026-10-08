@@ -1,3 +1,5 @@
+import { EMAIL_ADDRESS } from './site'
+import Image from 'next/image'
 import Link from 'next/link'
 import { FormEvent, useRef, useState } from 'react'
 import { useTranslation } from 'next-i18next'
@@ -53,7 +55,7 @@ export default function ContactForm({ subject, onSubject }: Props) {
     ]
       .filter((x) => x !== false && x !== '')
       .join('\n')
-    return `mailto:info@ginfinai.be?subject=${encodeURIComponent(subjects[subject] || 'GinfinAI')}&body=${encodeURIComponent(body)}`
+    return `mailto:${EMAIL_ADDRESS}?subject=${encodeURIComponent(subjects[subject] || 'GinfinAI')}&body=${encodeURIComponent(body)}`
   }
 
   const submit = async (e: FormEvent) => {
@@ -94,7 +96,7 @@ export default function ContactForm({ subject, onSubject }: Props) {
   if (status === 'sent') {
     return (
       <div role="status" className="flex flex-col items-start gap-3.5 py-6">
-        <img src="/brand/bern-avatar.png" alt="" width={56} height={56} className="h-14 w-14" />
+        <Image src="/brand/bern-avatar.png" alt="" width={56} height={56} className="h-14 w-14" />
         <h3 className="m-0 text-2xl font-semibold">{t('contact.sentTitle')}</h3>
         <p className="m-0 text-base text-muted">{t('contact.sentText')}</p>
         <button

@@ -1,8 +1,10 @@
+import { EMAIL_ADDRESS, PHONE_DISPLAY, SITE_URL, WHATSAPP_URL } from '../components/site'
 import Head from 'next/head'
+import Image from 'next/image'
 import { useRef, useState } from 'react'
 import type { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
+import { Trans, useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import LogoMark from '../components/LogoMark'
 import Services from '../components/Services'
@@ -17,15 +19,14 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   },
 })
 
-type WorkItem = { tag: string; title: string; desc: string; result: string; image: string }
+type WorkItem = { tag: string; title: string; desc: string; result: string }
 type Step = { title: string; text: string }
 
 const OG_LOCALE: Record<string, string> = { nl: 'nl_BE', en: 'en_GB', fr: 'fr_BE' }
-const SITE = process.env.NEXT_PUBLIC_SITE_URL || 'https://ginfinai.be'
 
 export default function Home() {
   const { t } = useTranslation('home')
-  const { locale = 'nl', defaultLocale = 'nl' } = useRouter()
+  const { locale = 'nl', defaultLocale = 'nl', locales = ['nl'] } = useRouter()
   const [selected, setSelected] = useState('w0')
   const [open, setOpen] = useState<string | null>('w0')
   const [subject, setSubject] = useState(0)
@@ -35,7 +36,22 @@ export default function Home() {
   const facts = asArray<string>(t('facts', { returnObjects: true }))
   const work = asArray<WorkItem>(t('work.items', { returnObjects: true }))
   const steps = asArray<Step>(t('approach.steps', { returnObjects: true }))
-  const url = SITE + (locale === defaultLocale ? '/' : `/${locale}`)
+  const pageUrl = (l: string) => SITE_URL + (l === defaultLocale ? '/' : `/${l}`)
+  const url = pageUrl(locale)
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    '@id': `${SITE_URL}/#bedrijf`,
+    name: 'GinfinAI',
+    url: SITE_URL,
+    image: `${SITE_URL}/brand/og-image.png`,
+    description: t('meta.description'),
+    email: EMAIL_ADDRESS,
+    telephone: '+32498420178',
+    address: { '@type': 'PostalAddress', streetAddress: 'Notestraat 64', postalCode: '1742', addressLocality: 'Ternat', addressCountry: 'BE' },
+    founder: { '@type': 'Person', name: 'Gerben Ceuppens' },
+    areaServed: 'BE',
+  }
 
   const select = (id: string) => {
     setSelected(id)
@@ -52,11 +68,16 @@ export default function Home() {
         <meta property="og:url" content={url} />
         <meta property="og:title" content={t('meta.title')} />
         <meta property="og:description" content={t('meta.description')} />
-        <meta property="og:image" content={`${SITE}/brand/og-image.png`} />
+        <meta property="og:image" content={`${SITE_URL}/brand/og-image.png`} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:locale" content={OG_LOCALE[locale] || 'nl_BE'} />
         <meta name="twitter:card" content="summary_large_image" />
+        {locales.map((l) => (
+          <link key={l} rel="alternate" hrefLang={l} href={pageUrl(l)} />
+        ))}
+        <link rel="alternate" hrefLang="x-default" href={pageUrl(defaultLocale)} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </Head>
 
       {/* Hero */}
@@ -78,7 +99,7 @@ export default function Home() {
               <a href="#contact" className="btn-primary">
                 {t('hero.ctaMessage')}
               </a>
-              <a href="https://wa.me/32498420178" className="btn-ghost-dark">
+              <a href={WHATSAPP_URL} className="btn-ghost-dark">
                 {t('hero.ctaWhatsapp')}
               </a>
             </div>
@@ -87,7 +108,7 @@ export default function Home() {
               onClick={() => bern.current?.open()}
               className="inline-flex min-h-[44px] cursor-pointer items-center gap-2.5 self-start border-0 bg-transparent p-0 text-left text-[15px] text-brand-light hover:text-white"
             >
-              <img src="/brand/bern-avatar.png" alt="" width={32} height={32} className="h-8 w-8" />
+              <Image src="/brand/bern-avatar.png" alt="" width={32} height={32} className="h-8 w-8" />
               {t('hero.askBern')}
             </button>
           </div>
@@ -139,8 +160,7 @@ export default function Home() {
             <div className="flex flex-wrap gap-6">
               {work.map((w) => (
                 <article key={w.title} className="flex min-w-0 flex-[1_1_480px] flex-col gap-[18px] rounded-[20px] border border-line bg-white p-5">
-                  {/* TODO: echte screenshot (next/image) zodra beschikbaar */}
-                  <div className="flex aspect-video items-center justify-center rounded-xl bg-selected text-sm text-[#5A5478]">{w.image}</div>
+                  {/* TODO: echte screenshot (next/image) toevoegen zodra beschikbaar; tot dan geen lege placeholder tonen */}
                   <div className="flex flex-col gap-2 px-1 pb-1">
                     <div className="text-[13px] font-semibold uppercase text-brand">{w.tag}</div>
                     <h3 className="m-0 text-2xl font-semibold">{w.title}</h3>
@@ -191,12 +211,11 @@ export default function Home() {
         {/* 04 Over mij */}
         <section id="over" className="bg-ink text-white">
           <div className="rp mx-auto flex max-w-page flex-wrap items-center gap-14 px-6 py-24">
-            <img
+            <Image
               src="/images/me_2025.jpg"
               alt={t('about.photoAlt')}
               width={380}
               height={475}
-              loading="lazy"
               className="aspect-[4/5] w-[380px] min-w-0 max-w-full flex-[0_1_380px] rounded-3xl object-cover"
             />
             <div className="flex min-w-0 flex-[1_1_480px] flex-col gap-5">
@@ -207,8 +226,10 @@ export default function Home() {
               <p className="m-0 max-w-[640px] text-lg leading-[1.65] text-ondark">{t('about.p1')}</p>
               <p className="m-0 text-lg leading-[1.65] text-ondark">{t('about.p2')}</p>
               <div className="flex max-w-[560px] items-center gap-3.5 rounded-2xl bg-ink-3 px-[18px] py-4">
-                <img src="/brand/bern-avatar.png" alt="" width={48} height={48} loading="lazy" className="h-12 w-12 flex-shrink-0" />
-                <p className="m-0 text-[15px] leading-normal text-ondark" dangerouslySetInnerHTML={{ __html: t('about.bern') }} />
+                <Image src="/brand/bern-avatar.png" alt="" width={48} height={48} className="h-12 w-12 flex-shrink-0" />
+                <p className="m-0 text-[15px] leading-normal text-ondark">
+                  <Trans t={t} i18nKey="about.bern" components={{ em: <em /> }} />
+                </p>
               </div>
             </div>
           </div>
@@ -223,13 +244,13 @@ export default function Home() {
             <h2 className="h2">{t('contact.title')}</h2>
             <p className="m-0 text-[17px] leading-relaxed text-muted">{t('contact.intro')}</p>
             <div className="flex flex-col border-t border-line">
-              <a href="mailto:info@ginfinai.be" className="flex flex-col gap-1 border-b border-line py-4 text-ink no-underline hover:text-brand">
+              <a href={`mailto:${EMAIL_ADDRESS}`} className="flex flex-col gap-1 border-b border-line py-4 text-ink no-underline hover:text-brand">
                 <span className="text-[13px] text-muted">{t('contact.emailLabel')}</span>
-                <span className="text-[17px]">info@ginfinai.be</span>
+                <span className="text-[17px]">{EMAIL_ADDRESS}</span>
               </a>
-              <a href="https://wa.me/32498420178" className="flex flex-col gap-1 border-b border-line py-4 text-ink no-underline hover:text-brand">
+              <a href={WHATSAPP_URL} className="flex flex-col gap-1 border-b border-line py-4 text-ink no-underline hover:text-brand">
                 <span className="text-[13px] text-muted">{t('contact.phoneLabel')}</span>
-                <span className="text-[17px]">+32 498 42 01 78</span>
+                <span className="text-[17px]">{PHONE_DISPLAY}</span>
               </a>
               <div className="flex flex-col gap-1 border-b border-line py-4">
                 <span className="text-[13px] text-muted">{t('contact.regionLabel')}</span>

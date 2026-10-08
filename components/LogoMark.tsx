@@ -97,6 +97,7 @@ export default function LogoMark({ onPick }: { onPick: (g: Group) => void }) {
   const timeRef = useRef(0)
   const visible = useRef(true)
   const pausedRef = useRef(false)
+  const wasIdle = useRef(false)
 
   const play = useCallback(() => {
     cancelAnimationFrame(raf.current)
@@ -104,7 +105,11 @@ export default function LogoMark({ onPick }: { onPick: (g: Group) => void }) {
     const tick = (now: number) => {
       if (pausedRef.current || !visible.current) return
       timeRef.current = now - start
-      setTime(timeRef.current)
+      // In de rustfase verandert er niets zichtbaars: niet opnieuw renderen, wel de klok laten doorlopen
+      const phase = timeRef.current % CYCLE
+      const idle = phase >= END && phase < END + HOLD
+      if (!(idle && wasIdle.current)) setTime(timeRef.current)
+      wasIdle.current = idle
       raf.current = requestAnimationFrame(tick)
     }
     raf.current = requestAnimationFrame(tick)
@@ -236,7 +241,7 @@ export default function LogoMark({ onPick }: { onPick: (g: Group) => void }) {
               />
             )
           })}
-          <g opacity={labelOpacity} fontFamily="JetBrains Mono, ui-monospace, monospace" textAnchor="middle" aria-hidden="true">
+          <g opacity={labelOpacity} style={{ fontFamily: 'var(--font-mono), ui-monospace, monospace' }} textAnchor="middle" aria-hidden="true">
             <text x="70" y="124" fontSize="11" letterSpacing="1.5" fill={hover === 'web' ? '#FFFFFF' : '#C9C0FF'}>
               {t('mark.web')}
             </text>

@@ -1,4 +1,6 @@
-import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
+import Image from 'next/image'
+import { WHATSAPP_URL } from './site'
+import { forwardRef, KeyboardEvent, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import { asArray } from './asArray'
 
@@ -20,6 +22,7 @@ const BernChat = forwardRef<BernHandle>(function BernChat(_props, ref) {
   const closeRef = useRef<HTMLButtonElement>(null)
   const returnTo = useRef<HTMLElement | null>(null)
   const listRef = useRef<HTMLDivElement>(null)
+  const dialogRef = useRef<HTMLDivElement>(null)
 
   useImperativeHandle(ref, () => ({
     open: () => {
@@ -42,6 +45,22 @@ const BernChat = forwardRef<BernHandle>(function BernChat(_props, ref) {
     requestAnimationFrame(() => returnTo.current?.focus())
   }
 
+  // Escape sluit, Tab blijft binnen de dialoog
+  const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Escape') return close()
+    if (e.key !== 'Tab' || !dialogRef.current) return
+    const items = dialogRef.current.querySelectorAll<HTMLElement>('button, a[href]')
+    const first = items[0]
+    const last = items[items.length - 1]
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault()
+      last.focus()
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault()
+      first.focus()
+    }
+  }
+
   const ask = (x: QA) => setMsgs((m) => [...m, { bot: false, text: x.q }, { bot: true, text: x.a }])
 
   if (!open) {
@@ -55,7 +74,7 @@ const BernChat = forwardRef<BernHandle>(function BernChat(_props, ref) {
         aria-label={t('bern.open')}
         className="fixed bottom-5 right-5 z-30 h-16 w-16 cursor-pointer rounded-full border-0 bg-transparent p-0 shadow-[0_10px_24px_rgba(19,14,40,0.35)] transition-transform hover:-translate-y-0.5"
       >
-        <img src="/brand/bern-avatar.png" alt="" width={64} height={64} className="block h-16 w-16" />
+        <Image src="/brand/bern-avatar.png" alt="" width={64} height={64} className="block h-16 w-16" />
       </button>
     )
   }
@@ -64,13 +83,15 @@ const BernChat = forwardRef<BernHandle>(function BernChat(_props, ref) {
 
   return (
     <div
+      ref={dialogRef}
       role="dialog"
+      aria-modal="true"
       aria-label={t('bern.dialog')}
-      onKeyDown={(e) => e.key === 'Escape' && close()}
+      onKeyDown={onKeyDown}
       className="fixed bottom-5 right-5 z-30 flex max-h-[calc(100vh-100px)] w-[380px] max-w-[calc(100vw-40px)] flex-col overflow-hidden rounded-[20px] border border-line bg-white shadow-[0_16px_40px_rgba(19,14,40,0.22)]"
     >
       <div className="flex items-center gap-3 bg-ink py-3 pl-4 pr-3 text-white">
-        <img src="/brand/bern-avatar.png" alt="" width={40} height={40} className="h-10 w-10" />
+        <Image src="/brand/bern-avatar.png" alt="" width={40} height={40} className="h-10 w-10" />
         <div className="flex flex-grow flex-col gap-0.5">
           <span className="font-brand text-[17px] font-bold">{t('bern.name')}</span>
           <span className="text-xs text-ondark-2">{t('bern.role')}</span>
@@ -92,7 +113,7 @@ const BernChat = forwardRef<BernHandle>(function BernChat(_props, ref) {
         {all.map((m, i) =>
           m.bot ? (
             <div key={i} className="flex items-end gap-2">
-              <img src="/brand/bern-avatar.png" alt="" width={28} height={28} className="h-7 w-7 flex-shrink-0" />
+              <Image src="/brand/bern-avatar.png" alt="" width={28} height={28} className="h-7 w-7 flex-shrink-0" />
               <div className="max-w-[280px] rounded-[16px_16px_16px_4px] border border-line bg-white px-3.5 py-2.5 text-sm leading-normal">{m.text}</div>
             </div>
           ) : (
@@ -125,7 +146,7 @@ const BernChat = forwardRef<BernHandle>(function BernChat(_props, ref) {
             {t('bern.forward')}
           </a>
           <a
-            href="https://wa.me/32498420178"
+            href={WHATSAPP_URL}
             className="flex min-h-[44px] items-center justify-center rounded-xl border border-line px-3 text-sm text-ink no-underline hover:border-brand hover:text-ink"
           >
             {t('bern.whatsapp')}

@@ -28,7 +28,7 @@ export default function Services({ selected, open, onSelect, onAsk }: Props) {
   if (!sel) return null
   const groupOf = (id: string) => (id.startsWith('a') ? t('services.aiTitle') : t('services.webTitle'))
 
-  const AskButton = ({ s, big }: { s: Service; big?: boolean }) =>
+  const askButton = (s: Service, big?: boolean) =>
     big ? (
       <a
         href="#contact"
@@ -50,7 +50,7 @@ export default function Services({ selected, open, onSelect, onAsk }: Props) {
       </a>
     )
 
-  const Column = ({ title, intro, items, offset, accent }: { title: string; intro: string; items: Service[]; offset: number; accent?: boolean }) => (
+  const column = (title: string, intro: string, items: Service[], offset: number, accent?: boolean) => (
     <div className="flex min-w-0 flex-[1_1_480px] flex-col gap-1.5">
       <div className="flex items-end justify-between gap-4 px-4 pb-3.5">
         <h3 className={'m-0 text-[26px] font-semibold ' + (accent ? 'text-brand' : '')}>{title}</h3>
@@ -64,7 +64,7 @@ export default function Services({ selected, open, onSelect, onAsk }: Props) {
             <button
               type="button"
               onClick={() => onSelect(s.id)}
-              aria-pressed={on}
+              aria-expanded={isOpen}
               className={
                 'flex min-h-[76px] w-full cursor-pointer items-center gap-5 border-0 border-b px-4 text-left transition-colors ' +
                 (on ? 'rounded-[14px] border-transparent bg-selected' : 'border-line bg-transparent hover:bg-lavender')
@@ -91,7 +91,7 @@ export default function Services({ selected, open, onSelect, onAsk }: Props) {
                       <span className="text-xl font-semibold">{s.panelPrice}</span>
                       <span className="text-[13px] text-brand-panel">{t('services.lead', { lead: s.lead })}</span>
                     </div>
-                    <AskButton s={s} />
+                    {askButton(s)}
                   </div>
                 </div>
               </div>
@@ -105,8 +105,8 @@ export default function Services({ selected, open, onSelect, onAsk }: Props) {
   return (
     <>
       <div className="flex flex-wrap gap-x-8 gap-y-6">
-        <Column title={t('services.webTitle')} intro={t('services.webIntro')} items={web} offset={0} />
-        <Column title={t('services.aiTitle')} intro={t('services.aiIntro')} items={ai} offset={web.length} accent />
+        {column(t('services.webTitle'), t('services.webIntro'), web, 0)}
+        {column(t('services.aiTitle'), t('services.aiIntro'), ai, web.length, true)}
       </div>
 
       <div
@@ -136,7 +136,7 @@ export default function Services({ selected, open, onSelect, onAsk }: Props) {
               <span className="text-sm text-brand-panel">{t('services.lead', { lead: sel.lead })}</span>
               <span className="text-[28px] font-semibold">{sel.panelPrice}</span>
             </div>
-            <AskButton s={sel} big />
+            {askButton(sel, true)}
           </div>
         </div>
       </div>

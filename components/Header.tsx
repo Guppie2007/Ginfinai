@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
@@ -42,7 +43,7 @@ export default function Header() {
       </a>
       <div className="mx-auto flex max-w-page items-center justify-between gap-6 px-6 py-3.5">
         <Link href="/" aria-label={t('nav.home')} className="flex items-center">
-          <img
+          <Image
             src="/brand/ginfinai-logo-horizontaal-op-donker.svg"
             alt="GinfinAI"
             width={176}

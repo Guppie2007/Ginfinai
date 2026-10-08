@@ -42,9 +42,9 @@ module.exports = {
         error: '#B42318',
       },
       fontFamily: {
-        sans: ['Onest', 'system-ui', 'sans-serif'],
-        brand: ['Quicksand', 'Onest', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+        sans: ['var(--font-onest)', 'Onest', 'system-ui', 'sans-serif'],
+        brand: ['var(--font-quicksand)', 'Quicksand', 'Onest', 'sans-serif'],
+        mono: ['var(--font-mono)', '"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       maxWidth: {
         page: '1280px',

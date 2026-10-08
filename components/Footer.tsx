@@ -1,3 +1,5 @@
+import { EMAIL_ADDRESS, PHONE_DISPLAY, WHATSAPP_URL } from './site'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { asArray } from './asArray'
@@ -12,7 +14,7 @@ export default function Footer() {
       <div className="mx-auto flex max-w-page flex-col gap-10 px-6 pb-8 pt-14">
         <div className="flex flex-wrap justify-between gap-8">
           <div className="flex max-w-[320px] flex-col gap-3.5">
-            <img
+            <Image
               src="/brand/ginfinai-logo-horizontaal-op-donker.svg"
               alt="GinfinAI"
               width={176}
@@ -32,11 +34,11 @@ export default function Footer() {
             </div>
             <div className="flex flex-col gap-2.5">
               <span className="text-[13px] text-ondark-3">{t('footer.contact')}</span>
-              <a href="mailto:info@ginfinai.be" className={link}>
-                info@ginfinai.be
+              <a href={`mailto:${EMAIL_ADDRESS}`} className={link}>
+                {EMAIL_ADDRESS}
               </a>
-              <a href="https://wa.me/32498420178" className={link}>
-                +32 498 42 01 78
+              <a href={WHATSAPP_URL} className={link}>
+                {PHONE_DISPLAY}
               </a>
               <span>{t('footer.address')}</span>
             </div>

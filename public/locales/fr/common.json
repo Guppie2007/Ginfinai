@@ -28,7 +28,8 @@
     "contact": "Contact",
     "address": "Notestraat 64, 1742 Ternat",
     "legal": "© {{year}} GinfinAI · Gerben Ceuppens · TVA BE1012.619.721",
-    "privacy": "Confidentialité"
+    "privacy": "Confidentialité",
+    "terms": "Conditions générales"
   },
   "bern": {
     "open": "Ouvrir le chat avec Bern",

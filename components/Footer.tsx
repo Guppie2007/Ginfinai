@@ -46,9 +46,14 @@ export default function Footer() {
         </div>
         <div className="flex flex-wrap justify-between gap-3 border-t border-ink-line pt-5 text-[13px] text-ondark-3">
           <span>{t('footer.legal', { year: new Date().getFullYear() })}</span>
-          <Link href="/privacy" className="text-ondark-3 hover:text-white">
-            {t('footer.privacy')}
-          </Link>
+          <span className="flex gap-5">
+            <Link href="/privacy" className="text-ondark-3 hover:text-white">
+              {t('footer.privacy')}
+            </Link>
+            <Link href="/voorwaarden" className="text-ondark-3 hover:text-white">
+              {t('footer.terms')}
+            </Link>
+          </span>
         </div>
       </div>
     </footer>

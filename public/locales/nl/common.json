@@ -28,7 +28,8 @@
     "contact": "Contact",
     "address": "Notestraat 64, 1742 Ternat",
     "legal": "© {{year}} GinfinAI · Gerben Ceuppens · BTW BE1012.619.721",
-    "privacy": "Privacy"
+    "privacy": "Privacy",
+    "terms": "Voorwaarden"
   },
   "bern": {
     "open": "Chat met Bern openen",

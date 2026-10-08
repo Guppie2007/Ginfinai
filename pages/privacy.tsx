@@ -2,11 +2,12 @@ import Head from 'next/head'
 import type { GetStaticProps } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import i18nConfig from '../lib/i18nConfig'
 import { asArray } from '../components/asArray'
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale || 'nl', ['common', 'privacy'])),
+    ...(await serverSideTranslations(locale || 'nl', ['common', 'privacy'], i18nConfig)),
   },
 })
 

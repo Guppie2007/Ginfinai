@@ -3,10 +3,11 @@ import Link from 'next/link'
 import type { GetStaticProps } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import i18nConfig from '../lib/i18nConfig'
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale || 'nl', ['common'])),
+    ...(await serverSideTranslations(locale || 'nl', ['common'], i18nConfig)),
   },
 })
 

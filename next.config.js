@@ -10,6 +10,12 @@ const nextConfig = {
   reactStrictMode: true,
   i18n: nextI18NextConfig.i18n,
 
+  // Vertalingen meenemen in de serverfuncties op Vercel (anders 500 bij renderen op aanvraag)
+  outputFileTracingIncludes: {
+    '/': ['./public/locales/**/*', './next-i18next.config.cjs'],
+    '/**': ['./public/locales/**/*', './next-i18next.config.cjs'],
+  },
+
   async headers() {
     return [
       {

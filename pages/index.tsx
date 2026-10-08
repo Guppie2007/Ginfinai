@@ -6,6 +6,7 @@ import type { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import { Trans, useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import i18nConfig from '../lib/i18nConfig'
 import LogoMark from '../components/LogoMark'
 import Services from '../components/Services'
 import ContactForm from '../components/ContactForm'
@@ -15,7 +16,7 @@ import { asArray } from '../components/asArray'
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale || 'nl', ['common', 'home'])),
+    ...(await serverSideTranslations(locale || 'nl', ['common', 'home'], i18nConfig)),
   },
 })
 

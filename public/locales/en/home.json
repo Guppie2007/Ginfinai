@@ -1,41 +1,190 @@
 {
   "meta": {
-    "title": "GinfinAI | Modern Web & AI Solutions",
-    "description": "GinfinAI: Modern web design and AI applications to elevate your business in the digital age.",
-    "keywords": "GinfinAI, web design, AI applications, modern websites, digital solutions, artificial intelligence, web development"
+    "title": "GinfinAI · Websites and AI, one engineer, fixed price",
+    "description": "Gerben Ceuppens builds websites and AI applications for small businesses and freelancers in Flemish Brabant and Brussels. Fixed price, one point of contact, and the code is yours."
   },
   "hero": {
-    "animation1": "Web & AI to Infinity and Beyond!",
-    "animation2": "Building the Future with Code and AI.",
-    "animation3": "Your Digital Transformation Starts Here.",
-    "description": "I design modern websites and AI applications that help your business shine in the digital age.",
-    "cta1": "Discover my services",
-    "cta2": "Contact me"
+    "eyebrow": "Freelance web and AI engineer · Ternat",
+    "title1": "Websites and AI.",
+    "title2": "One engineer,",
+    "title3": "fixed price.",
+    "lead": "I build websites and AI applications for small businesses and freelancers in Flemish Brabant. No agency with five middlemen: you talk to the engineer who builds it.",
+    "ctaMessage": "Send a message",
+    "ctaWhatsapp": "WhatsApp",
+    "askBern": "Or ask Bern, my AI assistant, first →"
   },
+  "mark": {
+    "label": "GinfinAI mark: web and AI, connected in one point of contact",
+    "web": "WEB",
+    "ai": "AI",
+    "capDefault": "ONE POINT OF CONTACT",
+    "capWeb": "WEBSITES · SEE SERVICES ↓",
+    "capAi": "AI APPLICATIONS · SEE SERVICES ↓",
+    "webLink": "See web services",
+    "aiLink": "See AI services",
+    "hintBefore": "Click or tap",
+    "hintOr": "or",
+    "hintAfter": "to see the services",
+    "pause": "Pause animation",
+    "resume": "Resume animation"
+  },
+  "facts": [
+    "MSc Computer Science Engineering (Ghent University)",
+    "Fixed price, agreed up front",
+    "The code and all access are yours",
+    "Dutch, English, French"
+  ],
   "services": {
-    "title": "What can I do for you?",
-    "webdesign": {
-      "title": "Web Design",
-      "description": "Modern, responsive websites that represent your brand.",
-      "button": "More info"
-    },
-    "update": {
-      "title": "Web Update",
-      "description": "Update and modernize your current site.",
-      "button": "More info"
-    },
-    "ai": {
-      "title": "AI Applications",
-      "description": "Build AI-driven features that add real value.",
-      "button": "Contact me"
-    }
+    "eyebrow": "01 · Services",
+    "title": "Websites that work, AI that saves time",
+    "intro": "Every price is a fixed price. We agree on the scope together up front, so there are no surprises afterwards.",
+    "webTitle": "Web",
+    "webIntro": "Custom sites, built to load fast and be found.",
+    "aiTitle": "AI",
+    "aiIntro": "From € 2,400 · starting with a free feasibility call.",
+    "selected": "Selected service",
+    "lead": "Lead time {{lead}}",
+    "cta": "Send a message",
+    "web": [
+      {
+        "id": "w0",
+        "subject": 0,
+        "title": "New website",
+        "price": "from € 1,850",
+        "panelPrice": "from € 1,850",
+        "lead": "3 to 5 weeks",
+        "desc": "A site tailored to your brand, built to load fast and be found.",
+        "points": ["Custom design", "Multilingual NL / EN / FR", "SEO basics and analytics", "You manage the texts yourself"]
+      },
+      {
+        "id": "w1",
+        "subject": 1,
+        "title": "Website redesign",
+        "price": "from € 950",
+        "panelPrice": "from € 950",
+        "lead": "2 to 3 weeks",
+        "desc": "Modernise and speed up your site without losing your place in Google.",
+        "points": ["Speed and SEO audit", "New design", "Migration without losing rankings"]
+      },
+      {
+        "id": "w2",
+        "subject": 3,
+        "title": "Maintenance and hosting",
+        "price": "from € 45 / month",
+        "panelPrice": "from € 45 / month",
+        "lead": "ongoing",
+        "desc": "Backups, updates and a fixed point of contact for changes.",
+        "points": ["Daily backups", "Security updates", "Text changes within 2 working days"]
+      }
+    ],
+    "ai": [
+      {
+        "id": "a0",
+        "subject": 2,
+        "title": "Smart search",
+        "price": "on quote",
+        "panelPrice": "from € 2,400",
+        "lead": "4 to 6 weeks",
+        "desc": "Customers and staff instantly find the right answer in your own documents and website.",
+        "points": ["Works on your own documents", "Answers with sources", "Your data stays yours"]
+      },
+      {
+        "id": "a1",
+        "subject": 2,
+        "title": "Quote assistant",
+        "price": "on quote",
+        "panelPrice": "from € 2,400",
+        "lead": "4 to 6 weeks",
+        "desc": "An assistant that drafts your quotes based on previous files. You review and send.",
+        "points": ["Learns from your previous quotes", "You stay in control", "Can connect to your tools"]
+      },
+      {
+        "id": "a2",
+        "subject": 2,
+        "title": "Custom AI",
+        "price": "on quote",
+        "panelPrice": "from € 2,400",
+        "lead": "after feasibility call",
+        "desc": "An application for your own process. First a short feasibility call, then a working prototype.",
+        "points": ["Free feasibility call", "Working prototype first", "Only then build further"]
+      }
+    ]
+  },
+  "work": {
+    "eyebrow": "02 · Work",
+    "title": "Recent projects",
+    "items": [
+      {
+        "tag": "Web application",
+        "title": "Booking system for a riding school",
+        "desc": "Riders book the arena themselves through one link the riding school shares with its customers. No more phone calls or double bookings.",
+        "result": "[RESULT, e.g. bookings per month]",
+        "image": "[SCREENSHOT · booking system]"
+      },
+      {
+        "tag": "[Website or AI]",
+        "title": "[Project name, with the client's permission]",
+        "desc": "[Two sentences: what was the problem, what was built.]",
+        "result": "[RESULT]",
+        "image": "[SCREENSHOT · project 2]"
+      }
+    ]
+  },
+  "approach": {
+    "eyebrow": "03 · Approach",
+    "title": "From first call to delivery",
+    "step": "Step {{n}}",
+    "steps": [
+      { "title": "Free call", "text": "We discuss what you want to achieve. If someone else can help you better, I'll tell you." },
+      { "title": "Fixed price and planning", "text": "You get a clear quote with scope, price and delivery date. Only then do I start." },
+      { "title": "Build and deliver", "text": "You see progress along the way. On delivery, the code, the domain and all access are yours." }
+    ]
   },
   "about": {
-    "title": "About Me",
-    "description1": "I'm <span class='font-semibold text-white'>Gerben Ceuppens</span>, 25 years old, from Ternat and a master's graduate in Computer Science Engineering at Ghent University.",
-    "description2": "During my studies, I specialised in <span class='text-purple-400 font-medium'>Artificial Intelligence</span>. Even when I was still studying, I was eager to put my gained knowledge into practice.",
-    "description3": "This led to <span class='font-semibold text-white'>GinfinAI</span>, with which I can share my expertise and help entrepreneurs.",
-    "description4": "Currently, I work as an AI Engineer at <span class='font-semibold text-white'>Growing pAI</span>, where I can also expand and apply my knowledge.",
-    "cta": "Let's talk about your project"
+    "eyebrow": "04 · About",
+    "title": "I'm Gerben Ceuppens",
+    "photoAlt": "Gerben Ceuppens",
+    "p1": "Computer science engineer (Ghent University), specialised in artificial intelligence. By day I work as an AI Engineer at Growing pAI. With GinfinAI I put that experience to work for local businesses: a website that brings in customers, or an AI application that saves you hours every week.",
+    "p2": "One point of contact, clear agreements, and code that you own afterwards.",
+    "bern": "Gerben comes from <em>ger</em> (spear) and <em>bern</em> (bear). That's why my AI assistant is called Bern."
+  },
+  "contact": {
+    "eyebrow": "05 · Contact",
+    "title": "Tell me briefly what you need",
+    "intro": "Every request comes straight to me. You get an honest estimate within a day, even for a small project.",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone and WhatsApp",
+    "regionLabel": "Region",
+    "region": "Ternat · on-site meetings in Flemish Brabant and Brussels",
+    "fields": {
+      "name": "Name",
+      "email": "Email",
+      "emailHint": "name@company.com",
+      "company": "Company",
+      "phone": "Phone",
+      "subject": "What is it about?",
+      "budget": "Indicative budget",
+      "message": "Your message",
+      "messageHint": "What do you want to achieve, and by when?",
+      "required": "required",
+      "optional": "optional"
+    },
+    "subjects": ["New website", "Redesign", "AI application", "Maintenance", "Something else"],
+    "budgets": ["< € 1,500", "€ 1,500 – 3,000", "€ 3,000+", "Not sure yet"],
+    "errors": {
+      "name": "Enter your name so I know who to reply to.",
+      "email": "Enter an email address like name@company.com.",
+      "message": "Briefly describe what you need, one sentence is enough.",
+      "summary": "{{count}} field(s) still need attention before I can send your message.",
+      "send": "Your message wasn't sent. Something went wrong on my end. Please try again or email info@ginfinai.be directly.",
+      "mailFallback": "Open your email app with this message"
+    },
+    "privacy": "I only use your details to reply to this request.",
+    "privacyLink": "More in the privacy statement",
+    "submit": "Send a message",
+    "sending": "Sending…",
+    "sentTitle": "Thank you, your message has been sent",
+    "sentText": "Gerben will reply within a day.",
+    "again": "Send another message"
   }
 }

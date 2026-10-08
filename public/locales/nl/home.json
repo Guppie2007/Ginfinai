@@ -1,41 +1,190 @@
 {
   "meta": {
-    "title": "GinfinAI | Moderne Web & AI oplossingen",
-    "description": "GinfinAI: Moderne webdesign en AI applicaties om uw bedrijf te laten schitteren in het digitale tijdperk.",
-    "keywords": "GinfinAI, webdesign, AI applicaties, moderne websites, digitale oplossingen, artificiële intelligentie, webontwikkeling"
+    "title": "GinfinAI · Website en AI, één ingenieur, vaste prijs",
+    "description": "Gerben Ceuppens bouwt websites en AI-toepassingen voor KMO's en zelfstandigen in Vlaams-Brabant en Brussel. Vaste prijs, één aanspreekpunt, de code is van u."
   },
   "hero": {
-    "animation1": "Web & AI to Infinity and Beyond!",
-    "animation2": "Bouwen aan de toekomst met Code en AI.",
-    "animation3": "Jouw digitale transformatie begint hier.",
-    "description": "Ik design moderne websites en AI applicaties die jouw bedrijf laten schitteren in het digitale tijdperk.",
-    "cta1": "Ontdek mijn diensten",
-    "cta2": "Neem contact op"
+    "eyebrow": "Freelance web- en AI-ingenieur · Ternat",
+    "title1": "Website en AI.",
+    "title2": "Eén ingenieur,",
+    "title3": "vaste prijs.",
+    "lead": "Ik bouw websites en AI-toepassingen voor KMO's en zelfstandigen in Vlaams-Brabant. Geen bureau met vijf tussenpersonen: u spreekt met de ingenieur die het maakt.",
+    "ctaMessage": "Stuur een bericht",
+    "ctaWhatsapp": "WhatsApp",
+    "askBern": "Of vraag het eerst aan Bern, mijn AI-assistent →"
   },
+  "mark": {
+    "label": "GinfinAI-teken: web en AI, verbonden in één aanspreekpunt",
+    "web": "WEB",
+    "ai": "AI",
+    "capDefault": "ÉÉN AANSPREEKPUNT",
+    "capWeb": "WEBSITES · BEKIJK DIENSTEN ↓",
+    "capAi": "AI-TOEPASSINGEN · BEKIJK DIENSTEN ↓",
+    "webLink": "Webdiensten bekijken",
+    "aiLink": "AI-diensten bekijken",
+    "hintBefore": "Klik of tik op",
+    "hintOr": "of",
+    "hintAfter": "om de diensten te bekijken",
+    "pause": "Animatie pauzeren",
+    "resume": "Animatie hervatten"
+  },
+  "facts": [
+    "Burgerlijk ingenieur computerwetenschappen (UGent)",
+    "Vaste prijs, vooraf afgesproken",
+    "De code en alle toegangen zijn van u",
+    "Nederlands, Engels, Frans"
+  ],
   "services": {
-    "title": "Wat kan ik voor u doen?",
-    "webdesign": {
-      "title": "Webdesign",
-      "description": "Moderne, responsive websites die uw merk vertegenwoordigen.",
-      "button": "Meer info"
-    },
-    "update": {
-      "title": "Web Update",
-      "description": "Update en moderniseer uw huidige site.",
-      "button": "Meer info"
-    },
-    "ai": {
-      "title": "AI Applicaties",
-      "description": "Bouw AI-gestuurde functies die echte waarde toevoegen.",
-      "button": "Contacteer mij"
-    }
+    "eyebrow": "01 · Diensten",
+    "title": "Websites die werken, AI die tijd bespaart",
+    "intro": "Elke prijs is een vaste prijs. De scope leggen we vooraf samen vast, zonder verrassingen achteraf.",
+    "webTitle": "Web",
+    "webIntro": "Sites op maat, gebouwd om snel te laden en gevonden te worden.",
+    "aiTitle": "AI",
+    "aiIntro": "Vanaf € 2.400 · eerst een gratis haalbaarheidsgesprek.",
+    "selected": "Gekozen dienst",
+    "lead": "Doorlooptijd {{lead}}",
+    "cta": "Stuur een bericht",
+    "web": [
+      {
+        "id": "w0",
+        "subject": 0,
+        "title": "Nieuwe website",
+        "price": "vanaf € 1.850",
+        "panelPrice": "vanaf € 1.850",
+        "lead": "3 tot 5 weken",
+        "desc": "Een site op maat van uw huisstijl, gebouwd om snel te laden en gevonden te worden.",
+        "points": ["Ontwerp op maat", "Meertalig NL / EN / FR", "SEO-basis en meting", "U beheert de teksten zelf"]
+      },
+      {
+        "id": "w1",
+        "subject": 1,
+        "title": "Website vernieuwen",
+        "price": "vanaf € 950",
+        "panelPrice": "vanaf € 950",
+        "lead": "2 tot 3 weken",
+        "desc": "Moderniseren en versnellen zonder dat u uw plaats in Google verliest.",
+        "points": ["Audit van snelheid en SEO", "Nieuwe vormgeving", "Migratie zonder verlies van posities"]
+      },
+      {
+        "id": "w2",
+        "subject": 3,
+        "title": "Onderhoud en hosting",
+        "price": "vanaf € 45 / maand",
+        "panelPrice": "vanaf € 45 / maand",
+        "lead": "doorlopend",
+        "desc": "Back-ups, updates en een vast aanspreekpunt voor aanpassingen.",
+        "points": ["Dagelijkse back-ups", "Beveiligingsupdates", "Tekstwijzigingen binnen 2 werkdagen"]
+      }
+    ],
+    "ai": [
+      {
+        "id": "a0",
+        "subject": 2,
+        "title": "Slimme zoekfunctie",
+        "price": "op offerte",
+        "panelPrice": "vanaf € 2.400",
+        "lead": "4 tot 6 weken",
+        "desc": "Klanten en medewerkers vinden meteen het juiste antwoord in uw eigen documenten en website.",
+        "points": ["Werkt op uw eigen documenten", "Antwoorden met bronvermelding", "Uw data blijft van u"]
+      },
+      {
+        "id": "a1",
+        "subject": 2,
+        "title": "Offerte-assistent",
+        "price": "op offerte",
+        "panelPrice": "vanaf € 2.400",
+        "lead": "4 tot 6 weken",
+        "desc": "Een assistent die uw offertes voorbereidt op basis van eerdere dossiers. U kijkt na en verstuurt.",
+        "points": ["Leert van uw eerdere offertes", "U houdt de controle", "Koppeling met uw tools mogelijk"]
+      },
+      {
+        "id": "a2",
+        "subject": 2,
+        "title": "AI op maat",
+        "price": "op offerte",
+        "panelPrice": "vanaf € 2.400",
+        "lead": "na haalbaarheidsgesprek",
+        "desc": "Een toepassing voor uw eigen proces. Eerst een kort haalbaarheidsgesprek, daarna een werkend prototype.",
+        "points": ["Gratis haalbaarheidsgesprek", "Werkend prototype eerst", "Pas daarna verder bouwen"]
+      }
+    ]
+  },
+  "work": {
+    "eyebrow": "02 · Werk",
+    "title": "Recente projecten",
+    "items": [
+      {
+        "tag": "Webapplicatie",
+        "title": "Reservatiesysteem voor een manege",
+        "desc": "Ruiters reserveren zelf de piste via één link die de manege met haar klanten deelt. Geen telefoontjes of dubbele boekingen meer.",
+        "result": "[RESULTAAT, bv. aantal reservaties per maand]",
+        "image": "[SCREENSHOT · reservatiesysteem]"
+      },
+      {
+        "tag": "[Website of AI]",
+        "title": "[Projectnaam, met toestemming van de klant]",
+        "desc": "[Twee zinnen: wat was het probleem, wat is er gebouwd.]",
+        "result": "[RESULTAAT]",
+        "image": "[SCREENSHOT · project 2]"
+      }
+    ]
+  },
+  "approach": {
+    "eyebrow": "03 · Aanpak",
+    "title": "Van eerste gesprek tot oplevering",
+    "step": "Stap {{n}}",
+    "steps": [
+      { "title": "Gratis gesprek", "text": "We bespreken wat u wil bereiken. Kan iemand anders u beter helpen, dan zeg ik dat ook." },
+      { "title": "Vaste prijs en planning", "text": "U krijgt een duidelijke offerte met scope, prijs en opleverdatum. Pas daarna start ik." },
+      { "title": "Bouwen en opleveren", "text": "U ziet tussentijds resultaat. Bij oplevering zijn de code, het domein en alle toegangen van u." }
+    ]
   },
   "about": {
-    "title": "Wie ben ik?",
-    "description1": "Ik ben <span class='font-semibold text-white'>Gerben Ceuppens</span>, 25 jaar, geboren en getogen te Ternat en afgestudeerd als Burgerlijk Ingenieur Computerwetenschappen aan de Universiteit Gent.",
-    "description2": "Tijdens mijn studies specialiseerde ik me in <span class='text-purple-400 font-medium'>Artificiële Intelligentie</span>. Ook wanneer ik nog studeerde, was ik gretig om mijn kennis in de praktijk te brengen.",
-    "description3": "Dit leidde tot <span class='font-semibold text-white'>GinfinAI</span>, waarmee ik mijn expertise kan delen en ondernemers kan helpen.",
-    "description4": "Momenteel werk ik als AI Engineer bij <span class='font-semibold text-white'>Growing pAI</span>, waar ik mijn kennis eveneens kan uitbreiden en toepassen.",
-    "cta": "Laat ons praten over jouw project"
+    "eyebrow": "04 · Over mij",
+    "title": "Ik ben Gerben Ceuppens",
+    "photoAlt": "Gerben Ceuppens",
+    "p1": "Burgerlijk ingenieur computerwetenschappen (UGent), met een specialisatie in artificiële intelligentie. Overdag werk ik als AI Engineer bij Growing pAI. Met GinfinAI zet ik die ervaring in voor ondernemers uit de streek: een website die klanten oplevert, of een AI-toepassing die u elke week uren bespaart.",
+    "p2": "Eén aanspreekpunt, duidelijke afspraken en code die u nadien zelf in handen hebt.",
+    "bern": "Gerben komt van <em>ger</em> (speer) en <em>bern</em> (beer). Daarom heet mijn AI-assistent Bern."
+  },
+  "contact": {
+    "eyebrow": "05 · Contact",
+    "title": "Vertel kort wat u zoekt",
+    "intro": "Elke aanvraag komt rechtstreeks bij mij. U krijgt binnen de dag een eerlijke inschatting, ook voor een klein project.",
+    "emailLabel": "E-mail",
+    "phoneLabel": "Telefoon en WhatsApp",
+    "regionLabel": "Regio",
+    "region": "Ternat · afspraken op locatie in Vlaams-Brabant en Brussel",
+    "fields": {
+      "name": "Naam",
+      "email": "E-mail",
+      "emailHint": "naam@bedrijf.be",
+      "company": "Bedrijf",
+      "phone": "Telefoon",
+      "subject": "Waarover gaat het?",
+      "budget": "Indicatief budget",
+      "message": "Uw bericht",
+      "messageHint": "Wat wilt u bereiken, en tegen wanneer?",
+      "required": "verplicht",
+      "optional": "optioneel"
+    },
+    "subjects": ["Nieuwe website", "Site vernieuwen", "AI-toepassing", "Onderhoud", "Iets anders"],
+    "budgets": ["< € 1.500", "€ 1.500 – 3.000", "€ 3.000+", "Weet ik nog niet"],
+    "errors": {
+      "name": "Vul uw naam in, zodat ik weet wie ik antwoord.",
+      "email": "Vul een e-mailadres in zoals naam@bedrijf.be.",
+      "message": "Schrijf kort wat u zoekt, één zin is genoeg.",
+      "summary": "Nog {{count}} veld(en) na te kijken voor ik uw bericht kan versturen.",
+      "send": "Uw bericht is niet verstuurd. Er liep iets mis aan mijn kant. Probeer het opnieuw of mail rechtstreeks naar info@ginfinai.be.",
+      "mailFallback": "Open uw e-mailprogramma met dit bericht"
+    },
+    "privacy": "Uw gegevens gebruik ik enkel om op deze vraag te antwoorden.",
+    "privacyLink": "Meer in de privacyverklaring",
+    "submit": "Stuur een bericht",
+    "sending": "Bezig met versturen…",
+    "sentTitle": "Bedankt, uw bericht is verstuurd",
+    "sentText": "U krijgt binnen de dag antwoord van Gerben.",
+    "again": "Nog een bericht sturen"
   }
 }

@@ -6,8 +6,8 @@ const tsPlugin = require('@typescript-eslint/eslint-plugin')
 const prettier = require('eslint-plugin-prettier')
 
 module.exports = [
+  { ignores: ['node_modules/**', '.next/**', 'dist/**', 'public/**', '.playwright-mcp/**'] },
   {
-    ignores: ['node_modules/**', '.next/**', 'public/**'],
     files: ['**/*.{ts,tsx,js,jsx}'],
     languageOptions: { parser: tsParser },
     plugins: { react, 'react-hooks': reactHooks, '@typescript-eslint': tsPlugin, 'prettier': prettier, 'jsx-a11y': js },

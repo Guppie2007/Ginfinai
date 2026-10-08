@@ -1,8 +1,62 @@
 {
   "siteName": "GinfinAI",
-  "contact": "Contact",
-  "home": "Home",
-  "services": "Diensten",
-  "about": "Over mij",
-  "contact_button": "Contacteer"
+  "skip": "Naar de inhoud",
+  "nav": {
+    "home": "GinfinAI, naar de homepage",
+    "main": "Hoofdmenu",
+    "mobile": "Mobiel menu",
+    "services": "Diensten",
+    "work": "Werk",
+    "approach": "Aanpak",
+    "about": "Over mij",
+    "contact": "Contact",
+    "cta": "Stuur een bericht",
+    "ctaShort": "Contact",
+    "menuOpen": "Menu openen",
+    "menuClose": "Menu sluiten",
+    "language": "Taal kiezen"
+  },
+  "footer": {
+    "tagline": "Website en AI voor ondernemers in Vlaams-Brabant en Brussel.",
+    "services": "Diensten",
+    "servicesList": [
+      "Nieuwe website",
+      "Website vernieuwen",
+      "AI-toepassingen",
+      "Onderhoud en hosting"
+    ],
+    "contact": "Contact",
+    "address": "Notestraat 64, 1742 Ternat",
+    "legal": "© {{year}} GinfinAI · Gerben Ceuppens · BTW BE1012.619.721",
+    "privacy": "Privacy"
+  },
+  "bern": {
+    "open": "Chat met Bern openen",
+    "close": "Chat sluiten",
+    "dialog": "Chat met Bern",
+    "name": "Bern",
+    "role": "AI-assistent van GinfinAI",
+    "welcome": "Hoi! Ik ben Bern. Waarmee kan ik u helpen? Kies hieronder een vraag, of stuur uw vraag meteen door naar Gerben.",
+    "questions": [
+      {
+        "q": "Wat kost een website?",
+        "a": "Een nieuwe website op maat start vanaf € 1.850, een bestaande site vernieuwen vanaf € 950. Altijd een vaste prijs, vooraf afgesproken."
+      },
+      {
+        "q": "Wat kan AI voor mijn zaak doen?",
+        "a": "Bijvoorbeeld een slimme zoekfunctie in uw eigen documenten, of een assistent die offertes voorbereidt. Gerben start altijd met een gratis haalbaarheidsgesprek."
+      },
+      {
+        "q": "Hoe snel is mijn site klaar?",
+        "a": "Een nieuwe website is meestal klaar in 3 tot 5 weken. U ziet tussentijds resultaat."
+      }
+    ],
+    "forward": "Stuur mijn vraag door naar Gerben",
+    "whatsapp": "Open WhatsApp"
+  },
+  "notFound": {
+    "title": "Deze pagina bestaat niet",
+    "text": "De link is misschien verouderd. Op de homepage vindt u alle diensten en het contactformulier.",
+    "home": "Naar de homepage"
+  }
 }

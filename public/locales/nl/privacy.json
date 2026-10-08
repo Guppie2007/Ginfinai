@@ -1,0 +1,37 @@
+{
+  "meta": { "title": "Privacyverklaring · GinfinAI", "description": "Hoe GinfinAI omgaat met de gegevens die u via deze website doorgeeft." },
+  "eyebrow": "Privacy",
+  "title": "Privacyverklaring",
+  "updated": "Laatst bijgewerkt: oktober 2026",
+  "sections": [
+    {
+      "h": "Wie is verantwoordelijk?",
+      "p": ["GinfinAI, Gerben Ceuppens, Notestraat 64, 1742 Ternat, BTW BE1012.619.721. Vragen over privacy stuurt u naar info@ginfinai.be."]
+    },
+    {
+      "h": "Welke gegevens en waarom",
+      "p": [
+        "Contactformulier: uw naam, e-mailadres, bericht en, als u ze invult, bedrijf, telefoonnummer, onderwerp en budget. Ik gebruik ze enkel om op uw vraag te antwoorden en eventueel een offerte op te maken.",
+        "Rechtsgrond: stappen op uw verzoek vóór een mogelijke overeenkomst (art. 6.1.b AVG)."
+      ]
+    },
+    {
+      "h": "Hoe lang",
+      "p": ["Berichten die niet tot een opdracht leiden, verwijder ik uiterlijk 12 maanden na het laatste contact. Wordt u klant, dan bewaar ik de gegevens zolang de wet dat vraagt, bijvoorbeeld voor de boekhouding."]
+    },
+    {
+      "h": "Wie verwerkt gegevens voor mij",
+      "p": [
+        "Vercel (hosting van de website) en Resend (verzenden van het formulier naar mijn mailbox). Met beide gelden standaardcontractbepalingen voor doorgifte buiten de EU.",
+        "Websitestatistieken: ik meet de laadsnelheid van de site met Vercel Speed Insights. Daarvoor worden geen cookies geplaatst en geen persoonlijke profielen opgebouwd."
+      ]
+    },
+    {
+      "h": "Uw rechten",
+      "p": [
+        "U kunt uw gegevens altijd inkijken, laten verbeteren of laten verwijderen, en bezwaar maken tegen het gebruik ervan. Mail naar info@ginfinai.be; u krijgt binnen een maand antwoord.",
+        "Bent u niet tevreden, dan kunt u klacht indienen bij de Gegevensbeschermingsautoriteit (www.gegevensbeschermingsautoriteit.be)."
+      ]
+    }
+  ]
+}

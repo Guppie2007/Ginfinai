@@ -1,9 +1,10 @@
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
+import { asArray } from './asArray'
 
 export default function Footer() {
   const { t } = useTranslation('common')
-  const services = t('footer.servicesList', { returnObjects: true }) as unknown as string[]
+  const services = asArray<string>(t('footer.servicesList', { returnObjects: true }))
   const link = 'text-ondark no-underline hover:text-white'
 
   return (

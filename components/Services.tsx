@@ -1,4 +1,5 @@
 import { useTranslation } from 'next-i18next'
+import { asArray } from './asArray'
 
 export type Service = {
   id: string
@@ -20,10 +21,11 @@ type Props = {
 
 export default function Services({ selected, open, onSelect, onAsk }: Props) {
   const { t } = useTranslation('home')
-  const web = t('services.web', { returnObjects: true }) as unknown as Service[]
-  const ai = t('services.ai', { returnObjects: true }) as unknown as Service[]
+  const web = asArray<Service>(t('services.web', { returnObjects: true }))
+  const ai = asArray<Service>(t('services.ai', { returnObjects: true }))
   const all = [...web, ...ai]
   const sel = all.find((s) => s.id === selected) || all[0]
+  if (!sel) return null
   const groupOf = (id: string) => (id.startsWith('a') ? t('services.aiTitle') : t('services.webTitle'))
 
   const AskButton = ({ s, big }: { s: Service; big?: boolean }) =>

@@ -9,6 +9,7 @@ import Services from '../components/Services'
 import ContactForm from '../components/ContactForm'
 import BernChat, { BernHandle } from '../components/BernChat'
 import ProgressRail from '../components/ProgressRail'
+import { asArray } from '../components/asArray'
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {
@@ -31,9 +32,9 @@ export default function Home() {
   const bern = useRef<BernHandle>(null)
   const railWrap = useRef<HTMLDivElement>(null)
 
-  const facts = t('facts', { returnObjects: true }) as unknown as string[]
-  const work = t('work.items', { returnObjects: true }) as unknown as WorkItem[]
-  const steps = t('approach.steps', { returnObjects: true }) as unknown as Step[]
+  const facts = asArray<string>(t('facts', { returnObjects: true }))
+  const work = asArray<WorkItem>(t('work.items', { returnObjects: true }))
+  const steps = asArray<Step>(t('approach.steps', { returnObjects: true }))
   const url = SITE + (locale === defaultLocale ? '/' : `/${locale}`)
 
   const select = (id: string) => {

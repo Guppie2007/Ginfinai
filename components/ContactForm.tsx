@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { FormEvent, useRef, useState } from 'react'
 import { useTranslation } from 'next-i18next'
+import { asArray } from './asArray'
 
 type Field = 'name' | 'email' | 'message'
 type Values = { name: string; email: string; company: string; phone: string; message: string; website: string }
@@ -15,8 +16,8 @@ type Props = {
 
 export default function ContactForm({ subject, onSubject }: Props) {
   const { t } = useTranslation('home')
-  const subjects = t('contact.subjects', { returnObjects: true }) as unknown as string[]
-  const budgets = t('contact.budgets', { returnObjects: true }) as unknown as string[]
+  const subjects = asArray<string>(t('contact.subjects', { returnObjects: true }))
+  const budgets = asArray<string>(t('contact.budgets', { returnObjects: true }))
 
   const [values, setValues] = useState<Values>({ name: '', email: '', company: '', phone: '', message: '', website: '' })
   const [budget, setBudget] = useState(-1)

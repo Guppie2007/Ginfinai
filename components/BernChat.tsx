@@ -1,5 +1,6 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { useTranslation } from 'next-i18next'
+import { asArray } from './asArray'
 
 /**
  * Bern, de chatassistent. Nu: 3 vaste vragen + doorsturen naar contact.
@@ -13,7 +14,7 @@ export type BernHandle = { open: () => void }
 
 const BernChat = forwardRef<BernHandle>(function BernChat(_props, ref) {
   const { t } = useTranslation('common')
-  const qa = t('bern.questions', { returnObjects: true }) as unknown as QA[]
+  const qa = asArray<QA>(t('bern.questions', { returnObjects: true }))
   const [open, setOpen] = useState(false)
   const [msgs, setMsgs] = useState<Msg[]>([])
   const closeRef = useRef<HTMLButtonElement>(null)

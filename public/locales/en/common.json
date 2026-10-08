@@ -19,7 +19,12 @@
   "footer": {
     "tagline": "Websites and AI for businesses in Flemish Brabant and Brussels.",
     "services": "Services",
-    "servicesList": ["New website", "Website redesign", "AI applications", "Maintenance and hosting"],
+    "servicesList": [
+      "New website",
+      "Website redesign",
+      "AI applications",
+      "Maintenance and hosting"
+    ],
     "contact": "Contact",
     "address": "Notestraat 64, 1742 Ternat, Belgium",
     "legal": "© {{year}} GinfinAI · Gerben Ceuppens · VAT BE1012.619.721",
@@ -48,5 +53,10 @@
     ],
     "forward": "Send my question to Gerben",
     "whatsapp": "Open WhatsApp"
+  },
+  "notFound": {
+    "title": "This page doesn't exist",
+    "text": "The link may be outdated. The homepage has all services and the contact form.",
+    "home": "Go to the homepage"
   }
 }

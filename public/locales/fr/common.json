@@ -19,7 +19,12 @@
   "footer": {
     "tagline": "Sites web et IA pour les entreprises du Brabant flamand et de Bruxelles.",
     "services": "Services",
-    "servicesList": ["Nouveau site web", "Refonte de site", "Applications IA", "Maintenance et hébergement"],
+    "servicesList": [
+      "Nouveau site web",
+      "Refonte de site",
+      "Applications IA",
+      "Maintenance et hébergement"
+    ],
     "contact": "Contact",
     "address": "Notestraat 64, 1742 Ternat",
     "legal": "© {{year}} GinfinAI · Gerben Ceuppens · TVA BE1012.619.721",
@@ -48,5 +53,10 @@
     ],
     "forward": "Transmettre ma question à Gerben",
     "whatsapp": "Ouvrir WhatsApp"
+  },
+  "notFound": {
+    "title": "Cette page n'existe pas",
+    "text": "Le lien est peut-être obsolète. La page d'accueil présente tous les services et le formulaire de contact.",
+    "home": "Retour à l'accueil"
   }
 }

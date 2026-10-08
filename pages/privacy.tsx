@@ -2,6 +2,7 @@ import Head from 'next/head'
 import type { GetStaticProps } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { asArray } from '../components/asArray'
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {
@@ -13,7 +14,7 @@ type Section = { h: string; p: string[] }
 
 export default function Privacy() {
   const { t } = useTranslation('privacy')
-  const sections = t('sections', { returnObjects: true }) as unknown as Section[]
+  const sections = asArray<Section>(t('sections', { returnObjects: true }))
 
   return (
     <>

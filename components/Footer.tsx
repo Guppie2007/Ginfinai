@@ -11,7 +11,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-ink text-ondark">
-      <div className="mx-auto flex max-w-page flex-col gap-10 px-6 pb-24 pt-14 nav:pb-28">
+      <div className="mx-auto flex max-w-page flex-col gap-10 px-6 pb-8 pt-14">
         <div className="flex flex-wrap justify-between gap-8">
           <div className="flex max-w-[320px] flex-col gap-3.5">
             <Image
@@ -44,16 +44,19 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="flex flex-wrap items-center justify-between gap-x-3 border-t border-ink-line pt-3 text-[13px] text-ondark-3">
-          <span>{t('footer.legal', { year: new Date().getFullYear() })}</span>
-          <span className="flex gap-5">
-            <Link href="/privacy" className="inline-flex min-h-[44px] items-center text-ondark-3 hover:text-white">
-              {t('footer.privacy')}
-            </Link>
-            <Link href="/voorwaarden" className="inline-flex min-h-[44px] items-center text-ondark-3 hover:text-white">
-              {t('footer.terms')}
-            </Link>
-          </span>
+        <div className="border-t border-ink-line pt-3 text-[13px] text-ondark-3">
+          {/* Op gsm smaller dan wat de Bern-knop (52px + 16px marge + 16px) vrijlaat; privacy en voorwaarden eronder */}
+          <div className="flex max-w-[calc(100%-84px)] flex-col gap-x-6 nav:max-w-none nav:flex-row nav:flex-wrap nav:items-center">
+            <span className="py-1">{t('footer.legal', { year: new Date().getFullYear() })}</span>
+            <span className="flex gap-5">
+              <Link href="/privacy" className="inline-flex min-h-[44px] items-center text-ondark-3 hover:text-white">
+                {t('footer.privacy')}
+              </Link>
+              <Link href="/voorwaarden" className="inline-flex min-h-[44px] items-center text-ondark-3 hover:text-white">
+                {t('footer.terms')}
+              </Link>
+            </span>
+          </div>
         </div>
       </div>
     </footer>

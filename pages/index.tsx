@@ -274,15 +274,19 @@ export default function Home() {
               className="absolute left-4 top-[13px] hidden h-1.5 rounded-[3px] bg-brand nav:block"
               style={{ right: 'calc((100% - 64px) / 3 - 16px)' }}
             />
-            <ol className="relative m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-8 p-0">
+            <ol className="relative m-0 grid list-none grid-cols-1 gap-8 p-0 nav:grid-cols-[repeat(auto-fit,minmax(260px,1fr))]">
               {steps.map((s, i) => {
                 const last = i === steps.length - 1
                 return (
-                  <li key={s.title} className="flex flex-col gap-3.5">
+                  <li key={s.title} className="relative flex flex-col gap-3.5">
+                    {/* Op gsm loopt de lijn verticaal door naar het volgende knooppunt */}
+                    {!last && (
+                      <span aria-hidden="true" className="absolute -bottom-12 left-[13px] top-4 w-1.5 rounded-[3px] bg-brand-500 nav:hidden" />
+                    )}
                     <span
                       aria-hidden="true"
                       className={
-                        'box-border h-8 w-8 rounded-full border-[7px] ' + (last ? 'border-brand-deep bg-brand-light' : 'border-brand bg-white')
+                        'relative z-[1] box-border h-8 w-8 rounded-full border-[7px] ' + (last ? 'border-brand-deep bg-brand-light' : 'border-brand bg-white')
                       }
                     />
                     <span className="eyebrow text-brand">{t('approach.step', { n: i + 1 })}</span>

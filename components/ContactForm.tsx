@@ -142,7 +142,7 @@ export default function ContactForm({ subject, onSubject }: Props) {
           {t('contact.errors.summary', { count: errCount })}
         </p>
       )}
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4 nav:grid-cols-2">
         <div className="flex flex-col gap-1.5">
           <label htmlFor="naam" className={label}>
             {t('contact.fields.name')}

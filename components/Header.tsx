@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 
 const LOCALES = ['nl', 'en', 'fr'] as const
@@ -11,11 +11,16 @@ export default function Header() {
   const router = useRouter()
   const [open, setOpen] = useState(false)
   const current = router.locale || 'nl'
+  const burgerRef = useRef<HTMLButtonElement>(null)
 
   // Menu sluiten bij navigatie en met Escape
   useEffect(() => {
     const close = () => setOpen(false)
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape' || !open) return
+      setOpen(false)
+      burgerRef.current?.focus()
+    }
     router.events.on('hashChangeStart', close)
     router.events.on('routeChangeStart', close)
     window.addEventListener('keydown', onKey)
@@ -24,7 +29,7 @@ export default function Header() {
       router.events.off('routeChangeStart', close)
       window.removeEventListener('keydown', onKey)
     }
-  }, [router.events])
+  }, [router.events, open])
 
   const links = [
     { href: '/#diensten', label: t('nav.services') },
@@ -54,7 +59,7 @@ export default function Header() {
 
         <nav aria-label={t('nav.main')} className="hidden items-center gap-7 text-[15px] nav:flex">
           {links.map((l) => (
-            <Link key={l.href} href={l.href} className="text-ondark no-underline hover:text-white">
+            <Link key={l.href} href={l.href} className="inline-flex min-h-[44px] items-center text-ondark no-underline hover:text-white">
               {l.label}
             </Link>
           ))}
@@ -87,6 +92,7 @@ export default function Header() {
             <span className="nav:hidden">{t('nav.ctaShort')}</span>
           </Link>
           <button
+            ref={burgerRef}
             type="button"
             onClick={() => setOpen((o) => !o)}
             aria-expanded={open}

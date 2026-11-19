@@ -114,3 +114,22 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* "Bern denkt na": knooppunten lichten om beurten op, cyclus 900 ms, alleen opacity */
+@keyframes bern-think {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  33% {
+    opacity: 1;
+  }
+}
+.bern-think {
+  animation: bern-think 900ms ease-in-out infinite backwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bern-think {
+    animation: none;
+  }
+}

@@ -22,6 +22,8 @@ const BernChat = forwardRef<BernHandle>(function BernChat(_props, ref) {
   const closeRef = useRef<HTMLButtonElement>(null)
   const fabRef = useRef<HTMLButtonElement>(null)
   const wasOpen = useRef(false)
+  const [thinking, setThinking] = useState(false)
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const skipFocusBack = useRef(false)
   const returnTo = useRef<HTMLElement | null>(null)
   const listRef = useRef<HTMLDivElement>(null)
@@ -53,7 +55,9 @@ const BernChat = forwardRef<BernHandle>(function BernChat(_props, ref) {
 
   useEffect(() => {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: 'smooth' })
-  }, [msgs])
+  }, [msgs, thinking])
+
+  useEffect(() => () => clearTimeout(timer.current), [])
 
   const close = () => setOpen(false)
 
@@ -73,7 +77,20 @@ const BernChat = forwardRef<BernHandle>(function BernChat(_props, ref) {
     }
   }
 
-  const ask = (x: QA) => setMsgs((m) => [...m, { bot: false, text: x.q }, { bot: true, text: x.a }])
+  // Vast antwoord pas na 600 ms "denken"; bij prefers-reduced-motion meteen en zonder indicator
+  const ask = (x: QA) => {
+    if (thinking) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setMsgs((m) => [...m, { bot: false, text: x.q }, { bot: true, text: x.a }])
+      return
+    }
+    setMsgs((m) => [...m, { bot: false, text: x.q }])
+    setThinking(true)
+    timer.current = setTimeout(() => {
+      setMsgs((m) => [...m, { bot: true, text: x.a }])
+      setThinking(false)
+    }, 600)
+  }
 
   const all: Msg[] = [{ bot: true, text: t('bern.welcome') }, ...msgs]
 
@@ -117,6 +134,20 @@ const BernChat = forwardRef<BernHandle>(function BernChat(_props, ref) {
               {m.text}
             </div>
           )
+        )}
+        {thinking && (
+          <div className="flex items-end gap-2">
+            <Image src="/brand/bern-avatar.png" alt="" width={28} height={28} className="h-7 w-7 flex-shrink-0" />
+            <div className="flex items-center rounded-[16px_16px_16px_4px] border border-line bg-white px-3.5 py-3.5">
+              <span className="sr-only">{t('bern.thinking')}</span>
+              <svg width="58" height="12" viewBox="0 0 58 12" aria-hidden="true" focusable="false">
+                <path className="bern-think" style={{ animationDelay: '150ms' }} d="M10 6h12M36 6h12" stroke="#5B4BD6" strokeWidth="2" strokeLinecap="round" />
+                <circle className="bern-think" style={{ animationDelay: '0ms' }} cx="6" cy="6" r="4" fill="#5B4BD6" />
+                <circle className="bern-think" style={{ animationDelay: '300ms' }} cx="29" cy="6" r="4" fill="#5B4BD6" />
+                <circle className="bern-think" style={{ animationDelay: '600ms' }} cx="52" cy="6" r="4" fill="#5B4BD6" />
+              </svg>
+            </div>
+          </div>
         )}
       </div>
 

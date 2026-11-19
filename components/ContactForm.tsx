@@ -97,7 +97,7 @@ export default function ContactForm({ subject, onSubject }: Props) {
     return (
       <div role="status" className="flex flex-col items-start gap-3.5 py-6">
         <div className="flex items-center gap-3">
-          <Image src="/brand/bern-avatar.png" alt="" width={56} height={56} className="h-14 w-14" />
+          <Image src="/brand/bern-avatar.png" alt="" width={56} height={56} unoptimized className="h-14 w-14" />
           {/* Knooppuntketen: de aanvraag onderweg naar de eindknoop */}
           <svg width="92" height="16" viewBox="0 0 92 16" aria-hidden="true" focusable="false">
             <path d="M8 8h22M38 8h22" stroke="#5B4BD6" strokeWidth="2" strokeLinecap="round" />

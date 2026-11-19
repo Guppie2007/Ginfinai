@@ -205,7 +205,7 @@ const BernChat = forwardRef<BernHandle>(function BernChat(_props, ref) {
           (open ? 'invisible' : '')
         }
       >
-        <Image src="/brand/bern-avatar.png" alt="" width={64} height={64} className="block h-full w-full" />
+        <Image src="/brand/bern-avatar.png" alt="" width={64} height={64} unoptimized className="block h-full w-full" />
       </button>
       {open && dialog}
     </>

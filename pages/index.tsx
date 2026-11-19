@@ -317,7 +317,7 @@ export default function Home() {
               <p className="m-0 max-w-[640px] text-lg leading-[1.65] text-ondark">{t('about.p1')}</p>
               <p className="m-0 text-lg leading-[1.65] text-ondark">{t('about.p2')}</p>
               <div className="flex max-w-[560px] items-center gap-3.5 rounded-2xl bg-ink-3 px-[18px] py-4">
-                <Image src="/brand/bern-avatar.png" alt="" width={48} height={48} className="h-12 w-12 flex-shrink-0" />
+                <Image src="/brand/bern-avatar.png" alt="" width={48} height={48} unoptimized className="h-12 w-12 flex-shrink-0" />
                 <p className="m-0 text-[15px] leading-normal text-ondark">
                   <Trans t={t} i18nKey="about.bern" components={{ em: <em /> }} />
                 </p>

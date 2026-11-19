@@ -25,7 +25,7 @@ export default function NotFound() {
       </Head>
       <section id="inhoud" className="dotgrid bg-ink text-white">
         <div className="mx-auto flex min-h-[60vh] max-w-[720px] flex-col items-start justify-center gap-5 px-6 py-24">
-          <Image src="/brand/bern-avatar.png" alt="" width={72} height={72} className="h-[72px] w-[72px]" />
+          <Image src="/brand/bern-avatar.png" alt="" width={72} height={72} unoptimized className="h-[72px] w-[72px]" />
           <div className="eyebrow text-ondark-2">404</div>
           <h1 className="h2 m-0 text-white">{t('notFound.title')}</h1>
           <p className="m-0 max-w-[560px] text-lg leading-relaxed text-ondark">{t('notFound.text')}</p>

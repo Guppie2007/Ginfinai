@@ -314,7 +314,9 @@ export default function Home() {
 
         {/* 04 Over mij */}
         <section className="bg-ink text-white">
-          <div className="rp mx-auto flex max-w-page flex-wrap items-center gap-14 px-6 py-24">
+          <div className="rp relative mx-auto flex max-w-page flex-wrap items-start gap-14 px-6 py-24">
+            {/* Anker op de bovenkant van de inhoud (foto), niet op het label: py-24 = 96px bovenpadding */}
+            <span id="over" aria-hidden="true" className="anchor pointer-events-none absolute left-0 top-24 h-0 w-0" />
             <Image
               src="/images/me_2025.jpg"
               alt={t('about.photoAlt')}
@@ -323,7 +325,7 @@ export default function Home() {
               className="aspect-[4/5] w-[380px] min-w-0 max-w-full flex-[0_1_380px] rounded-3xl object-cover"
             />
             <div className="flex min-w-0 flex-[1_1_480px] flex-col gap-5">
-              <SectionLabel anchor="over" className="text-brand-accent">
+              <SectionLabel className="text-brand-accent">
                 {t('about.eyebrow')}
               </SectionLabel>
               <h2 className="h2">{t('about.title')}</h2>

@@ -60,7 +60,7 @@ export default function ProgressRail({ wrap }: { wrap: RefObject<HTMLDivElement 
         return (
           <span
             key={i}
-            className="absolute left-0 box-border h-[22px] w-[22px] rounded-full border-[6px] transition-[transform,border-color,background-color] duration-200 [transition-timing-function:cubic-bezier(.34,1.56,.64,1)]"
+            className="absolute left-0 box-border h-[22px] w-[22px] rounded-full border-[6px] transition-[transform,border-color,background-color] duration-200 [transition-timing-function:cubic-bezier(.2,.8,.2,1)]"
             style={{
               top: y,
               transform: `translateY(-50%) scale(${on ? 1 : 0.8})`,

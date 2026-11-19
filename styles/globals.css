@@ -2,11 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Hoogte van de sticky header: py-3.5 + knop van 44px + 1px rand */
+:root {
+  --header-h: 73px;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
-    /* Ruimte voor de sticky header bij ankerlinks */
-    scroll-padding-top: 80px;
+    /* Ankers krijgen hun eigen scroll-margin (.anchor), zodat de afstanden niet optellen */
+    scroll-padding-top: 0;
   }
   body {
     @apply bg-white font-sans text-ink antialiased;
@@ -40,6 +45,10 @@
 }
 
 @layer components {
+  /* Ankerdoel net boven een sectielabel: label landt 24px onder de header */
+  .anchor {
+    scroll-margin-top: calc(var(--header-h) + 24px);
+  }
   .eyebrow {
     @apply font-mono text-xs uppercase;
     letter-spacing: 0.14em;

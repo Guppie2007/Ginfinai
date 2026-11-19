@@ -5,7 +5,7 @@ import { ReactNode, useEffect, useRef, useState } from 'react'
  * knooppunt opacity 0→1, daarna een lijn van scaleX(0)→1 (origin links), samen 300 ms ease-out.
  * Zonder JS of bij prefers-reduced-motion: meteen de eindtoestand.
  */
-export default function SectionLabel({ children, className = '' }: { children: ReactNode; className?: string }) {
+export default function SectionLabel({ children, className = '', anchor }: { children: ReactNode; className?: string; anchor?: string }) {
   const ref = useRef<HTMLDivElement>(null)
   const [state, setState] = useState<'idle' | 'armed' | 'shown'>('idle')
 
@@ -30,7 +30,9 @@ export default function SectionLabel({ children, className = '' }: { children: R
   const armed = state === 'armed'
   const animate = state === 'shown'
   return (
-    <div ref={ref} data-rail className={'eyebrow flex items-center gap-3 ' + className}>
+    <div ref={ref} data-rail className={'eyebrow relative flex items-center gap-3 ' + className}>
+      {/* Ankerdoel: net boven het label, zodat de pagina daar (onder de sticky header) landt */}
+      {anchor && <span id={anchor} aria-hidden="true" className="anchor pointer-events-none absolute left-0 top-0 h-0 w-0" />}
       <span
         aria-hidden="true"
         className={

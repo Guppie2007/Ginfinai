@@ -200,10 +200,10 @@ export default function Home() {
         <ProgressRail wrap={railWrap} />
 
         {/* 01 Diensten */}
-        <section id="diensten" className="rp mx-auto flex max-w-page flex-col gap-10 px-6 pb-[72px] pt-24">
+        <section className="rp mx-auto flex max-w-page flex-col gap-10 px-6 pb-[72px] pt-24">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div className="flex max-w-[640px] flex-col gap-2.5">
-              <SectionLabel className="text-brand">
+              <SectionLabel anchor="diensten" className="text-brand">
                 {t('services.eyebrow')}
               </SectionLabel>
               <h2 className="h2">{t('services.title')}</h2>
@@ -215,10 +215,10 @@ export default function Home() {
 
         {/* 02 Werk: verborgen zolang er geen publiceerbaar project is */}
         {work.length > 0 && (
-          <section id="werk" className="bg-lavender">
+          <section className="bg-lavender">
             <div className="rp mx-auto flex max-w-page flex-col gap-10 px-6 py-24">
               <div className="flex max-w-[640px] flex-col gap-2.5">
-                <SectionLabel className="text-brand">
+                <SectionLabel anchor="werk" className="text-brand">
                   {t('work.eyebrow')}
                 </SectionLabel>
                 <h2 className="h2">{t('work.title')}</h2>
@@ -274,9 +274,9 @@ export default function Home() {
         )}
 
         {/* 03 Aanpak */}
-        <section id="aanpak" className="rp mx-auto flex max-w-page flex-col gap-10 px-6 py-24">
+        <section className="rp mx-auto flex max-w-page flex-col gap-10 px-6 py-24">
           <div className="flex max-w-[640px] flex-col gap-2.5">
-            <SectionLabel className="text-brand">
+            <SectionLabel anchor="aanpak" className="text-brand">
               {t('approach.eyebrow')}
             </SectionLabel>
             <h2 className="h2">{t('approach.title')}</h2>
@@ -313,7 +313,7 @@ export default function Home() {
         </section>
 
         {/* 04 Over mij */}
-        <section id="over" className="bg-ink text-white">
+        <section className="bg-ink text-white">
           <div className="rp mx-auto flex max-w-page flex-wrap items-center gap-14 px-6 py-24">
             <Image
               src="/images/me_2025.jpg"
@@ -323,7 +323,7 @@ export default function Home() {
               className="aspect-[4/5] w-[380px] min-w-0 max-w-full flex-[0_1_380px] rounded-3xl object-cover"
             />
             <div className="flex min-w-0 flex-[1_1_480px] flex-col gap-5">
-              <SectionLabel className="text-brand-accent">
+              <SectionLabel anchor="over" className="text-brand-accent">
                 {t('about.eyebrow')}
               </SectionLabel>
               <h2 className="h2">{t('about.title')}</h2>
@@ -340,9 +340,9 @@ export default function Home() {
         </section>
 
         {/* 05 Contact */}
-        <section id="contact" className="rp mx-auto flex max-w-page flex-wrap gap-12 px-6 py-24">
+        <section className="rp mx-auto flex max-w-page flex-wrap gap-12 px-6 py-24">
           <div className="flex min-w-0 flex-[1_1_380px] flex-col gap-5">
-            <SectionLabel className="text-brand">
+            <SectionLabel anchor="contact" className="text-brand">
               {t('contact.eyebrow')}
             </SectionLabel>
             <h2 className="h2">{t('contact.title')}</h2>

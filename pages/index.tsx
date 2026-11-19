@@ -11,6 +11,7 @@ import LogoMark, { D as MARK_PATH, NODES as MARK_NODES } from '../components/Log
 import Services from '../components/Services'
 import ContactForm from '../components/ContactForm'
 import BernChat, { BernHandle } from '../components/BernChat'
+import SectionLabel from '../components/SectionLabel'
 import ProgressRail from '../components/ProgressRail'
 import { asArray } from '../components/asArray'
 
@@ -187,9 +188,9 @@ export default function Home() {
         <section id="diensten" className="rp mx-auto flex max-w-page flex-col gap-10 px-6 pb-[72px] pt-24">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div className="flex max-w-[640px] flex-col gap-2.5">
-              <div data-rail className="eyebrow text-brand">
+              <SectionLabel className="text-brand">
                 {t('services.eyebrow')}
-              </div>
+              </SectionLabel>
               <h2 className="h2">{t('services.title')}</h2>
             </div>
             <p className="m-0 max-w-[380px] text-base leading-relaxed text-muted">{t('services.intro')}</p>
@@ -202,9 +203,9 @@ export default function Home() {
           <section id="werk" className="bg-lavender">
             <div className="rp mx-auto flex max-w-page flex-col gap-10 px-6 py-24">
               <div className="flex max-w-[640px] flex-col gap-2.5">
-                <div data-rail className="eyebrow text-brand">
+                <SectionLabel className="text-brand">
                   {t('work.eyebrow')}
-                </div>
+                </SectionLabel>
                 <h2 className="h2">{t('work.title')}</h2>
               </div>
               <div className="flex flex-wrap gap-6">
@@ -260,9 +261,9 @@ export default function Home() {
         {/* 03 Aanpak */}
         <section id="aanpak" className="rp mx-auto flex max-w-page flex-col gap-10 px-6 py-24">
           <div className="flex max-w-[640px] flex-col gap-2.5">
-            <div data-rail className="eyebrow text-brand">
+            <SectionLabel className="text-brand">
               {t('approach.eyebrow')}
-            </div>
+            </SectionLabel>
             <h2 className="h2">{t('approach.title')}</h2>
           </div>
           <div className="relative">
@@ -303,9 +304,9 @@ export default function Home() {
               className="aspect-[4/5] w-[380px] min-w-0 max-w-full flex-[0_1_380px] rounded-3xl object-cover"
             />
             <div className="flex min-w-0 flex-[1_1_480px] flex-col gap-5">
-              <div data-rail className="eyebrow text-brand-accent">
+              <SectionLabel className="text-brand-accent">
                 {t('about.eyebrow')}
-              </div>
+              </SectionLabel>
               <h2 className="h2">{t('about.title')}</h2>
               <p className="m-0 max-w-[640px] text-lg leading-[1.65] text-ondark">{t('about.p1')}</p>
               <p className="m-0 text-lg leading-[1.65] text-ondark">{t('about.p2')}</p>
@@ -322,9 +323,9 @@ export default function Home() {
         {/* 05 Contact */}
         <section id="contact" className="rp mx-auto flex max-w-page flex-wrap gap-12 px-6 py-24">
           <div className="flex min-w-0 flex-[1_1_380px] flex-col gap-5">
-            <div data-rail className="eyebrow text-brand">
+            <SectionLabel className="text-brand">
               {t('contact.eyebrow')}
-            </div>
+            </SectionLabel>
             <h2 className="h2">{t('contact.title')}</h2>
             <p className="m-0 text-[17px] leading-relaxed text-muted">{t('contact.intro')}</p>
             <div className="flex flex-col border-t border-line">

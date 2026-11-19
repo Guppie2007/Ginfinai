@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev -p 3000",
     "build": "next build",
+    "lint": "eslint .",
     "start": "next start -p 3000",
     "postinstall": "node -e \"console.log('If your site uses the existing images folder, copy it into ./public/images for Next.js to serve them (e.g. move images/ to public/images)')\""
   },

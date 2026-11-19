@@ -120,7 +120,9 @@
         "desc": "Riders book the arena themselves through one link the riding school shares with its customers. No more phone calls or double bookings.",
         "result": "[RESULT, e.g. bookings per month]",
         "image": "",
-        "draft": false
+        "draft": false,
+        "metric": "",
+        "tags": ["Web app","Online booking","Mobile first"]
       },
       {
         "tag": "[Website or AI]",
@@ -128,7 +130,9 @@
         "desc": "[Two sentences: what was the problem, what was built.]",
         "result": "[RESULT]",
         "image": "",
-        "draft": true
+        "draft": true,
+        "metric": "",
+        "tags": []
       }
     ]
   },

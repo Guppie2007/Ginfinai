@@ -120,7 +120,9 @@
         "desc": "Ruiters reserveren zelf de piste via één link die de manege met haar klanten deelt. Geen telefoontjes of dubbele boekingen meer.",
         "result": "[RESULTAAT, bv. aantal reservaties per maand]",
         "image": "",
-        "draft": false
+        "draft": false,
+        "metric": "",
+        "tags": ["Webapplicatie","Online boeken","Mobiel eerst"]
       },
       {
         "tag": "[Website of AI]",
@@ -128,7 +130,9 @@
         "desc": "[Twee zinnen: wat was het probleem, wat is er gebouwd.]",
         "result": "[RESULTAAT]",
         "image": "",
-        "draft": true
+        "draft": true,
+        "metric": "",
+        "tags": []
       }
     ]
   },

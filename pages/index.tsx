@@ -20,10 +20,39 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   },
 })
 
-type WorkItem = { tag: string; title: string; desc: string; result: string; image?: string; draft?: boolean }
+type WorkItem = { tag: string; title: string; desc: string; result: string; image?: string; draft?: boolean; metric?: string; tags?: string[] }
 
 // Tekst die nog tussen vierkante haken staat is een plaatshouder en wordt niet getoond
 const isPlaceholder = (s?: string) => !s || /^\[.*\]$/.test(s.trim())
+
+/** Beeldvlak van een werkkaart: screenshot in een browservenster voor een decoratieve knooppuntlijn */
+function WorkMedia({ image, title }: { image: string; title: string }) {
+  return (
+    <div className="absolute inset-0 bg-brand-100">
+      <svg aria-hidden="true" viewBox="0 0 160 100" preserveAspectRatio="none" className="absolute inset-0 h-full w-full">
+        <path
+          d="M-10 80 C 30 82, 50 40, 95 44 S 150 18, 172 24"
+          fill="none"
+          stroke="#C9C0FF"
+          strokeWidth="3"
+          strokeLinecap="round"
+          vectorEffect="non-scaling-stroke"
+        />
+        <circle cx="140" cy="27" r="3.5" fill="#EEEBFC" stroke="#8B7BFF" strokeWidth="3" vectorEffect="non-scaling-stroke" />
+      </svg>
+      <div className="absolute inset-[9%_8%] flex flex-col overflow-hidden rounded-xl border border-[#D9D3F5] bg-white shadow-[0_8px_24px_rgba(19,14,40,0.08)]">
+        <div aria-hidden="true" className="flex flex-none items-center gap-1.5 border-b border-[#D9D3F5] px-3 py-2">
+          <span className="h-2 w-2 rounded-full bg-[#D9D3F5]" />
+          <span className="h-2 w-2 rounded-full bg-[#D9D3F5]" />
+          <span className="h-2 w-2 rounded-full bg-[#D9D3F5]" />
+        </div>
+        <div className="relative flex-grow">
+          <Image src={image} alt={title} fill sizes="(min-width: 901px) 560px, 100vw" className="object-cover" />
+        </div>
+      </div>
+    </div>
+  )
+}
 
 /** Rustig vlak met het GinfinAI-teken, voor werkkaarten zonder afbeelding */
 function WorkPlaceholder() {
@@ -187,18 +216,39 @@ export default function Home() {
                       (soloWork ? 'w-full nav:flex-row nav:items-center nav:gap-8' : 'flex-[1_1_480px]')
                     }
                   >
-                    <div className={'relative aspect-video overflow-hidden rounded-xl ' + (soloWork ? 'w-full nav:w-1/2 nav:flex-none' : 'w-full')}>
+                    <div className={'relative aspect-[16/10] overflow-hidden rounded-2xl ' + (soloWork ? 'w-full nav:w-1/2 nav:flex-none' : 'w-full')}>
                       {w.image ? (
-                        <Image src={w.image} alt="" fill sizes="(min-width: 901px) 600px, 100vw" className="object-cover" />
+                        <WorkMedia image={w.image} title={w.title} />
                       ) : (
-                        <WorkPlaceholder />
+                        <div className="absolute inset-0 bg-brand-100">
+                          <WorkPlaceholder />
+                        </div>
                       )}
                     </div>
-                    <div className="flex min-w-0 flex-col gap-2 px-1 pb-1">
-                      <div className="text-[13px] font-semibold uppercase text-brand">{w.tag}</div>
+                    <div className="flex min-w-0 flex-col gap-3 px-1 pb-1">
+                      {asArray<string>(w.tags).length > 0 ? (
+                        <ul className="m-0 flex list-none flex-wrap gap-2 p-0">
+                          {asArray<string>(w.tags).map((tag) => (
+                            <li key={tag} className="rounded-full border border-line px-3 py-1 text-[13px] leading-snug text-muted">
+                              {tag}
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <div className="text-[13px] font-semibold uppercase text-brand">{w.tag}</div>
+                      )}
                       <h3 className="m-0 text-2xl font-semibold">{w.title}</h3>
                       <p className="m-0 text-base leading-relaxed text-muted">{w.desc}</p>
-                      {!isPlaceholder(w.result) && <p className="m-0 mt-1 text-lg font-semibold text-brand">{w.result}</p>}
+                      {!isPlaceholder(w.metric) ? (
+                        <p className="m-0 mt-1 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                          <span className="whitespace-nowrap text-[40px] font-semibold leading-tight text-ink underline decoration-accent decoration-[6px] underline-offset-[6px]">
+                            {w.metric}
+                          </span>
+                          {!isPlaceholder(w.result) && <span className="text-base text-muted">{w.result}</span>}
+                        </p>
+                      ) : (
+                        !isPlaceholder(w.result) && <p className="m-0 mt-1 text-lg font-semibold text-brand">{w.result}</p>
+                      )}
                     </div>
                   </article>
                 ))}

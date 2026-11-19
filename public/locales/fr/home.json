@@ -120,7 +120,9 @@
         "desc": "Les cavaliers réservent eux-mêmes la piste via un lien que le manège partage avec ses clients. Fini les appels et les doubles réservations.",
         "result": "[RÉSULTAT, p. ex. réservations par mois]",
         "image": "",
-        "draft": false
+        "draft": false,
+        "metric": "",
+        "tags": ["Application web","Réservation en ligne","Mobile d'abord"]
       },
       {
         "tag": "[Site web ou IA]",
@@ -128,7 +130,9 @@
         "desc": "[Deux phrases : quel était le problème, qu'est-ce qui a été réalisé.]",
         "result": "[RÉSULTAT]",
         "image": "",
-        "draft": true
+        "draft": true,
+        "metric": "",
+        "tags": []
       }
     ]
   },

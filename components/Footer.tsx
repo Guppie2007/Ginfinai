@@ -7,11 +7,11 @@ import { asArray } from './asArray'
 export default function Footer() {
   const { t } = useTranslation('common')
   const services = asArray<string>(t('footer.servicesList', { returnObjects: true }))
-  const link = 'text-ondark no-underline hover:text-white'
+  const link = 'inline-flex min-h-[44px] items-center self-start text-ondark no-underline hover:text-white'
 
   return (
     <footer className="bg-ink text-ondark">
-      <div className="mx-auto flex max-w-page flex-col gap-10 px-6 pb-8 pt-14">
+      <div className="mx-auto flex max-w-page flex-col gap-10 px-6 pb-24 pt-14 nav:pb-28">
         <div className="flex flex-wrap justify-between gap-8">
           <div className="flex max-w-[320px] flex-col gap-3.5">
             <Image
@@ -24,33 +24,33 @@ export default function Footer() {
             <p className="m-0 text-[15px] leading-relaxed text-ondark-2">{t('footer.tagline')}</p>
           </div>
           <div className="flex flex-wrap gap-12 text-[15px]">
-            <div className="flex flex-col gap-2.5">
-              <span className="text-[13px] text-ondark-3">{t('footer.services')}</span>
+            <div className="flex flex-col">
+              <span className="pb-1 text-[13px] text-ondark-3">{t('footer.services')}</span>
               {services.map((s) => (
                 <Link key={s} href="/#diensten" className={link}>
                   {s}
                 </Link>
               ))}
             </div>
-            <div className="flex flex-col gap-2.5">
-              <span className="text-[13px] text-ondark-3">{t('footer.contact')}</span>
+            <div className="flex flex-col">
+              <span className="pb-1 text-[13px] text-ondark-3">{t('footer.contact')}</span>
               <a href={`mailto:${EMAIL_ADDRESS}`} className={link}>
                 {EMAIL_ADDRESS}
               </a>
               <a href={WHATSAPP_URL} className={link}>
                 {PHONE_DISPLAY}
               </a>
-              <span>{t('footer.address')}</span>
+              <span className="py-2.5">{t('footer.address')}</span>
             </div>
           </div>
         </div>
-        <div className="flex flex-wrap justify-between gap-3 border-t border-ink-line pt-5 text-[13px] text-ondark-3">
+        <div className="flex flex-wrap items-center justify-between gap-x-3 border-t border-ink-line pt-3 text-[13px] text-ondark-3">
           <span>{t('footer.legal', { year: new Date().getFullYear() })}</span>
           <span className="flex gap-5">
-            <Link href="/privacy" className="text-ondark-3 hover:text-white">
+            <Link href="/privacy" className="inline-flex min-h-[44px] items-center text-ondark-3 hover:text-white">
               {t('footer.privacy')}
             </Link>
-            <Link href="/voorwaarden" className="text-ondark-3 hover:text-white">
+            <Link href="/voorwaarden" className="inline-flex min-h-[44px] items-center text-ondark-3 hover:text-white">
               {t('footer.terms')}
             </Link>
           </span>

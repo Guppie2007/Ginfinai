@@ -20,30 +20,42 @@ const BernChat = forwardRef<BernHandle>(function BernChat(_props, ref) {
   const [open, setOpen] = useState(false)
   const [msgs, setMsgs] = useState<Msg[]>([])
   const closeRef = useRef<HTMLButtonElement>(null)
+  const fabRef = useRef<HTMLButtonElement>(null)
+  const wasOpen = useRef(false)
+  const skipFocusBack = useRef(false)
   const returnTo = useRef<HTMLElement | null>(null)
   const listRef = useRef<HTMLDivElement>(null)
   const dialogRef = useRef<HTMLDivElement>(null)
 
   useImperativeHandle(ref, () => ({
     open: () => {
-      returnTo.current = document.activeElement as HTMLElement
+      const active = document.activeElement as HTMLElement | null
+      returnTo.current = active && active !== document.body ? active : fabRef.current
       setOpen(true)
     },
   }))
 
+  // Focus naar de dialoog bij openen; bij sluiten terug naar het element dat de chat opende
   useEffect(() => {
-    if (open) closeRef.current?.focus()
+    if (open) {
+      wasOpen.current = true
+      closeRef.current?.focus()
+    } else if (wasOpen.current) {
+      wasOpen.current = false
+      if (skipFocusBack.current) {
+        skipFocusBack.current = false
+        return
+      }
+      const target = returnTo.current && returnTo.current.isConnected ? returnTo.current : fabRef.current
+      target?.focus()
+    }
   }, [open])
 
   useEffect(() => {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: 'smooth' })
   }, [msgs])
 
-  const close = () => {
-    setOpen(false)
-    // Focus terug naar de knop die de chat opende
-    requestAnimationFrame(() => returnTo.current?.focus())
-  }
+  const close = () => setOpen(false)
 
   // Escape sluit, Tab blijft binnen de dialoog
   const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
@@ -63,32 +75,16 @@ const BernChat = forwardRef<BernHandle>(function BernChat(_props, ref) {
 
   const ask = (x: QA) => setMsgs((m) => [...m, { bot: false, text: x.q }, { bot: true, text: x.a }])
 
-  if (!open) {
-    return (
-      <button
-        type="button"
-        onClick={(e) => {
-          returnTo.current = e.currentTarget
-          setOpen(true)
-        }}
-        aria-label={t('bern.open')}
-        className="fixed bottom-5 right-5 z-30 h-16 w-16 cursor-pointer rounded-full border-0 bg-transparent p-0 shadow-[0_10px_24px_rgba(19,14,40,0.35)] transition-transform hover:-translate-y-0.5"
-      >
-        <Image src="/brand/bern-avatar.png" alt="" width={64} height={64} className="block h-16 w-16" />
-      </button>
-    )
-  }
-
   const all: Msg[] = [{ bot: true, text: t('bern.welcome') }, ...msgs]
 
-  return (
+  const dialog = (
     <div
       ref={dialogRef}
       role="dialog"
       aria-modal="true"
       aria-label={t('bern.dialog')}
       onKeyDown={onKeyDown}
-      className="fixed bottom-5 right-5 z-30 flex max-h-[calc(100vh-100px)] w-[380px] max-w-[calc(100vw-40px)] flex-col overflow-hidden rounded-[20px] border border-line bg-white shadow-[0_16px_40px_rgba(19,14,40,0.22)]"
+      className="fixed bottom-4 right-4 nav:bottom-5 nav:right-5 z-30 flex max-h-[calc(100vh-100px)] w-[380px] max-w-[calc(100vw-32px)] flex-col overflow-hidden rounded-[20px] border border-line bg-white shadow-[0_16px_40px_rgba(19,14,40,0.22)]"
     >
       <div className="flex items-center gap-3 bg-ink py-3 pl-4 pr-3 text-white">
         <Image src="/brand/bern-avatar.png" alt="" width={40} height={40} className="h-10 w-10" />
@@ -131,7 +127,7 @@ const BernChat = forwardRef<BernHandle>(function BernChat(_props, ref) {
               key={x.q}
               type="button"
               onClick={() => ask(x)}
-              className="min-h-[40px] cursor-pointer rounded-full border border-field bg-white px-3 text-[13px] text-[#2C2550] hover:border-brand"
+              className="min-h-[44px] cursor-pointer rounded-full border border-field bg-white px-3 text-[13px] text-[#2C2550] hover:border-brand"
             >
               {x.q}
             </button>
@@ -140,7 +136,11 @@ const BernChat = forwardRef<BernHandle>(function BernChat(_props, ref) {
         <div className="flex gap-2">
           <a
             href="#contact"
-            onClick={() => setOpen(false)}
+            onClick={() => {
+              // De pagina scrolt naar het contactformulier: de focus niet terugzetten
+              skipFocusBack.current = true
+              setOpen(false)
+            }}
             className="flex min-h-[44px] flex-grow items-center justify-center rounded-xl bg-brand px-3 text-sm font-medium text-white no-underline hover:bg-brand-deep hover:text-white"
           >
             {t('bern.forward')}
@@ -154,6 +154,30 @@ const BernChat = forwardRef<BernHandle>(function BernChat(_props, ref) {
         </div>
       </div>
     </div>
+  )
+
+  return (
+    <>
+      {/* De knop blijft gemonteerd (zodat de focus er na het sluiten naar terug kan) en is verborgen zolang de dialoog open is */}
+      <button
+        ref={fabRef}
+        type="button"
+        onClick={(e) => {
+          returnTo.current = e.currentTarget
+          setOpen(true)
+        }}
+        aria-label={t('bern.open')}
+        aria-hidden={open || undefined}
+        tabIndex={open ? -1 : undefined}
+        className={
+          'fixed bottom-4 right-4 z-30 h-[52px] w-[52px] cursor-pointer rounded-full border-0 bg-transparent p-0 shadow-[0_10px_24px_rgba(19,14,40,0.35)] transition-transform hover:-translate-y-0.5 nav:bottom-5 nav:right-5 nav:h-16 nav:w-16 ' +
+          (open ? 'invisible' : '')
+        }
+      >
+        <Image src="/brand/bern-avatar.png" alt="" width={64} height={64} className="block h-full w-full" />
+      </button>
+      {open && dialog}
+    </>
   )
 })
 

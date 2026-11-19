@@ -12,6 +12,13 @@ module.exports = {
       },
       colors: {
         brand: {
+          // Paarse schaal (aliassen van de bestaande namen)
+          50: '#F6F4FF',
+          100: '#EEEBFC',
+          200: '#C9C0FF',
+          400: '#8B7BFF',
+          500: '#5B4BD6',
+          700: '#3F31B8',
           DEFAULT: '#5B4BD6',
           deep: '#3F31B8',
           light: '#C9C0FF',
@@ -27,6 +34,9 @@ module.exports = {
           line: '#2A2350',
           border: '#4B3F8F',
         },
+        // Warm accent (amber): max. ±5% van een scherm, alleen voor resultaten en kleine highlights.
+        // Nooit voor knoppen, links of tekst op wit; op wit enkel als vlak of onderlijn.
+        accent: '#F4B740',
         lavender: '#F6F4FF',
         selected: '#EEEBFC',
         line: '#E4E0F5',

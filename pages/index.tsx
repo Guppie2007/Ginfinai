@@ -1,7 +1,7 @@
 import { EMAIL_ADDRESS, PHONE_DISPLAY, SITE_URL, WHATSAPP_URL } from '../components/site'
 import Head from 'next/head'
 import Image from 'next/image'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import { Trans, useTranslation } from 'next-i18next'
@@ -22,6 +22,64 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 })
 
 type WorkItem = { tag: string; title: string; desc: string; result: string; image?: string; draft?: boolean; metric?: string; tags?: string[] }
+
+/**
+ * Desktop (>=901px): #diensten landt zo dat het paarse paneel volledig in beeld staat.
+ * y = min(max(labelTop - (header + 24), panelBottom - (innerHeight - 24)), titleTop - (header + 16))
+ * Dat is het standaardgedrag (label 24px onder de header) plus extra scroll als het paneel niet past,
+ * maar nooit zoveel dat de titel onder de header verdwijnt. We zetten het verschil als scroll-margin-top op
+ * het anker: alle navigatie (links, logo-lussen, laden met #diensten) gebruikt dan dezelfde smooth scroll.
+ */
+function useDienstenAnchor(deps: unknown[]) {
+  useEffect(() => {
+    const anchor = document.getElementById('diensten')
+    const header = document.querySelector('header')
+    const mq = window.matchMedia('(min-width: 901px)')
+    if (!anchor || !header) return
+    const section = anchor.closest('section')
+    let userScrolled = false
+    const t0 = performance.now()
+
+    const measure = () => {
+      const title = section?.querySelector('h2')
+      const panel = section?.querySelector('[aria-live="polite"]')
+      let extra = 0
+      if (mq.matches && title && panel) {
+        const labelTop = anchor.getBoundingClientRect().top
+        const h = header.getBoundingClientRect().height
+        const panelBottom = panel.getBoundingClientRect().bottom - labelTop
+        const titleTop = title.getBoundingClientRect().top - labelTop
+        extra = Math.max(0, Math.min(panelBottom - (window.innerHeight - 24) + h + 24, titleTop + 8))
+      }
+      extra = Math.round(extra)
+      anchor.style.scrollMarginTop = `calc(var(--header-h) + 24px - ${extra}px)`
+      // Geladen met #diensten: opnieuw plaatsen zolang de layout nog verschuift (lettertypes, afbeeldingen),
+      // alleen in de eerste seconden en zolang de bezoeker niet zelf scrolde
+      if (window.location.hash === '#diensten' && !userScrolled && performance.now() - t0 < 4000) {
+        anchor.scrollIntoView({ behavior: 'instant' as ScrollBehavior })
+      }
+    }
+
+    const stop = () => (userScrolled = true)
+    window.addEventListener('wheel', stop, { passive: true, once: true })
+    window.addEventListener('touchstart', stop, { passive: true, once: true })
+    window.addEventListener('keydown', stop, { once: true })
+    measure()
+    window.addEventListener('resize', measure)
+    window.addEventListener('load', measure)
+    document.fonts?.ready.then(measure)
+    const ro = 'ResizeObserver' in window ? new ResizeObserver(measure) : null
+    ro?.observe(document.body)
+    return () => {
+      window.removeEventListener('resize', measure)
+      window.removeEventListener('load', measure)
+      window.removeEventListener('wheel', stop)
+      window.removeEventListener('touchstart', stop)
+      window.removeEventListener('keydown', stop)
+      ro?.disconnect()
+    }
+  }, deps)
+}
 
 // Tekst die nog tussen vierkante haken staat is een plaatshouder en wordt niet getoond
 const isPlaceholder = (s?: string) => !s || /^\[.*\]$/.test(s.trim())
@@ -101,6 +159,8 @@ export default function Home() {
     founder: { '@type': 'Person', name: 'Gerben Ceuppens' },
     areaServed: 'BE',
   }
+
+  useDienstenAnchor([selected, locale])
 
   const select = (id: string) => {
     setSelected(id)

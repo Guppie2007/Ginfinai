@@ -53,11 +53,13 @@
       }
     ],
     "forward": "Transmettre ma question à Gerben",
-    "whatsapp": "Ouvrir WhatsApp"
+    "whatsapp": "Ouvrir WhatsApp",
+    "thinking": "Bern réfléchit…"
   },
   "notFound": {
-    "title": "Cette page n'existe pas",
-    "text": "Le lien est peut-être obsolète. La page d'accueil présente tous les services et le formulaire de contact.",
-    "home": "Retour à l'accueil"
+    "title": "Je n'ai pas trouvé cette page.",
+    "text": "Le lien est peut-être obsolète. Tout se trouve sur la page d'accueil, ou demandez-moi directement.",
+    "home": "Retour à l'accueil",
+    "ask": "Demander à Bern"
   }
 }

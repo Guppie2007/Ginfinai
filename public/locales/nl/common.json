@@ -53,11 +53,13 @@
       }
     ],
     "forward": "Stuur mijn vraag door naar Gerben",
-    "whatsapp": "Open WhatsApp"
+    "whatsapp": "Open WhatsApp",
+    "thinking": "Bern denkt na…"
   },
   "notFound": {
-    "title": "Deze pagina bestaat niet",
-    "text": "De link is misschien verouderd. Op de homepage vindt u alle diensten en het contactformulier.",
-    "home": "Naar de homepage"
+    "title": "Deze pagina heb ik niet gevonden.",
+    "text": "Misschien is de link verouderd. Op de homepage staat alles, of vraag het mij meteen.",
+    "home": "Naar de homepage",
+    "ask": "Vraag het aan Bern"
   }
 }

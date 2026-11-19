@@ -53,11 +53,13 @@
       }
     ],
     "forward": "Send my question to Gerben",
-    "whatsapp": "Open WhatsApp"
+    "whatsapp": "Open WhatsApp",
+    "thinking": "Bern is thinking…"
   },
   "notFound": {
-    "title": "This page doesn't exist",
-    "text": "The link may be outdated. The homepage has all services and the contact form.",
-    "home": "Go to the homepage"
+    "title": "I couldn't find this page.",
+    "text": "The link may be outdated. Everything is on the homepage, or just ask me.",
+    "home": "Go to the homepage",
+    "ask": "Ask Bern"
   }
 }

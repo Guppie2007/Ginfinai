@@ -136,7 +136,7 @@ export default function ContactForm({ subject, onSubject }: Props) {
   const errCount = (Object.keys(errors) as Field[]).filter((f) => errors[f]).length
 
   return (
-    <form onSubmit={submit} noValidate className="flex flex-col gap-[22px]">
+    <form onSubmit={submit} noValidate className="flex flex-col gap-[22px] nav:gap-4">
       {showSummary && errCount > 0 && (
         <p role="alert" className="m-0 rounded-xl border border-error bg-white px-4 py-3 text-sm text-error">
           {t('contact.errors.summary', { count: errCount })}
@@ -205,7 +205,7 @@ export default function ContactForm({ subject, onSubject }: Props) {
       </div>
 
       <fieldset className="m-0 flex flex-col gap-2.5 border-0 p-0">
-        <legend className="pb-2.5 text-sm font-medium">{t('contact.fields.subject')}</legend>
+        <legend className="pb-2.5 text-sm font-medium nav:pb-2">{t('contact.fields.subject')}</legend>
         <div className="flex flex-wrap gap-2">
           {subjects.map((s, i) => (
             <button key={s} type="button" onClick={() => onSubject(i)} aria-pressed={subject === i} className="chip cursor-pointer">
@@ -216,7 +216,7 @@ export default function ContactForm({ subject, onSubject }: Props) {
       </fieldset>
 
       <fieldset className="m-0 flex flex-col gap-2.5 border-0 p-0">
-        <legend className="pb-2.5 text-sm font-medium">
+        <legend className="pb-2.5 text-sm font-medium nav:pb-2">
           {t('contact.fields.budget')}
           <span className="font-normal text-muted"> ({t('contact.fields.optional')})</span>
         </legend>
@@ -238,14 +238,14 @@ export default function ContactForm({ subject, onSubject }: Props) {
           ref={refs.message}
           id="bericht"
           name="message"
-          rows={5}
+          rows={4}
           placeholder={t('contact.fields.messageHint')}
           value={values.message}
           onChange={set('message')}
           onBlur={blur('message')}
           aria-invalid={!!shown('message')}
           aria-describedby={shown('message') ? 'fout-message' : undefined}
-          className="field resize-y py-3"
+          className="field resize-y py-3 max-[900px]:min-h-[146px]"
         />
         {err('message')}
       </div>

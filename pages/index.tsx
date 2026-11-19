@@ -200,7 +200,7 @@ export default function Home() {
         <ProgressRail wrap={railWrap} />
 
         {/* 01 Diensten */}
-        <section className="rp mx-auto flex max-w-page flex-col gap-10 px-6 pb-[72px] pt-24">
+        <section className="rp mx-auto flex max-w-page flex-col gap-10 px-6 pb-[72px] pt-24 nav:gap-8">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div className="flex max-w-[640px] flex-col gap-2.5">
               <SectionLabel anchor="diensten" className="text-brand">
@@ -341,7 +341,7 @@ export default function Home() {
 
         {/* 05 Contact */}
         <section className="rp mx-auto flex max-w-page flex-wrap gap-12 px-6 py-24">
-          <div className="flex min-w-0 flex-[1_1_380px] flex-col gap-5">
+          <div className="flex min-w-0 flex-[1_1_380px] flex-col gap-5 nav:gap-4">
             <SectionLabel anchor="contact" className="text-brand">
               {t('contact.eyebrow')}
             </SectionLabel>
@@ -362,7 +362,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="relative min-w-0 flex-[1_1_560px] rounded-3xl bg-lavender p-8 max-[480px]:p-5">
+          <div className="relative min-w-0 flex-[1_1_560px] rounded-3xl bg-lavender p-8 nav:p-6 max-[480px]:p-5">
             <ContactForm subject={subject} onSubject={setSubject} />
           </div>
         </section>

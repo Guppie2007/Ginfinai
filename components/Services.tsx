@@ -52,7 +52,7 @@ export default function Services({ selected, open, onSelect, onAsk }: Props) {
       <a
         href="#contact"
         onClick={() => onAsk(s.subject)}
-        className="inline-flex min-h-[52px] items-center gap-3 rounded-full bg-white pl-[22px] pr-2 text-base font-medium text-ink no-underline hover:bg-lavender hover:text-ink"
+        className="inline-flex min-h-[48px] items-center gap-3 rounded-full bg-white pl-[22px] pr-2 text-base font-medium text-ink no-underline hover:bg-lavender hover:text-ink"
       >
         {t('services.cta')}
         <span aria-hidden="true" className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-ink text-white">
@@ -71,7 +71,7 @@ export default function Services({ selected, open, onSelect, onAsk }: Props) {
 
   const column = (title: string, intro: string, items: Service[], offset: number, accent?: boolean) => (
     <div className="flex min-w-0 flex-[1_1_480px] flex-col gap-1.5">
-      <div className="flex items-end justify-between gap-4 px-4 pb-3.5">
+      <div className="flex items-end justify-between gap-4 px-4 pb-3.5 nav:pb-1">
         <h3 className={'m-0 text-[26px] font-semibold ' + (accent ? 'text-brand' : '')}>{title}</h3>
         <span className="max-w-[260px] text-right text-sm leading-snug text-muted">{intro}</span>
       </div>
@@ -85,7 +85,7 @@ export default function Services({ selected, open, onSelect, onAsk }: Props) {
               onClick={() => onSelect(s.id)}
               aria-expanded={isOpen}
               className={
-                'group flex min-h-[76px] w-full cursor-pointer items-center gap-3 border-0 border-b px-4 text-left transition-colors nav:gap-5 ' +
+                'group flex min-h-[76px] w-full nav:min-h-[56px] cursor-pointer items-center gap-3 border-0 border-b px-4 text-left transition-colors nav:gap-5 ' +
                 (on ? 'rounded-[14px] border-transparent bg-selected' : 'border-line bg-transparent hover:bg-lavender')
               }
             >
@@ -139,7 +139,7 @@ export default function Services({ selected, open, onSelect, onAsk }: Props) {
 
       <div
         aria-live="polite"
-        className="hidden flex-wrap gap-x-14 gap-y-8 rounded-[28px] bg-brand px-12 py-11 text-white nav:flex"
+        className="hidden flex-wrap gap-x-14 gap-y-8 rounded-[28px] bg-brand px-12 py-11 text-white nav:flex nav:py-8"
       >
         <div className="flex min-w-0 flex-[1_1_380px] flex-col gap-4">
           <div className="eyebrow text-brand-panel">
@@ -148,12 +148,12 @@ export default function Services({ selected, open, onSelect, onAsk }: Props) {
           <h3 className="m-0 text-4xl font-semibold tracking-[-0.02em]">{sel.title}</h3>
           <p className="m-0 max-w-[460px] text-[17px] leading-relaxed text-brand-panel">{sel.desc}</p>
         </div>
-        <div className="flex min-w-0 flex-[1_1_380px] flex-col gap-5">
-          <NodeList points={sel.points} className="gap-3 text-base" />
-          <div className="flex flex-wrap items-end justify-between gap-4 border-t border-brand-rule pt-5">
+        <div className="flex min-w-0 flex-[1_1_380px] flex-col gap-4">
+          <NodeList points={sel.points} className="gap-2 text-base" />
+          <div className="flex flex-wrap items-end justify-between gap-4 border-t border-brand-rule pt-4">
             <div className="flex flex-col gap-1">
               <span className="text-sm text-brand-panel">{t('services.lead', { lead: sel.lead })}</span>
-              <span className="whitespace-nowrap text-[28px] font-semibold">{sel.panelPrice}</span>
+              <span className="whitespace-nowrap text-[28px] font-semibold leading-tight">{sel.panelPrice}</span>
             </div>
             {askButton(sel, true)}
           </div>

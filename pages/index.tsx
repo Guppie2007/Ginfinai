@@ -140,10 +140,23 @@ export default function Home() {
               <span className="text-brand-accent">
                 {t('hero.title2')}
                 <br />
-                {t('hero.title3').replace(/\.$/, '')}
-                {/* Visueel het amber punt; voor schermlezers blijft het een gewone punt */}
-                <span className="sr-only">.</span>
-                <span aria-hidden="true" className="inline-block h-[0.18em] w-[0.18em] rounded-full bg-accent align-baseline" />
+                {/* Laatste woord en punt blijven samen op één regel */}
+                {(() => {
+                  const words = t('hero.title3').replace(/\.$/, '').split(' ')
+                  const last = words.pop()
+                  return (
+                    <>
+                      {words.length > 0 && `${words.join(' ')} `}
+                      <span className="whitespace-nowrap">
+                        {last}
+                        {/* Visueel het amber punt; voor schermlezers blijft het een gewone punt.
+                            Maat gemeten aan de punt van Onest semibold: Ø 0,17em, 0,05em ruimte na de letter. */}
+                        <span className="sr-only">.</span>
+                        <span aria-hidden="true" className="ml-[0.05em] inline-block h-[0.17em] w-[0.17em] rounded-full bg-accent align-baseline" />
+                      </span>
+                    </>
+                  )
+                })()}
               </span>
             </h1>
             <p className="m-0 max-w-[560px] text-[19px] leading-relaxed text-ondark">{t('hero.lead')}</p>

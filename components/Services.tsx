@@ -1,5 +1,6 @@
 import { useTranslation } from 'next-i18next'
 import { asArray } from './asArray'
+import ServiceIcon from './ServiceIcon'
 
 export type Service = {
   id: string
@@ -17,6 +18,24 @@ type Props = {
   open: string | null
   onSelect: (id: string) => void
   onAsk: (subject: number) => void
+}
+
+/** Opsomming als knooppunten aan een verticale lijn, voor op het paarse paneel */
+function NodeList({ points, className }: { points: string[]; className: string }) {
+  return (
+    <ul className={'relative m-0 flex list-none flex-col p-0 ' + className}>
+      <span aria-hidden="true" className="absolute bottom-2 left-[6px] top-2 w-0.5 bg-brand-200/50" />
+      {points.map((p) => (
+        <li key={p} className="relative pl-8">
+          <span
+            aria-hidden="true"
+            className="absolute left-0 top-[0.3em] box-border h-[14px] w-[14px] rounded-full border-[3px] border-white bg-brand-500"
+          />
+          {p}
+        </li>
+      ))}
+    </ul>
+  )
 }
 
 export default function Services({ selected, open, onSelect, onAsk }: Props) {
@@ -66,15 +85,25 @@ export default function Services({ selected, open, onSelect, onAsk }: Props) {
               onClick={() => onSelect(s.id)}
               aria-expanded={isOpen}
               className={
-                'flex min-h-[76px] w-full cursor-pointer items-center gap-5 border-0 border-b px-4 text-left transition-colors ' +
+                'group flex min-h-[76px] w-full cursor-pointer items-center gap-3 border-0 border-b px-4 text-left transition-colors nav:gap-5 ' +
                 (on ? 'rounded-[14px] border-transparent bg-selected' : 'border-line bg-transparent hover:bg-lavender')
               }
             >
-              <span className={'w-7 text-sm tabular-nums ' + (on ? 'text-brand' : 'text-subtle')}>
+              <span
+                className={
+                  'mt-3 w-7 self-start text-sm leading-7 tabular-nums max-[479px]:hidden nav:mt-0 nav:self-center ' +
+                  (on ? 'text-brand' : 'text-subtle')
+                }
+              >
                 {String(offset + i + 1).padStart(2, '0')}
               </span>
+              <ServiceIcon
+                id={s.id}
+                open={on ? 'fill-selected' : 'fill-white group-hover:fill-lavender'}
+                className="mt-3 h-7 w-7 flex-none self-start text-brand nav:mt-0 nav:self-center"
+              />
               <span className="flex min-w-0 flex-grow flex-col gap-0.5 py-3 nav:flex-row nav:items-center nav:gap-5 nav:py-0">
-                <span className="text-[clamp(18px,1.8vw,22px)] font-medium tracking-[-0.01em] nav:flex-grow">{s.title}</span>
+                <span className="text-[clamp(18px,1.8vw,22px)] font-medium leading-7 tracking-[-0.01em] nav:flex-grow">{s.title}</span>
                 {/* Prijs onder de titel op gsm; AI-rijen tonen dezelfde prijs als het paneel */}
                 <span className="whitespace-nowrap text-[13px] text-muted nav:text-sm">{accent ? s.panelPrice : s.price}</span>
               </span>
@@ -84,11 +113,7 @@ export default function Services({ selected, open, onSelect, onAsk }: Props) {
               <div className="nav:hidden">
                 <div className="mb-3 mt-2 flex flex-col gap-3.5 rounded-[20px] bg-brand p-6 text-white">
                   <p className="m-0 text-base leading-normal text-brand-panel">{s.desc}</p>
-                  <ul className="m-0 flex list-none flex-col gap-1.5 p-0 text-[15px]">
-                    {s.points.map((p) => (
-                      <li key={p}>— {p}</li>
-                    ))}
-                  </ul>
+                  <NodeList points={s.points} className="gap-2 text-[15px]" />
                   <div className="flex flex-col gap-3.5 border-t border-brand-rule pt-3.5">
                     <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
                       <span className="whitespace-nowrap text-xl font-semibold">{s.panelPrice}</span>
@@ -124,16 +149,7 @@ export default function Services({ selected, open, onSelect, onAsk }: Props) {
           <p className="m-0 max-w-[460px] text-[17px] leading-relaxed text-brand-panel">{sel.desc}</p>
         </div>
         <div className="flex min-w-0 flex-[1_1_380px] flex-col gap-5">
-          <ul className="m-0 flex list-none flex-col gap-2.5 p-0 text-base">
-            {sel.points.map((p) => (
-              <li key={p} className="flex gap-3">
-                <span className="text-brand-light" aria-hidden="true">
-                  —
-                </span>
-                {p}
-              </li>
-            ))}
-          </ul>
+          <NodeList points={sel.points} className="gap-3 text-base" />
           <div className="flex flex-wrap items-end justify-between gap-4 border-t border-brand-rule pt-5">
             <div className="flex flex-col gap-1">
               <span className="text-sm text-brand-panel">{t('services.lead', { lead: sel.lead })}</span>

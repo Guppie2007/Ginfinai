@@ -9,7 +9,7 @@ import { useTranslation } from 'next-i18next'
  */
 
 // Lemniscaat van Bernoulli met G-uitloop, als polyline (cx=cy=120, a=96, sy=1.5, G-lus x1.12)
-const D =
+export const D =
   'M176.3 64.3 L169.4 66.8 L163.0 70.3 L157.0 74.6 L151.3 79.5 L146.0 84.9 L141.0 90.7 L136.2 96.7 L131.7 102.9 L127.3 109.2 L123.0 115.5 L118.8 121.7 L115.0 127.4 L111.1 133.1 L107.1 138.7 L102.9 144.1 L98.6 149.3 L93.9 154.3 L89.0 158.9 L83.8 162.9 L78.2 166.4 L72.2 169.0 L65.9 170.6 L59.3 170.9 L52.7 169.6 L46.0 166.7 L39.7 161.9 L34.0 155.1 L29.3 146.5 L25.9 136.4 L24.2 125.3 L24.3 113.9 L26.1 102.9 L29.6 92.9 L34.3 84.4 L40.1 77.7 L46.5 73.0 L53.1 70.2 L59.8 69.1 L66.4 69.5 L72.6 71.2 L78.6 73.8 L84.2 77.3 L89.4 81.5 L94.3 86.1 L98.9 91.0 L103.2 96.3 L107.4 101.7 L111.4 107.3 L115.3 113.0 L119.1 118.7 L123.3 124.9 L127.6 131.3 L132.0 137.6 L136.6 143.8 L141.3 149.7 L146.4 155.5 L151.7 160.8 L157.4 165.7 L163.4 170.0 L169.9 173.4 L176.8 175.8 L184.0 177.0 L191.4 176.6 L198.9 174.3 L206.2 170.1 L213.0 163.6 L219.0 155.1 L223.6 144.6 L226.5 132.7 L227.5 120.0 L176.3 120.0'
 
 const PTS: [number, number][] = (D.match(/[\d.]+ [\d.]+/g) || []).map((s) => s.split(' ').map(Number) as [number, number])
@@ -24,7 +24,7 @@ const TOTAL = CUM[CUM.length - 1]
 // [x, y, dx, dy, start-ms]
 const PIX = [[163.2,60.9,-32,63,0],[150.4,69.0,-38,-53,22],[139.2,79.8,-83,-19,44],[129.3,91.9,89,34,66],[120.1,104.8,88,21,88],[111.6,117.6,60,28,110],[103.6,129.2,-105,54,132],[95.0,140.4,54,53,154],[85.5,150.6,-88,-91,176],[74.7,158.9,-78,-41,198],[62.3,164.1,63,-9,220],[48.8,164.2,51,-62,242],[35.3,157.3,42,54,264],[24.1,142.4,-42,109,286],[18.3,121.0,42,91,308],[19.9,97.8,-55,-66,330],[28.2,78.6,-62,-19,352],[40.7,66.9,69,27,374],[54.4,63.1,-38,-81,396],[67.5,65.5,-40,93,418],[79.3,72.1,-78,23,440],[89.5,81.3,30,-105,462],[98.6,92.0,4,100,484],[106.9,103.5,-120,-19,506],[114.9,115.3,-10,-79,528],[123.8,128.5,68,-8,550],[133.2,141.1,-98,56,572],[143.6,152.8,54,77,594],[155.4,162.7,104,26,616],[168.9,169.3,9,-100,638],[183.9,170.8,58,-58,660],[199.2,164.8,-34,-96,682],[212.5,149.9,-81,-44,704],[220.4,127.0,68,-107,726]]
 
-const NODES = [
+export const NODES = [
   { x: 67.4, y: 69.7, r: 7, at: 1750 },
   { x: 24.0, y: 120.0, r: 7, at: 1830 },
   { x: 67.4, y: 170.3, r: 7, at: 1910 },
@@ -37,6 +37,8 @@ const NODES = [
 const END = 3300
 const HOLD = 4200
 const FADE = 700
+// Het teken vervaagt nooit verder dan dit niveau, zodat het kader nooit leeg is
+const MIN_OPACITY = 0.35
 const CYCLE = END + HOLD + FADE
 
 const clamp = (x: number) => Math.max(0, Math.min(1, x))
@@ -83,6 +85,8 @@ const CROSS = (() => {
   })
   return [out[0], out[out.length - 1]]
 })()
+
+const GHOST = rangePath(0, 1)
 
 type Group = 'web' | 'ai'
 
@@ -151,7 +155,7 @@ export default function LogoMark({ onPick }: { onPick: (g: Group) => void }) {
   }
 
   let tc = reduce ? END : time % CYCLE
-  let markOpacity = tc > END + HOLD ? 1 - clamp((tc - END - HOLD) / FADE) : 1
+  let markOpacity = tc > END + HOLD ? 1 - (1 - MIN_OPACITY) * clamp((tc - END - HOLD) / FADE) : 1
   if (hover) {
     tc = END
     markOpacity = 1
@@ -161,6 +165,8 @@ export default function LogoMark({ onPick }: { onPick: (g: Group) => void }) {
   const fadeOut = 1 - clamp((tt - 1350) / 350)
   const line = partialPath(easeOut(clamp((tt - 1050) / 750)))
   const labelOpacity = clamp((tt - 2700) / 500)
+  // Gedempt spoor van het volledige teken: de opbouw start vanaf het vervaagde niveau
+  const ghostOpacity = hover || reduce || tc >= END ? 0 : MIN_OPACITY * (1 - clamp(tt / 2000))
 
   const hiPath = useMemo(() => {
     if (hover === 'web') return rangePath(CROSS[0], CROSS[1])
@@ -180,7 +186,7 @@ export default function LogoMark({ onPick }: { onPick: (g: Group) => void }) {
   })
 
   return (
-    <div ref={cardRef} className="relative box-border w-full max-w-[480px] rounded-[28px] border border-ink-line bg-ink-2 px-6 py-8">
+    <div ref={cardRef} className="relative box-border w-full max-w-[360px] rounded-[28px] border border-ink-line bg-ink-2 px-4 py-6 nav:max-w-[480px] nav:px-6 nav:py-8">
       {!reduce && (
         <button
           type="button"
@@ -202,6 +208,14 @@ export default function LogoMark({ onPick }: { onPick: (g: Group) => void }) {
       )}
 
       <svg viewBox="12 39 228 176" role="group" aria-label={t('mark.label')} className="block h-auto w-full overflow-visible">
+        {ghostOpacity > 0 && (
+          <g opacity={ghostOpacity} aria-hidden="true">
+            <path d={GHOST} fill="none" stroke="#8B7BFF" strokeWidth="16" strokeLinecap="round" strokeLinejoin="round" />
+            {NODES.map((n, i) => (
+              <circle key={i} cx={n.x} cy={n.y} r={n.r} fill={n.core ? '#C9C0FF' : '#130E28'} stroke="#8B7BFF" strokeWidth={n.core ? 0 : 7} />
+            ))}
+          </g>
+        )}
         <g opacity={markOpacity}>
           {PIX.map((p, i) => {
             const k = easeOut(clamp((tt - p[4]) / 600))
@@ -242,13 +256,13 @@ export default function LogoMark({ onPick }: { onPick: (g: Group) => void }) {
             )
           })}
           <g opacity={labelOpacity} style={{ fontFamily: 'var(--font-mono), ui-monospace, monospace' }} textAnchor="middle" aria-hidden="true">
-            <text x="70" y="124" fontSize="11" letterSpacing="1.5" fill={hover === 'web' ? '#FFFFFF' : '#C9C0FF'}>
+            <text x="70" y="125" fontSize="12" letterSpacing="1.5" fill={hover === 'web' ? '#FFFFFF' : '#C9C0FF'}>
               {t('mark.web')}
             </text>
-            <text x="194" y="156" fontSize="11" letterSpacing="1.5" fill={hover === 'ai' ? '#FFFFFF' : '#C9C0FF'}>
+            <text x="194" y="157" fontSize="12" letterSpacing="1.5" fill={hover === 'ai' ? '#FFFFFF' : '#C9C0FF'}>
               {t('mark.ai')}
             </text>
-            <text x="120" y="210" fontSize="8" letterSpacing="1.2" fill={hover ? '#FFFFFF' : '#B7AEDB'}>
+            <text x="120" y="210" fontSize="9" letterSpacing="0.6" fill={hover ? '#FFFFFF' : '#B7AEDB'}>
               {hover === 'web' ? t('mark.capWeb') : hover === 'ai' ? t('mark.capAi') : t('mark.capDefault')}
             </text>
           </g>

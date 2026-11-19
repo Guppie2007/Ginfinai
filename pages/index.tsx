@@ -140,8 +140,10 @@ export default function Home() {
               <span className="text-brand-accent">
                 {t('hero.title2')}
                 <br />
-                {t('hero.title3')}
-                <span aria-hidden="true" className="ml-[0.12em] inline-block h-[0.18em] w-[0.18em] rounded-full bg-accent align-baseline" />
+                {t('hero.title3').replace(/\.$/, '')}
+                {/* Visueel het amber punt; voor schermlezers blijft het een gewone punt */}
+                <span className="sr-only">.</span>
+                <span aria-hidden="true" className="inline-block h-[0.18em] w-[0.18em] rounded-full bg-accent align-baseline" />
               </span>
             </h1>
             <p className="m-0 max-w-[560px] text-[19px] leading-relaxed text-ondark">{t('hero.lead')}</p>

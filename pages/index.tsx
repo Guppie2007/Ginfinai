@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import { Trans, useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import i18nConfig from '../lib/i18nConfig'
-import LogoMark from '../components/LogoMark'
+import LogoMark, { D as MARK_PATH, NODES as MARK_NODES } from '../components/LogoMark'
 import Services from '../components/Services'
 import ContactForm from '../components/ContactForm'
 import BernChat, { BernHandle } from '../components/BernChat'
@@ -20,7 +20,24 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   },
 })
 
-type WorkItem = { tag: string; title: string; desc: string; result: string }
+type WorkItem = { tag: string; title: string; desc: string; result: string; image?: string; draft?: boolean }
+
+// Tekst die nog tussen vierkante haken staat is een plaatshouder en wordt niet getoond
+const isPlaceholder = (s?: string) => !s || /^\[.*\]$/.test(s.trim())
+
+/** Rustig vlak met het GinfinAI-teken, voor werkkaarten zonder afbeelding */
+function WorkPlaceholder() {
+  return (
+    <div aria-hidden="true" className="flex h-full w-full items-center justify-center bg-selected">
+      <svg viewBox="12 52 228 136" className="w-24 opacity-30">
+        <path d={MARK_PATH} fill="none" stroke="#5B4BD6" strokeWidth="16" strokeLinecap="round" strokeLinejoin="round" />
+        {MARK_NODES.filter((n) => !n.core).map((n, i) => (
+          <circle key={i} cx={n.x} cy={n.y} r={n.r} fill="#EEEBFC" stroke="#5B4BD6" strokeWidth="7" />
+        ))}
+      </svg>
+    </div>
+  )
+}
 type Step = { title: string; text: string }
 
 const OG_LOCALE: Record<string, string> = { nl: 'nl_BE', en: 'en_GB', fr: 'fr_BE' }
@@ -35,7 +52,8 @@ export default function Home() {
   const railWrap = useRef<HTMLDivElement>(null)
 
   const facts = asArray<string>(t('facts', { returnObjects: true }))
-  const work = asArray<WorkItem>(t('work.items', { returnObjects: true }))
+  const work = asArray<WorkItem>(t('work.items', { returnObjects: true })).filter((w) => !w.draft)
+  const soloWork = work.length === 1
   const steps = asArray<Step>(t('approach.steps', { returnObjects: true }))
   const pageUrl = (l: string) => SITE_URL + (l === defaultLocale ? '/' : `/${l}`)
   const url = pageUrl(locale)
@@ -96,11 +114,11 @@ export default function Home() {
               </span>
             </h1>
             <p className="m-0 max-w-[560px] text-[19px] leading-relaxed text-ondark">{t('hero.lead')}</p>
-            <div className="flex flex-wrap gap-3 pt-1">
-              <a href="#contact" className="btn-primary">
+            <div className="flex flex-wrap gap-3 pt-1 min-[360px]:max-[900px]:flex-nowrap">
+              <a href="#contact" className="btn-primary whitespace-nowrap max-[900px]:min-h-12 max-[900px]:px-5">
                 {t('hero.ctaMessage')}
               </a>
-              <a href={WHATSAPP_URL} className="btn-ghost-dark">
+              <a href={WHATSAPP_URL} className="btn-ghost-dark whitespace-nowrap max-[900px]:min-h-12 max-[900px]:px-5">
                 {t('hero.ctaWhatsapp')}
               </a>
             </div>
@@ -149,30 +167,44 @@ export default function Home() {
           <Services selected={selected} open={open} onSelect={select} onAsk={setSubject} />
         </section>
 
-        {/* 02 Werk */}
-        <section id="werk" className="bg-lavender">
-          <div className="rp mx-auto flex max-w-page flex-col gap-10 px-6 py-24">
-            <div className="flex max-w-[640px] flex-col gap-2.5">
-              <div data-rail className="eyebrow text-brand">
-                {t('work.eyebrow')}
+        {/* 02 Werk: verborgen zolang er geen publiceerbaar project is */}
+        {work.length > 0 && (
+          <section id="werk" className="bg-lavender">
+            <div className="rp mx-auto flex max-w-page flex-col gap-10 px-6 py-24">
+              <div className="flex max-w-[640px] flex-col gap-2.5">
+                <div data-rail className="eyebrow text-brand">
+                  {t('work.eyebrow')}
+                </div>
+                <h2 className="h2">{t('work.title')}</h2>
               </div>
-              <h2 className="h2">{t('work.title')}</h2>
+              <div className="flex flex-wrap gap-6">
+                {work.map((w) => (
+                  <article
+                    key={w.title}
+                    className={
+                      'flex min-w-0 flex-col gap-5 rounded-[20px] border border-line bg-white p-5 ' +
+                      (soloWork ? 'w-full nav:flex-row nav:items-center nav:gap-8' : 'flex-[1_1_480px]')
+                    }
+                  >
+                    <div className={'relative aspect-video overflow-hidden rounded-xl ' + (soloWork ? 'w-full nav:w-1/2 nav:flex-none' : 'w-full')}>
+                      {w.image ? (
+                        <Image src={w.image} alt="" fill sizes="(min-width: 901px) 600px, 100vw" className="object-cover" />
+                      ) : (
+                        <WorkPlaceholder />
+                      )}
+                    </div>
+                    <div className="flex min-w-0 flex-col gap-2 px-1 pb-1">
+                      <div className="text-[13px] font-semibold uppercase text-brand">{w.tag}</div>
+                      <h3 className="m-0 text-2xl font-semibold">{w.title}</h3>
+                      <p className="m-0 text-base leading-relaxed text-muted">{w.desc}</p>
+                      {!isPlaceholder(w.result) && <p className="m-0 mt-1 text-lg font-semibold text-brand">{w.result}</p>}
+                    </div>
+                  </article>
+                ))}
+              </div>
             </div>
-            <div className="flex flex-wrap gap-6">
-              {work.map((w) => (
-                <article key={w.title} className="flex min-w-0 flex-[1_1_480px] flex-col gap-[18px] rounded-[20px] border border-line bg-white p-5">
-                  {/* TODO: echte screenshot (next/image) toevoegen zodra beschikbaar; tot dan geen lege placeholder tonen */}
-                  <div className="flex flex-col gap-2 px-1 pb-1">
-                    <div className="text-[13px] font-semibold uppercase text-brand">{w.tag}</div>
-                    <h3 className="m-0 text-2xl font-semibold">{w.title}</h3>
-                    <p className="m-0 text-base leading-relaxed text-muted">{w.desc}</p>
-                    <p className="m-0 text-[15px] text-[#2C2550]">{w.result}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* 03 Aanpak */}
         <section id="aanpak" className="rp mx-auto flex max-w-page flex-col gap-10 px-6 py-24">

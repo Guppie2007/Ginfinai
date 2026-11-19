@@ -119,14 +119,16 @@
         "title": "Booking system for a riding school",
         "desc": "Riders book the arena themselves through one link the riding school shares with its customers. No more phone calls or double bookings.",
         "result": "[RESULT, e.g. bookings per month]",
-        "image": "[SCREENSHOT · booking system]"
+        "image": "",
+        "draft": false
       },
       {
         "tag": "[Website or AI]",
         "title": "[Project name, with the client's permission]",
         "desc": "[Two sentences: what was the problem, what was built.]",
         "result": "[RESULT]",
-        "image": "[SCREENSHOT · project 2]"
+        "image": "",
+        "draft": true
       }
     ]
   },

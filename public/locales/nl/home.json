@@ -119,14 +119,16 @@
         "title": "Reservatiesysteem voor een manege",
         "desc": "Ruiters reserveren zelf de piste via één link die de manege met haar klanten deelt. Geen telefoontjes of dubbele boekingen meer.",
         "result": "[RESULTAAT, bv. aantal reservaties per maand]",
-        "image": "[SCREENSHOT · reservatiesysteem]"
+        "image": "",
+        "draft": false
       },
       {
         "tag": "[Website of AI]",
         "title": "[Projectnaam, met toestemming van de klant]",
         "desc": "[Twee zinnen: wat was het probleem, wat is er gebouwd.]",
         "result": "[RESULTAAT]",
-        "image": "[SCREENSHOT · project 2]"
+        "image": "",
+        "draft": true
       }
     ]
   },

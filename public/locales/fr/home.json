@@ -119,14 +119,16 @@
         "title": "Système de réservation pour un manège",
         "desc": "Les cavaliers réservent eux-mêmes la piste via un lien que le manège partage avec ses clients. Fini les appels et les doubles réservations.",
         "result": "[RÉSULTAT, p. ex. réservations par mois]",
-        "image": "[CAPTURE · système de réservation]"
+        "image": "",
+        "draft": false
       },
       {
         "tag": "[Site web ou IA]",
         "title": "[Nom du projet, avec l'accord du client]",
         "desc": "[Deux phrases : quel était le problème, qu'est-ce qui a été réalisé.]",
         "result": "[RÉSULTAT]",
-        "image": "[CAPTURE · projet 2]"
+        "image": "",
+        "draft": true
       }
     ]
   },

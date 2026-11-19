@@ -2,3 +2,9 @@ node_modules/
 .next/
 dist/
 out/
+tsconfig.tsbuildinfo
+.env*.local
+.playwright-mcp/
+
+# Door next dev aangemaakt
+AGENTS.md

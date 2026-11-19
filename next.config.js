@@ -8,18 +8,32 @@ const nextI18NextConfig = require('./next-i18next.config.cjs')
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   i18n: nextI18NextConfig.i18n,
 
-  // images configuration
-  images: {
-    // domains: [],
+  // Vertalingen meenemen in de serverfuncties op Vercel (anders 500 bij renderen op aanvraag)
+  outputFileTracingIncludes: {
+    '/': ['./public/locales/**/*', './next-i18next.config.cjs'],
+    '/**': ['./public/locales/**/*', './next-i18next.config.cjs'],
   },
 
-  // For development convenience
-  // This is not part of i18n but general Next.js config
-  eslint: {
-     ignoreDuringBuilds: true,
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()' },
+          { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains' },
+        ],
+      },
+    ]
+  },
+
+  // De aparte webpagina is opgegaan in de homepage (sectie Diensten)
+  async redirects() {
+    return [{ source: '/web', destination: '/#diensten', permanent: false }]
   },
 }
 

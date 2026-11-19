@@ -152,7 +152,7 @@ export default function Home() {
                         {/* Visueel het amber punt; voor schermlezers blijft het een gewone punt.
                             Maat gemeten aan de punt van Onest semibold: Ø 0,17em, 0,05em ruimte na de letter. */}
                         <span className="sr-only">.</span>
-                        <span aria-hidden="true" className="ml-[0.05em] inline-block h-[0.17em] w-[0.17em] rounded-full bg-accent align-baseline" />
+                        <span aria-hidden="true" className="ml-[0.05em] inline-block h-[0.17em] w-[0.17em] translate-y-[0.01em] rounded-full bg-accent align-baseline" />
                       </span>
                     </>
                   )

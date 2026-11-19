@@ -73,8 +73,11 @@ export default function Services({ selected, open, onSelect, onAsk }: Props) {
               <span className={'w-7 text-sm tabular-nums ' + (on ? 'text-brand' : 'text-subtle')}>
                 {String(offset + i + 1).padStart(2, '0')}
               </span>
-              <span className="flex-grow text-[clamp(18px,1.8vw,22px)] font-medium tracking-[-0.01em]">{s.title}</span>
-              <span className="whitespace-nowrap text-sm text-muted">{s.price}</span>
+              <span className="flex min-w-0 flex-grow flex-col gap-0.5 py-3 nav:flex-row nav:items-center nav:gap-5 nav:py-0">
+                <span className="text-[clamp(18px,1.8vw,22px)] font-medium tracking-[-0.01em] nav:flex-grow">{s.title}</span>
+                {/* Prijs onder de titel op gsm; AI-rijen tonen dezelfde prijs als het paneel */}
+                <span className="whitespace-nowrap text-[13px] text-muted nav:text-sm">{accent ? s.panelPrice : s.price}</span>
+              </span>
             </button>
             {/* Op gsm opent het paneel onder de aangetikte rij */}
             {isOpen && (
@@ -87,8 +90,8 @@ export default function Services({ selected, open, onSelect, onAsk }: Props) {
                     ))}
                   </ul>
                   <div className="flex flex-col gap-3.5 border-t border-brand-rule pt-3.5">
-                    <div className="flex items-baseline justify-between gap-3">
-                      <span className="text-xl font-semibold">{s.panelPrice}</span>
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                      <span className="whitespace-nowrap text-xl font-semibold">{s.panelPrice}</span>
                       <span className="text-[13px] text-brand-panel">{t('services.lead', { lead: s.lead })}</span>
                     </div>
                     {askButton(s)}
@@ -134,7 +137,7 @@ export default function Services({ selected, open, onSelect, onAsk }: Props) {
           <div className="flex flex-wrap items-end justify-between gap-4 border-t border-brand-rule pt-5">
             <div className="flex flex-col gap-1">
               <span className="text-sm text-brand-panel">{t('services.lead', { lead: sel.lead })}</span>
-              <span className="text-[28px] font-semibold">{sel.panelPrice}</span>
+              <span className="whitespace-nowrap text-[28px] font-semibold">{sel.panelPrice}</span>
             </div>
             {askButton(sel, true)}
           </div>
